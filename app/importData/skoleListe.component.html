@@ -1,0 +1,10 @@
+<h1>Liste med skoler</h1>
+<label>Søk etter skole: <input type="text"  [(ngModel)]="skolenavn" /><!--autokompleter bruker skolerNavn npm install ng2-completer-->
+  <!--<p *ngFor="let skole of skolerData | skoleDataFilter: skolenavn">-->
+  <p *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
+     {{skole.Skolenavn}} <br>
+  </p>
+
+
+
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
