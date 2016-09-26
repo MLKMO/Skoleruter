@@ -6,10 +6,6 @@ import './importData/rxjs-operators';
     selector: 'my-app',
     template: `<h1>My First Angular App</h1>
 
-
-
-
-
     <skoleListe></skoleListe>`
 })
 export class AppComponent { }

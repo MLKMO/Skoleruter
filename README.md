@@ -41,7 +41,7 @@ Denne seksjonen inneholder retningslinjer for hvordan kode og mappestruktur bør
 - Lag en egen mappe for hver "egenskap", eks en mappe for prosessering av data hvor alle filer som har med importering av data fra stvg.kommune, strukturering av dataen osv ligger. 
 - Alle forskjellige filtyper skal i en egen mappe, altså en mappe for .ts, en for .js, en for .html og en for .css (og evt flere mapper ved andre typer filer).
 
-Dette gjør at mappestrukturen blir noe alà dette: 
+Dette gjør at mappestrukturen blir noe alà dette (feil): 
 
 ```
 ├── src/
