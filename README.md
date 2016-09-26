@@ -1,154 +1,102 @@
-# Angular QuickStart Source
-[![Build Status][travis-badge]][travis-badge-url]
+# Informasjon
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
+## Data
+ [Link](http://open.stavanger.kommune.no/dataset/86d3fe44-111e-4d82-be5a-67a9dbfbfcbb/resource/32d52130-ce7c-4282-9d37-3c68c7cdba92/download/skolerute-2016-17.csv "Data fra stvg. kommune") til skolerutedata stavanger 2016-2017
 
-It's been extended with testing support so you can start writing tests immediately.
+## Trello
+Alle er invitert til trello og har godtatt invitasjonen, men her er en [link](https://trello.com/b/tHSNYi3b/prosjekt-dat210 "Trello") til siden vår på Trello hvis noen trenger det. Trello finnes også som app til telefon.  
 
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular**
+## User stories
+User stories og akseptansekriterier kan finnes [her](UserStoriesAkseptansekrit.md)    
 
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
 
-## Prerequisites
+## GitHub
+I masterbranch skal det alltid ligge en fungerende applikasjon som inneholder alle features som er ferdig utvikliet. 
+Vi lager en ny "branch" pr. feature også merger denne med master når den er helt ferdig. Feks. lager en ny branch for kalendervisning hvor utviklingen av denne foregår. Når kalendervisningen er helt ferdig merges den med master branchen slik at det fungerende prosjektet får kalendervisningen implementert.
 
-Node.js and npm are essential to Angular development. 
-    
-<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
-Get it now</a> if it's not already installed on your machine.
- 
-**Verify that you are running at least node `v4.x.x` and npm `3.x.x`**
-by running `node -v` and `npm -v` in a terminal/console window.
-Older versions produce errors.
+Hvis git i terminal/git bash/powershell osv. er forvirrende finnes det en enkel desktopapplikasjon som er veldig intuetiv, spesielt med tanke på braching. Denne kan lastes ned [her](https://www.sourcetreeapp.com/ "Source tree") 
 
-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.
+### Cheat sheet
+ [Link](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf "GitHub cheat sheet") 
 
-## Create a new project based on the QuickStart
 
-Clone this repo into new project folder (e.g., `my-proj`).
-```bash
-git clone  https://github.com/angular/quickstart  my-proj
-cd my-proj
+## Hvordan få Angular 2 til å fungere: 
+Gå til denne [siden (bucky)](https://github.com/buckyroberts/angular-2-template "Buckys git")
+
+## Tutorials
+
+### Microsoft Acadamy 
+Har en god tutorial på Angular2, som går igjennom de viktigste delene i en Angular2 kode, hvordan de fungerer og hvordan de komminuserer med hverandre. Denne tutorialen kan finnes [her].(https://mva.microsoft.com/en-US/training-courses/introduction-to-angular-20-16540?l=cdKMEZyfC_906218965 "Microsoft Acadamy Angular2")
+
+## Generel informasjon om Angular2
+For generell informasjon om Angular2 finnes det mye informasjon på [Angular2](http://www.angular2.com/ "Angular2")
+ sin egen nettside. 
+
+
+# Retningslinjer for kode og mappestruktur. 
+Denne seksjonen inneholder retningslinjer for hvordan kode og mappestruktur bør være. Hvis alles kode ser noen lunde lik ut og alle følger disse retningslinjene blir det enklere og hjelpe hverandre, hente deler fra andre sin kode og ting blir mer oversiktlig. Utgangspunktet for disse retningslinjene finnes [her] (https://angular.io/docs/ts/latest/guide/style-guide.html "STYLE GUIDE"). 
+
+## Mappestruktur
+- All kode skal ligge under mappen src/app/...
+- Lag en egen mappe for hver "egenskap", eks en mappe for prosessering av data hvor alle filer som har med importering av data fra stvg.kommune, strukturering av dataen osv ligger. 
+- Alle forskjellige filtyper skal i en egen mappe, altså en mappe for .ts, en for .js, en for .html og en for .css (og evt flere mapper ved andre typer filer).
+
+Dette gjør at mappestrukturen blir noe alà dette: 
+
+```
+├── src/
+│   ├── app/
+│   ├── ├── ts/
+│   ├── ├── ├── dataprossesering
+│   ├── ├── ├── kalendervisning
+│   ├── ├── js/
+│   │   ├── ├── dataprossesering
+│   ├── ├── ├── kalendervisning
+│   │   ├── html/
+│   │   │   ├── dataprossesering
+│   ├── ├── ├── kalendervisning
+│   │   ├── css/
+│   │   │   ├── dataprossesering
+│   ├── ├── ├── kalendervisning
 ```
 
-We have no intention of updating the source on `angular/quickstart`.
-Discard everything "git-like" by deleting the `.git` folder.
-```bash
-rm -rf .git  # non-Windows
-rd .git /S/Q # windows
+## Filer: 
+ - Alle filer skal navgis på følgende måte: **navn.type.filtype**.
+ - En fil gjør en ting, altså en *Component* eller *Service* osv. pr. fil.
+ - Filene navngis slik at det er lett å skjønne hva de inneholder.
+
+ Dette gjør at filene vil hete noe alà dette: *sokefelt.component.ts*, *sokefelt.service.ts*, *sokefelt.component.html* osv. 
+
+## I koden: 
+- Klassen i en fil navgis på følgende måte: Hvis filnavnet er **filnavn.component.ts** skal klassen hete *FilnavnComponent*. Hvis filnavnet er på følgende form: **langt-filnavn.component.ts**, så skal klassen hete *LangtFilnavnComponent*. 
+- *Selector* skal navgis med små bokstaver: eks *app*. Hvis navnet består av to ord skal disse skilles med bindestrek (-), *my-app*. 
+- Konstanter skal navgis ved bruk av "lower camel case", eks: *const enKonstant*. 
+- Metoder navngis med små bokstaver, eks: *metode()*
+- Ha en blank linje mellom importeringer fra tredjepart og import av egne filer. 
+- Hvis *template* i en component er over 3 linjer skal den ligge i en egen fil som importeres. 
+- Logikk i *Component* skal begrenses til det som har med fremvisning å gjøre, all annen logikk skal plasserers i *Service*.
+- Legg presentasjonslogikk i klassen til en *Component* og ikke i *template*
+- Plasser bootstraping og platformlogikk i filen **main.ts**. Ikke legg annen logikk i denne filen. 
+
+Eksempel på hvordan en fil skal se ut: 
+
+```typescript
+import { OnInit, Component } from '@angular/core'; /*Import fra tredjepart*/
+
+import { Sokefelt } from './sokefelt.model'; /*Import fra egne filer*/
+
+@Component({
+/*Hvis navnet består av to ord skal de separeres med -*/
+  selector: 'kalendervisning',
+/*Hvis template består av mer enn tre linjer, legg html i egen fil */ 
+  templateUrl: 'kalendervisning.component.html' 
+})
+/* Klassen heter det samme som "selektoren", bare stor forbokstav.
+ Hvis navnet til "selector" består av to ord skal hver ord i klassenavnet ha stor bokstav*/
+export class Kalendervisning implements OnInit { 
+    /* Inneholder logikk som brukes i fremvisning*/
+  constructor() { }
+  ngOnInit() { }
+}
+
 ```
-
-### Create a new git repo
-You could [start writing code](#start-development) now and throw it all away when you're done.
-If you'd rather preserve your work under source control, consider taking the following steps.
-
-Initialize this project as a *local git repo* and make the first commit:
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-```
-
-Create a *remote repository* for this project on the service of your choice.
-
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
-```bash
-git remote add origin <repo-address>
-git push -u origin master
-```
-## Install npm packages
-
-> See npm and nvm version notes above
-
-Install the npm packages described in the `package.json` and verify that it works:
-
-**Attention Windows Developers:  You must run all of these commands in administrator mode**.
-
-```bash
-npm install
-npm start
-```
-
-> If the `typings` folder doesn't show up after `npm install` please install them manually with:
-
-> `npm run typings -- install`
-
-The `npm start` command first compiles the application, 
-then simultaneously re-compiles and runs the `lite-server`.
-Both the compiler and the server watch for file changes.
-
-Shut it down manually with Ctrl-C.
-
-You're ready to write your application.
-
-### npm scripts
-
-We've captured many of the most useful commands in npm scripts defined in the `package.json`:
-
-* `npm start` - runs the compiler and a server at the same time, both in "watch mode".
-* `npm run tsc` - runs the TypeScript compiler once.
-* `npm run tsc:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
-* `npm run lite` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by
-[John Papa](https://github.com/johnpapa) and
-[Christopher Martin](https://github.com/cgmartin)
-with excellent support for Angular apps that use routing.
-* `npm run typings` - runs the typings tool.
-* `npm run postinstall` - called by *npm* automatically *after* it successfully completes package installation. This script installs the TypeScript definition files this app requires.
-Here are the test related scripts:
-* `npm test` - compiles, runs and watches the karma unit tests
-* `npm run e2e` - run protractor e2e tests, written in JavaScript (*e2e-spec.js)
-
-## Testing
-
-The QuickStart documentation doesn't discuss testing.
-This repo adds both karma/jasmine unit test and protractor end-to-end testing support.
-
-These tools are configured for specific conventions described below.
-
-*It is unwise and rarely possible to run the application, the unit tests, and the e2e tests at the same time.
-We recommend that you shut down one before starting another.*
-
-### Unit Tests
-TypeScript unit-tests are usually in the `app` folder. Their filenames must end in `.spec`.
-
-Look for the example `app/app.component.spec.ts`.
-Add more `.spec.ts` files as you wish; we configured karma to find them.
-
-Run it with `npm test`
-
-That command first compiles the application, then simultaneously re-compiles and runs the karma test-runner.
-Both the compiler and the karma watch for (different) file changes.
-
-Shut it down manually with Ctrl-C.
-
-Test-runner output appears in the terminal window.
-We can update our app and our tests in real-time, keeping a weather eye on the console for broken tests.
-Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (Ctrl-C) and
-restart it. No worries; it's pretty quick.
-
-The `HTML-Reporter` is also wired in. That produces a prettier output; look for it in `~_test-output/tests.html`.
-
-### End-to-end (E2E) Tests
-
-E2E tests are in the `e2e` directory, side by side with the `app` folder.
-Their filenames must end in `.e2e-spec.ts`.
-
-Look for the example `e2e/app.e2e-spec.ts`.
-Add more `.e2e-spec.js` files as you wish (although one usually suffices for small projects);
-we configured protractor to find them.
-
-Thereafter, run them with `npm run e2e`.
-
-That command first compiles, then simultaneously starts the Http-Server at `localhost:8080`
-and launches protractor.  
-
-The pass/fail test results appear at the bottom of the terminal window.
-A custom reporter (see `protractor.config.js`) generates a  `./_test-output/protractor-results.txt` file
-which is easier to read; this file is excluded from source control.
-
-Shut it down manually with Ctrl-C.
-
-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/angular/quickstart
