@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/MLKMO/Skoleruter.svg?branch=master)](https://travis-ci.org/MLKMO/Skoleruter)
 # Informasjon
 
 ## Data
