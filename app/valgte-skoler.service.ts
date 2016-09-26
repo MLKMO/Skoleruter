@@ -15,4 +15,15 @@ export class ValgteSkolerService
     {
         return this.valgteSkoler;
     }
+    public fjernSkole(skole:string):void
+    {
+      for(let valg in this.valgteSkoler )
+      {
+        if (valg==skole)
+        {
+          valg=null;
+          break;
+        }
+      }
+    }
 }

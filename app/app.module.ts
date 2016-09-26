@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule }  from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import {FinnSkolerPipe} from './Velgskole/finn-skoler.pipe';
-import {SokefeltComponent} from './Velgskole/sokefelt.component';
+//import {FinnSkolerPipe} from './Velgskole/finn-skoler.pipe';
+//import {SokefeltComponent} from './Velgskole/sokefelt.component';
 
 import {SkoleListeComponent} from './importData/skoleListe.component';
 import { SkoleListeFilterPipe} from'./importData/skoleListeFilter.pipe';
@@ -20,8 +20,8 @@ import { SkoleListeFilterPipe} from'./importData/skoleListeFilter.pipe';
   declarations: [ AppComponent,
                   SkoleListeComponent,
                   SkoleListeFilterPipe,
-                  FinnSkolerPipe,
-                  SokefeltComponent
+                  //FinnSkolerPipe,
+                  //SokefeltComponent
    ],
 
   bootstrap: [ AppComponent ]

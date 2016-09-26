@@ -1,1 +1,4 @@
 Dokumentasjon på importJson komponenter
+Må lage en funksjon som fjerner skoler fra listen
+Må lage en funksjon som forhindrer at samme skolen blr lagt til flere ganger
+Må lage en funksjon som kobler skolen skoledata som gir oss elevdager , lærerdager etc. 
