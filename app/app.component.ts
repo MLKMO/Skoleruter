@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
+import {SokefeltComponent} from './Velgskole/sokefelt.component';
+
 @Component({
     selector: 'my-app',
-    template: '<h1>My First Angular App</h1>'
+    template: '<sokefelt></sokefelt>'
 })
 export class AppComponent { }
