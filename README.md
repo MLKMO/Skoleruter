@@ -1,5 +1,5 @@
 # Informasjon
-Tester merge 
+
 ## Data
  [Link](http://open.stavanger.kommune.no/dataset/86d3fe44-111e-4d82-be5a-67a9dbfbfcbb/resource/32d52130-ce7c-4282-9d37-3c68c7cdba92/download/skolerute-2016-17.csv "Data fra stvg. kommune") til skolerutedata stavanger 2016-2017
 
