@@ -40,25 +40,17 @@ Denne seksjonen inneholder retningslinjer for hvordan kode og mappestruktur bør
 ## Mappestruktur
 - All kode skal ligge under mappen src/app/...
 - Lag en egen mappe for hver "egenskap", eks en mappe for prosessering av data hvor alle filer som har med importering av data fra stvg.kommune, strukturering av dataen osv ligger. 
-- Alle forskjellige filtyper skal i en egen mappe, altså en mappe for .ts, en for .js, en for .html og en for .css (og evt flere mapper ved andre typer filer).
 
 Dette gjør at mappestrukturen blir noe alà dette: 
 
 ```
-├── src/
-│   ├── app/
-│   ├── ├── ts/
-│   ├── ├── ├── dataprossesering
-│   ├── ├── ├── kalendervisning
-│   ├── ├── js/
-│   │   ├── ├── dataprossesering
-│   ├── ├── ├── kalendervisning
-│   │   ├── html/
-│   │   │   ├── dataprossesering
-│   ├── ├── ├── kalendervisning
-│   │   ├── css/
-│   │   │   ├── dataprossesering
-│   ├── ├── ├── kalendervisning
+├── app/
+├── ├── dataprossesering/
+├── ├── ├── html/
+├── ├── ├── css/
+├── ├── kalendervisning/
+├── ├── ├── html/
+├── ├── ├── css/
 ```
 
 ## Filer: 
@@ -94,7 +86,7 @@ import { Sokefelt } from './sokefelt.model'; /*Import fra egne filer*/
 })
 /* Klassen heter det samme som "selektoren", bare stor forbokstav.
  Hvis navnet til "selector" består av to ord skal hver ord i klassenavnet ha stor bokstav*/
-export class Kalendervisning implements OnInit { 
+export class KalendervisningComponent implements OnInit { 
     /* Inneholder logikk som brukes i fremvisning*/
   constructor() { }
   ngOnInit() { }
