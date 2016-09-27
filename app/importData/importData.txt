@@ -1,10 +1,23 @@
 Dokumentasjon på importJson komponenter
 
 Todo:
-Må lage en funksjon som fjerner skoler fra listen
+Må sortere ut barneskole og undomsskole
+  Det skal være et byggnr som spesifiserer om skolen er barneskole, ungdomskole etc.
+
+    "BYGGTYP_NBR": 614" 8-10 klasse ungdomskole
+    "BYGGTYP_NBR": 613" 1-7 klasse barneskole
+
+
+Må lage en funksjon som fjerner skoler fra velglisten nå de blir valgt
+
+
 Må lage en funksjon som forhindrer at samme skolen blr lagt til flere ganger
     -Kan lage en funksjon som fjerner skole fra skolelisten når den har blitt valgt slik at den ikke vises når man søker for andr gang
+
+
 Må lage en funksjon som kobler skolen skoledata som gir oss elevdager , lærerdager etc.
+
+
 
 Funksjon:
 skoledata.service.ts
@@ -17,4 +30,4 @@ skole.ts
   Er en interface for Skole objekter.
 
 skoleListeComponent.html
-  Dette er en html fil som blir brukt av skoleListe.component.ts til view. 
+  Dette er en html fil som blir brukt av skoleListe.component.ts til view.

@@ -42,6 +42,9 @@ export class SkoleListeComponent implements OnInit {
       this.mineSkoler = this.valgteSkolerService.mineSkoler();
       console.log(this.mineSkoler)
     }
+
+
+    //Fungerer ikke
     private fjernSkole(minskole:string):void
     {
       this.valgteSkolerService.fjernSkole(minskole);

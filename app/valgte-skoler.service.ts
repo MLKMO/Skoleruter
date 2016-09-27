@@ -15,6 +15,9 @@ export class ValgteSkolerService
     {
         return this.valgteSkoler;
     }
+
+
+    //Fungerer ikke
     public fjernSkole(skole:string):void
     {
       for(let valg in this.valgteSkoler )
