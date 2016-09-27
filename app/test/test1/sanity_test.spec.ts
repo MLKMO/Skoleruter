@@ -5,7 +5,7 @@ describe('universal truths', () => {
     expect(5).toBeGreaterThan(4);
   });
 
-  it('should skip this', () => {
+  xit('should skip this', () => {
     expect(4).toEqual(40);
   });
 });
