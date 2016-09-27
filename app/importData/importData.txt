@@ -1,4 +1,20 @@
 Dokumentasjon på importJson komponenter
+
+Todo:
 Må lage en funksjon som fjerner skoler fra listen
 Må lage en funksjon som forhindrer at samme skolen blr lagt til flere ganger
-Må lage en funksjon som kobler skolen skoledata som gir oss elevdager , lærerdager etc. 
+    -Kan lage en funksjon som fjerner skole fra skolelisten når den har blitt valgt slik at den ikke vises når man søker for andr gang
+Må lage en funksjon som kobler skolen skoledata som gir oss elevdager , lærerdager etc.
+
+Funksjon:
+skoledata.service.ts
+  Denne henter ut data fra en json fil og lagrer dette i en Array(observable<Skole[]>).
+
+skoleListe.component.ts
+  Henter inn data fra skoledata.service og lagrer dette i skoler: Skole[] variabelen.
+
+skole.ts
+  Er en interface for Skole objekter.
+
+skoleListeComponent.html
+  Dette er en html fil som blir brukt av skoleListe.component.ts til view. 
