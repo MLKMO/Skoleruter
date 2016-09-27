@@ -6,25 +6,18 @@ export class ValgteSkolerService
 {
     public valgteSkoler: Array<string> = [];
 
-
-    public leggTilSkole(skole:string) :void
-    {
+    public leggTilSkole(skole:string) :void{
         this.valgteSkoler.push(skole)
     }
 
-    public mineSkoler()
-    {
+    public mineSkoler(){
         return this.valgteSkoler;
     }
 
-
-    //Metode som fjerner skole fra valgteSkoler array
-    public fjernSkole(skole:string):void
-    {
+    public fjernSkole(skole:string):void {
       var index = this.valgteSkoler.indexOf(skole);
       if (index > -1) {
           this.valgteSkoler.splice(index, 1);
       }
     }
-
-  }
+}

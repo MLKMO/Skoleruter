@@ -4,8 +4,7 @@ import './importData/rxjs-operators';
 
 @Component({
     selector: 'my-app',
-    template: `<h1>My First Angular App</h1>
-
-    <skoleListe></skoleListe>`
+    template: `<h1>Velg Skole</h1>
+               <skoleListe></skoleListe>`
 })
 export class AppComponent { }

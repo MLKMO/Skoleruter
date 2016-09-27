@@ -1,25 +1,24 @@
-Dokumentasjon på importJson komponenter
+Dokumentasjon på importData komponenter
 
 Todo:
 Må sortere ut barneskole og undomsskole
   Det skal være et byggnr som spesifiserer om skolen er barneskole, ungdomskole etc.
 
-    "BYGGTYP_NBR": 614" 8-10 klasse ungdomskole
     "BYGGTYP_NBR": 613" 1-7 klasse barneskole
+    "BYGGTYP_NBR": 614" 8-10 klasse ungdomskole
 
 
 Må lage en funksjon som fjerner skoler fra velglisten nå de blir valgt
 
-
 Må lage en funksjon som forhindrer at samme skolen blr lagt til flere ganger
     -Kan lage en funksjon som fjerner skole fra skolelisten når den har blitt valgt slik at den ikke vises når man søker for andr gang
 
+Må lage en funksjon som kobler skolen mot skoledata(elevdager , sfo etc)
+  Venter på at vi skal få komprimert skolerute data i et eksternt program
 
-Må lage en funksjon som kobler skolen skoledata som gir oss elevdager , lærerdager etc.
 
+Filer:
 
-
-Funksjon:
 skoledata.service.ts
   Denne henter ut data fra en json fil og lagrer dette i en Array(observable<Skole[]>).
 
@@ -28,6 +27,14 @@ skoleListe.component.ts
 
 skole.ts
   Er en interface for Skole objekter.
+  NB! øst har blitt erstattet med ost i skoler.json 
 
 skoleListeComponent.html
-  Dette er en html fil som blir brukt av skoleListe.component.ts til view.
+  Dette er en html fil som blir brukt av skoleListe.component.ts til å presentere data.Den tar inn to stk arrays: en skoler: Skole[]; som blir brukt til å presentere skoler og en mineSkoler: Array<string>; som blir brukt å vise valgte skoler.
+
+skoleListeFilter.pipe.ts
+  En pipe som filtrerer data og returnerer de skoleobjektene som er relevante for applikasjonen.
+
+valgte-skoler.service.ts
+  Brukes til å behandle valgte skoler
+    Lagring og fjerning av valgte skoler

@@ -5,23 +5,31 @@
                  class="form-control"
                 [(ngModel)]="skolenavn" />
           <div class="row">
-              <div class="col-xs-6 col-sm-1">
-                <div class="col-xs-6 col-sm-3"*ngFor="let skole of skoler | skoleListeFilter: skolenavn"
+
+              <div style="height:50%;">
+                <div *ngFor="let skole of skoler | skoleListeFilter: skolenavn"
                     (click) ="leggTilSkole(skole)">
                     <hr>
                     {{skole.Skolenavn}}
                 </div>
             </div>
-            <hr>
-              <div class="col-xs-6 col-sm-3">
-                <h3>Valgte skoler</h3>
+
+              <div>
+                <h2>Valgte skoler</h2>
+                <hr>
                 <div  *ngFor="let valgtskole of mineSkoler "
                   (click) ="fjernSkole(valgtskole)">
-                  <hr>
                     {{valgtskole}}
+                      <hr>
                 </div>
             </div>
+
           </div>
+
+          <div class="row">
+            <button class="btn">Vis Skolerute</button>
+          </div>
+
       </div>
 </div>
 

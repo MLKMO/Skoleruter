@@ -1,6 +1,6 @@
 export interface Skole{
      Nord:number,
-     ost:number,  //Denne fungerer ikke. angular greier ikke å gjennkjenne denne
+     ost:number,  //Denne kan muligens føre til feilmelding hvis øst kommer i skoleliste
      Latitude:number,
      Longitude:number,
      ID:number,
@@ -14,13 +14,3 @@ export interface Skole{
      ELEVER:string,
      KAPASITET:string
 }
-/*
-export class Skole{
-  constructor(
-    public id:number,
-    public name:string,
-    public Skolenavn:string
-  ){}
-
-}
-*/
