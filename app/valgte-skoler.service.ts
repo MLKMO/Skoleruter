@@ -6,6 +6,7 @@ export class ValgteSkolerService
 {
     public valgteSkoler: Array<string> = [];
 
+
     public leggTilSkole(skole:string) :void
     {
         this.valgteSkoler.push(skole)
@@ -17,16 +18,13 @@ export class ValgteSkolerService
     }
 
 
-    //Fungerer ikke
+    //Metode som fjerner skole fra valgteSkoler array
     public fjernSkole(skole:string):void
     {
-      for(let valg in this.valgteSkoler )
-      {
-        if (valg==skole)
-        {
-          valg=null;
-          break;
-        }
+      var index = this.valgteSkoler.indexOf(skole);
+      if (index > -1) {
+          this.valgteSkoler.splice(index, 1);
       }
     }
-}
+
+  }

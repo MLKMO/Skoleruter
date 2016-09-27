@@ -19,6 +19,7 @@ export class SkoleListeComponent implements OnInit {
   skolenavn: string="";
 
   mineSkoler: Array<string>;
+  nymineSkoler: Array<string>;
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
@@ -35,12 +36,13 @@ export class SkoleListeComponent implements OnInit {
     {
         this.valgteSkolerService.leggTilSkole(skole.Skolenavn);
         this.valgteskoler();
+
     }
     // For debugging
     private valgteskoler()
     {
       this.mineSkoler = this.valgteSkolerService.mineSkoler();
-      console.log(this.mineSkoler)
+      //console.log(this.mineSkoler)
     }
 
 
@@ -48,7 +50,7 @@ export class SkoleListeComponent implements OnInit {
     private fjernSkole(minskole:string):void
     {
       this.valgteSkolerService.fjernSkole(minskole);
-      this.mineSkoler=this.valgteSkolerService.mineSkoler()
+      this.valgteskoler();
     }
 
   }

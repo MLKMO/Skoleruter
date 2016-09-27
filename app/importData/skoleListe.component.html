@@ -6,18 +6,20 @@
                 [(ngModel)]="skolenavn" />
           <div class="row">
               <div class="col-xs-6 col-sm-1">
-                <li class="col-xs-6 col-sm-3"*ngFor="let skole of skoler | skoleListeFilter: skolenavn"
+                <div class="col-xs-6 col-sm-3"*ngFor="let skole of skoler | skoleListeFilter: skolenavn"
                     (click) ="leggTilSkole(skole)">
+                    <hr>
                     {{skole.Skolenavn}}
-                </li>
+                </div>
             </div>
             <hr>
               <div class="col-xs-6 col-sm-3">
-                <label>Valgte skoler</label>
-                <li  *ngFor="let valgtskole of mineSkoler "
+                <h3>Valgte skoler</h3>
+                <div  *ngFor="let valgtskole of mineSkoler "
                   (click) ="fjernSkole(valgtskole)">
+                  <hr>
                     {{valgtskole}}
-                </li>
+                </div>
             </div>
           </div>
       </div>
