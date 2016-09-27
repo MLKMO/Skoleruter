@@ -40,7 +40,7 @@ Denne seksjonen inneholder retningslinjer for hvordan kode og mappestruktur bør
 ## Mappestruktur
 - All kode skal ligge under mappen app/...
 - Lag en egen mappe for hver "egenskap", eks en mappe for prosessering av data hvor alle filer som har med importering av data fra stvg.kommune, strukturering av dataen osv ligger. 
-- Alle .js -filene blir automatisk lagt inn i "built" som ligger under "app". 
+- Alle .js -filene blir automatisk lagt inn i "built" som ligger under "app". I built-mappen 
 - Alle testfiler legges i "test" under egen mappe (se eks. under). Mer info om testing finnes senere i dokumentet. 
 
 Dette gjør at mappestrukturen blir noe alà dette (feil): 
@@ -117,7 +117,7 @@ export class KalendervisningComponent implements OnInit {
 
 # Testing
 Til å teste koden bruker vi Jasmine og Karma. Testene kjøres ved "npm test" -kommandoen i terminal/cmd -vinduet. 
-Når denne kommandoen kjøres i "root mappen" til prosjektet (den mappen som inneholder tsconfig osv.).
+Denne kommandoen kjøres i "root mappen" til prosjektet (der en kjører "npm start").
 Dette vil åpne ett nytt "chrome" vindu. For å inspisere hvordan testen har gått kan en trykke "degug" -knappen.
 Alle tester har fileending ".spec.ts", dette er for at Jasmine skal skjønne at det er en test. 
 Det er laget en enkel test som ligger i mappen test/test1 (sanity_test.spec.ts). 
