@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true, 
-    "outDir": "app/build"
+    "suppressImplicitAnyIndexErrors": true,
+    "outDir": "app/built/"
   }
 }
