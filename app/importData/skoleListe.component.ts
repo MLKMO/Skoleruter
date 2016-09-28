@@ -10,11 +10,14 @@ import { ValgteSkolerService } from '../valgte-skoler.service';
   providers: [ SkoleDataService, ValgteSkolerService ],
 
 })
+
 export class SkoleListeComponent implements OnInit {
   errorMessage: string;       //Feilmelding som kan oppstå ved henting av data fra file eller server
-  skoler: Skole[];            //Skole objekter som bruke kan velge
+  skoler: Skole[];            //Skole objekter som bruker kan velge i mellom
   skolenavn: string="";       //String som blir hentet fra søkefelt
   mineSkoler: Array<string>;  //Valgte skoler
+  skoleIndekser:Array<number>=[]; //Lagrer posisjon på utvalgte skoler slik at de kan bli lagt tilbake i listen. Rekkefølgen på indeksen blir lik rekkefølgen som skolene blir valgt.
+  visSkole=true;
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
@@ -29,29 +32,28 @@ export class SkoleListeComponent implements OnInit {
     }
 
     private leggTilSkole(skole: Skole){
-        this.valgteSkolerService.leggTilSkole(skole.Skolenavn);
-        this.valgteSkoler();
-
-        //Fungerer ikke
-        this.fjernValgtSkoleFraListe(skole);
+      console.log(skole);
+      this.valgteSkolerService.leggTilSkole(skole.Skolenavn, this.skoler.indexOf(skole));
+      this.valgteSkoler();
+      this.fjernValgtSkoleFraListe(skole);
     }
 
     private valgteSkoler(){
       this.mineSkoler = this.valgteSkolerService.mineSkoler();
+      this.skoleIndekser=this.valgteSkolerService.skoleIndeksListe();
     }
 
     private fjernSkole(minskole:string){
-      this.valgteSkolerService.fjernSkole(minskole);
+      var indeksTilFjernetSkole=this.valgteSkolerService.fjernSkole(minskole);  //Får indeksen til skolen som blir fjernet fra valgt skole i retur slik at vi kan legge tilbake navnet på riktig plass i skoler: Skole[]; arrayen.
+      this.skoler[indeksTilFjernetSkole].Skolenavn=minskole;
       this.valgteSkoler();
     }
 
-    //Fungerer ikke, må nok bruke en annen metode for å fjerne elementer fra en objekt array
-    private fjernValgtSkoleFraListe(skole: Skole){
-      console.log(skole.Skolenavn);
+    private fjernValgtSkoleFraListe(skole: Skole){  //
       var index = this.skoler.indexOf(skole);
-      if (index > -1) {
-          this.skoler.splice(index, 1);
-      }
+      console.log(this.skoler[index].Skolenavn);
+      this.skoler[index].Skolenavn="";
+      this.visSkole=false;
     }
 
   }

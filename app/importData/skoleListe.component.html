@@ -6,10 +6,10 @@
                 [(ngModel)]="skolenavn" />
           <div class="row">
 
-              <div style="height:50%;">
+              <div>
                 <div *ngFor="let skole of skoler | skoleListeFilter: skolenavn"
                     (click) ="leggTilSkole(skole)">
-                    <hr>
+                    <hr *ngIf="skole.Skolenavn!=''">  <!-- Denne fjerner linjene for skolene som blir valgt -->
                     {{skole.Skolenavn}}
                 </div>
             </div>
