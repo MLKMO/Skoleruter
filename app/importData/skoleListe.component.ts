@@ -31,6 +31,9 @@ export class SkoleListeComponent implements OnInit {
     private leggTilSkole(skole: Skole){
         this.valgteSkolerService.leggTilSkole(skole.Skolenavn);
         this.valgteSkoler();
+
+        //Fungerer ikke
+        this.fjernValgtSkoleFraListe(skole);
     }
 
     private valgteSkoler(){
@@ -40,6 +43,15 @@ export class SkoleListeComponent implements OnInit {
     private fjernSkole(minskole:string){
       this.valgteSkolerService.fjernSkole(minskole);
       this.valgteSkoler();
+    }
+
+    //Fungerer ikke, må nok bruke en annen metode for å fjerne elementer fra en objekt array
+    private fjernValgtSkoleFraListe(skole: Skole){
+      console.log(skole.Skolenavn);
+      var index = this.skoler.indexOf(skole);
+      if (index > -1) {
+          this.skoler.splice(index, 1);
+      }
     }
 
   }

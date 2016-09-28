@@ -8,10 +8,9 @@ Må sortere ut barneskole og undomsskole
     "BYGGTYP_NBR": 614" 8-10 klasse ungdomskole
 
 
-Må lage en funksjon som fjerner skoler fra velglisten nå de blir valgt
-
-Må lage en funksjon som forhindrer at samme skolen blr lagt til flere ganger
-    -Kan lage en funksjon som fjerner skole fra skolelisten når den har blitt valgt slik at den ikke vises når man søker for andr gang
+Må lage en funksjon som fjerner skoler fra valglisten nå de blir valgt
+  Det er naturlig å ha denne funksjonen innebygd i leggTilSKole funksjonen.
+  må lage en ny array som tar inn alle Skole objektene som er filtrert
 
 Må lage en funksjon som kobler skolen mot skoledata(elevdager , sfo etc)
   Venter på at vi skal få komprimert skolerute data i et eksternt program
@@ -27,7 +26,7 @@ skoleListe.component.ts
 
 skole.ts
   Er en interface for Skole objekter.
-  NB! øst har blitt erstattet med ost i skoler.json 
+  NB! øst har blitt erstattet med ost i skoler.json
 
 skoleListeComponent.html
   Dette er en html fil som blir brukt av skoleListe.component.ts til å presentere data.Den tar inn to stk arrays: en skoler: Skole[]; som blir brukt til å presentere skoler og en mineSkoler: Array<string>; som blir brukt å vise valgte skoler.
