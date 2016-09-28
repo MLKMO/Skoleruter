@@ -12,12 +12,13 @@ import { ValgteSkolerService } from '../valgte-skoler.service';
 })
 
 export class SkoleListeComponent implements OnInit {
-  errorMessage: string;       //Feilmelding som kan oppstå ved henting av data fra file eller server
-  skoler: Skole[];            //Skole objekter som bruker kan velge i mellom
-  skolenavn: string="";       //String som blir hentet fra søkefelt
-  mineSkoler: Array<string>;  //Valgte skoler
-  skoleIndekser:Array<number>=[]; //Lagrer posisjon på utvalgte skoler slik at de kan bli lagt tilbake i listen. Rekkefølgen på indeksen blir lik rekkefølgen som skolene blir valgt.
-  visSkole=true;              //Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
+  errorMessage: string;       // Feilmelding som kan oppstå ved henting av data fra file eller server
+  skoler: Skole[];            // Skole objekter som bruker kan velge i mellom
+  skolenavn: string = '';       // String som blir hentet fra søkefelt
+  mineSkoler: Array<string>;  // Valgte skoler
+  skoleIndekser: Array<number> = []; // Lagrer posisjon på utvalgte skoler slik at de kan bli lagt tilbake i listen.
+                                  // Rekkefølgen på indeksen blir lik rekkefølgen som skolene blir valgt.
+  visSkole=true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
@@ -39,19 +40,18 @@ export class SkoleListeComponent implements OnInit {
 
     private valgteSkoler(){
       this.mineSkoler = this.valgteSkolerService.mineSkoler();
-      this.skoleIndekser=this.valgteSkolerService.skoleIndeksListe();
+      this.skoleIndekser = this.valgteSkolerService.skoleIndeksListe();
     }
 
     private fjernSkole(minskole:string){
-      var indeksTilFjernetSkole=this.valgteSkolerService.fjernSkole(minskole);  //Får indeksen til skolen som blir fjernet fra valgt skole i retur slik at vi kan legge tilbake navnet på riktig plass i skoler: Skole[]; arrayen.
-      this.skoler[indeksTilFjernetSkole].Skolenavn=minskole;
+      var indeksTilFjernetSkole = this.valgteSkolerService.fjernSkole(minskole);
       this.valgteSkoler();
     }
 
-    private fjernValgtSkoleFraListe(skole: Skole){  //
+    private fjernValgtSkoleFraListe(skole: Skole){
       var index = this.skoler.indexOf(skole);
-      this.skoler[index].Skolenavn="";
-      this.visSkole=false;
+      this.skoler[index].Skolenavn = '';
+      this.visSkole = false;
     }
 
   }
