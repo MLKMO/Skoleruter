@@ -17,7 +17,7 @@ export class SkoleListeComponent implements OnInit {
   skolenavn: string="";       //String som blir hentet fra søkefelt
   mineSkoler: Array<string>;  //Valgte skoler
   skoleIndekser:Array<number>=[]; //Lagrer posisjon på utvalgte skoler slik at de kan bli lagt tilbake i listen. Rekkefølgen på indeksen blir lik rekkefølgen som skolene blir valgt.
-  visSkole=true;
+  visSkole=true;              //Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
@@ -32,7 +32,6 @@ export class SkoleListeComponent implements OnInit {
     }
 
     private leggTilSkole(skole: Skole){
-      console.log(skole);
       this.valgteSkolerService.leggTilSkole(skole.Skolenavn, this.skoler.indexOf(skole));
       this.valgteSkoler();
       this.fjernValgtSkoleFraListe(skole);
@@ -51,7 +50,6 @@ export class SkoleListeComponent implements OnInit {
 
     private fjernValgtSkoleFraListe(skole: Skole){  //
       var index = this.skoler.indexOf(skole);
-      console.log(this.skoler[index].Skolenavn);
       this.skoler[index].Skolenavn="";
       this.visSkole=false;
     }

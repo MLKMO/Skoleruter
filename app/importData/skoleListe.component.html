@@ -5,7 +5,7 @@
                  class="form-control"
                 [(ngModel)]="skolenavn" />
           <div class="row">
-
+              <p>Trykk på en skole for å legge den til i valgte skoler. Du kan legge til flere skoler om gangen.</p>
               <div>
                 <div *ngFor="let skole of skoler | skoleListeFilter: skolenavn"
                     (click) ="leggTilSkole(skole)">
@@ -16,6 +16,7 @@
 
               <div>
                 <h2>Valgte skoler</h2>
+                <p>Trykk på skolen for å legge den tilbake eller trykk på <b>Vis skoleute</b>.</p>
                 <hr>
                 <div  *ngFor="let valgtskole of mineSkoler "
                   (click) ="fjernSkole(valgtskole)">
@@ -27,7 +28,7 @@
           </div>
 
           <div class="row">
-            <button class="btn">Vis Skolerute</button>
+            <button class="btn btn-primary">Vis Skolerute</button>
           </div>
 
       </div>
