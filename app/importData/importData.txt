@@ -1,43 +1,6 @@
 Dokumentasjon på importData komponenter
 
 Todo:
-Må sortere ut barneskole og undomsskole
-  Det skal være et byggnr som spesifiserer om skolen er barneskole, ungdomskole etc.
-
-    "BYGGTYP_NBR": 613" 1-7 klasse barneskole
-    "BYGGTYP_NBR": 614" 8-10 klasse ungdomskole
-
-
-Må lage en funksjon som fjerner skoler fra valglisten nå de blir valgt
-  Det er naturlig å ha denne funksjonen innebygd i leggTilSKole funksjonen.
-    kan lage en ny array som tar inn alle Skole objektene som er filtrert
-    Hvordan skal objektene fjernes fra skole array?
-      Kan sette skoler[index].Skolenavn=""; på valgt skole
-        Hvordan får jeg da tilbake skolenavnet hvis brukeren fjerner valg?
-          kan bruke en for løkke som ittererer igjennom hele skoler[index].Skolenavn og stopper på en ledig plass der Skolenavn="";
-          En variabel må lagre alle plassene som ikke har skoleNavn.
-            Kan dette gjøres når skolen blir valgt?
-              lagrer indeks og skolenavn i en egen liste. Kan dermed sammenligne dette mot den skolen som blir fjernet fra
-              valgteSkoler og legge denne tilbake i skoler.
-
-skoleIndekser -> Hvordan får jeg lagret disse på best mulig måte?
-                    Kan lagre en egen array i valgte-skoler.service filen som holder styr på indeksene
-                        disse må da bli sendt med inn i leggTilSkole metoden
-                          blir lagt til på samme måte som skole
-                    Ved kall på fjernskole så må denne indeksen bli hentet
-                    Hvordan henter jeg den riktige indeksen?
-                      Returnerer indeksen i fjernSkole funksjonen.
-
-
-
-
-
-            Hvordan vet jeg om dette er riktig plass for akkurat dette skolenavnet?
-              Må ha en teller som indikerer hvilken skole som blir lagt tilbake. Siden vi tar ut skolene blir de lagt til i en hvis rekkefølge i mineSkoler. denne
-
-    Hvordan skal objektene legges til skole array?
-
-
 
 Må lage en funksjon som kobler skolen mot skoledata(elevdager , sfo etc)
   Venter på at vi skal få komprimert skolerute data i et eksternt program

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Skole }              from './skole';
-import { SkoleDataService }       from './skoledata.service';
+import { Skole } from './skole';
+import { SkoleDataService } from './skoledata.service';
 import { SkoleListeFilterPipe} from'./skoleListeFilter.pipe';
 import { ValgteSkolerService } from '../valgte-skoler.service';
 
@@ -18,7 +18,7 @@ export class SkoleListeComponent implements OnInit {
   mineSkoler: Array<string>;  // Valgte skoler
   skoleIndekser: Array<number> = []; // Lagrer posisjon på utvalgte skoler slik at de kan bli lagt tilbake i listen.
                                   // Rekkefølgen på indeksen blir lik rekkefølgen som skolene blir valgt.
-  visSkole=true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
+  visSkole = true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
@@ -28,7 +28,7 @@ export class SkoleListeComponent implements OnInit {
   getskoler() {
     this.skoledataService.getskoler()
                      .subscribe(
-                       skoler => this.skoler = skoler ,
+                       skoler => this.skoler = skoler,
                        error =>  this.errorMessage = <any>error);
     }
 
@@ -43,14 +43,15 @@ export class SkoleListeComponent implements OnInit {
       this.skoleIndekser = this.valgteSkolerService.skoleIndeksListe();
     }
 
-    private fjernSkole(minskole:string){
+    private fjernSkole(minskole: string){
       var indeksTilFjernetSkole = this.valgteSkolerService.fjernSkole(minskole);
+      this.skoler[indeksTilFjernetSkole].Skolenavn = minskole;
       this.valgteSkoler();
     }
 
-    private fjernValgtSkoleFraListe(skole: Skole){
+    private fjernValgtSkoleFraListe(skole: Skole){  //
       var index = this.skoler.indexOf(skole);
-      this.skoler[index].Skolenavn = '';
+      this.skoler[index].Skolenavn = "";
       this.visSkole = false;
     }
 
