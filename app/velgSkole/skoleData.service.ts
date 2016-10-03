@@ -7,10 +7,9 @@ import { Observable } from 'rxjs/Observable';
 export class SkoleDataService {
   constructor (private http: Http) {}
 
-  public skoleUrl = 'app/importData/skoler.json'; // Liste med skoler i stavanger
-
-  getskoler (): Observable<Skole[]> {
-    return this.http.get(this.skoleUrl)
+  getSkoler (): Observable<Skole[]> {
+    let skoleUrl = 'app/velgSkole/skoler.json'; // Liste med skoler i stavanger
+    return this.http.get(skoleUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Skole } from './skole';
 
-import { SkoleDataService } from './skoledata.service';
-import { ValgteSkolerService } from '../valgte-skoler.service';
+import { SkoleDataService } from './skoleData.service';
+import { ValgteSkolerService } from '../valgteSkoler.service';
 
 @Component({
   selector: 'skoleListe',
-  templateUrl: 'app/importData/skoleListe.component.html',
+  templateUrl: 'app/velgSkole/html/skoleListe.component.html',
   providers: [ SkoleDataService, ValgteSkolerService ],
 
 })
@@ -23,10 +23,10 @@ export class SkoleListeComponent implements OnInit {
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
 
-  ngOnInit() { this.getskoler(); }
+  ngOnInit() { this.getSkoler(); }
 
-  getskoler() {
-    this.skoledataService.getskoler()
+  getSkoler() {
+    this.skoledataService.getSkoler()
                      .subscribe(
                        skoler => this.skoler = skoler,
                        error =>  this.errorMessage = <any>error);

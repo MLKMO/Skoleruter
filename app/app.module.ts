@@ -5,11 +5,11 @@ import { HttpModule, JsonpModule }  from '@angular/http';
 
 //Egenproduserte components
 import { AppComponent }  from './app.component';
-import {SkoleListeComponent} from './importData/skoleListe.component';
-import { SkoleListeFilterPipe} from'./importData/skoleListeFilter.pipe';
+import {SkoleListeComponent} from './velgSkole/skoleListe.component';
+import { SkoleListeFilterPipe} from'./velgSkole/skoleListeFilter.pipe';
 
-import { SkoleDataService } from './importData/skoledata.service';
-import { ValgteSkolerService } from './valgte-skoler.service';
+import { SkoleDataService } from './velgSkole/skoleData.service';
+import { ValgteSkolerService } from './valgteSkoler.service';
 
 
 @NgModule({
