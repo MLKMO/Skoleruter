@@ -1,12 +1,12 @@
 // #docregion
 module.exports = function(config) {
 
-  var appBase    = 'app/';       // transpiled app JS and map files
+  var appBase    = 'app/built/';       // transpiled app JS and map files
   var appSrcBase = 'app/';       // app source TS files
-  var appAssets  = '/base/app/'; // component assets fetched by Angular's compiler
+  var appAssets  = '/base/app/built/'; // component assets fetched by Angular's compiler
 
-  var testBase    = 'testing/';       // transpiled test JS and map files
-  var testSrcBase = 'testing/';       // test source TS files
+  var testBase    = 'app/built/test/';       // transpiled test JS and map files
+  var testSrcBase = 'test/';       // test source TS files
 
   config.set({
     basePath: '',
@@ -76,7 +76,7 @@ module.exports = function(config) {
     // Proxied base paths for loading assets
     proxies: {
       // required for component assets fetched by Angular's compiler
-      "/app/": appAssets
+      "/app/built/": appAssets
     },
 
     exclude: [],
