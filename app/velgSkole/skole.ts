@@ -1,4 +1,4 @@
-export class Skole{
+export class Skole {
      Nord: number;
      ost: number;  // Denne kan muligens føre til feilmelding hvis øst kommer i skoleliste
      Latitude: number;
@@ -9,7 +9,7 @@ export class Skole{
      BYGGTYP_NBR: number;
      INFORMASJON: string;
      Skolenavn: string;
-     ADRESSE: string;
+     ADRESSE: number;
      Hjemmeside: string;
      ELEVER: string;
      KAPASITET: string;
