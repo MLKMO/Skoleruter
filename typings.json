@@ -6,3 +6,4 @@
     "node": "registry:dt/node#6.0.0+20160831021119",
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
   }
+}
