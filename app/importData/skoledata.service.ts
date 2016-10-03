@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Headers, RequestOptions } from '@angular/http';
 import { Skole } from './skole';
 import { Observable } from 'rxjs/Observable';
 
@@ -8,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 export class SkoleDataService {
   constructor (private http: Http) {}
 
-  private skoleUrl = 'app/importData/skoler.json'; //Liste med skoler i stavanger
+  public skoleUrl = 'app/importData/skoler.json'; // Liste med skoler i stavanger
 
   getskoler (): Observable<Skole[]> {
     return this.http.get(this.skoleUrl)

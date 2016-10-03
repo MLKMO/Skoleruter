@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Skole } from './skole';
+
 import { SkoleDataService } from './skoledata.service';
-import { SkoleListeFilterPipe} from'./skoleListeFilter.pipe';
 import { ValgteSkolerService } from '../valgte-skoler.service';
 
 @Component({
@@ -32,26 +32,27 @@ export class SkoleListeComponent implements OnInit {
                        error =>  this.errorMessage = <any>error);
     }
 
-    private leggTilSkole(skole: Skole){
-      this.valgteSkolerService.leggTilSkole(skole.Skolenavn, this.skoler.indexOf(skole));
+    private leggTilSkole(skole: Skole) {
+      this.valgteSkolerService.leggTilSkole(skole.Skolenavn,
+         this.skoler.indexOf(skole));
       this.valgteSkoler();
       this.fjernValgtSkoleFraListe(skole);
     }
 
-    private valgteSkoler(){
+    private valgteSkoler() {
       this.mineSkoler = this.valgteSkolerService.mineSkoler();
       this.skoleIndekser = this.valgteSkolerService.skoleIndeksListe();
     }
 
-    private fjernSkole(minskole: string){
-      var indeksTilFjernetSkole = this.valgteSkolerService.fjernSkole(minskole);
+    private fjernSkole(minskole: string) {
+      let indeksTilFjernetSkole = this.valgteSkolerService.fjernSkole(minskole);
       this.skoler[indeksTilFjernetSkole].Skolenavn = minskole;
       this.valgteSkoler();
     }
 
-    private fjernValgtSkoleFraListe(skole: Skole){  //
-      var index = this.skoler.indexOf(skole);
-      this.skoler[index].Skolenavn = "";
+    private fjernValgtSkoleFraListe(skole: Skole) {  //
+      let index = this.skoler.indexOf(skole);
+      this.skoler[index].Skolenavn = '';
       this.visSkole = false;
     }
 
