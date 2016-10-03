@@ -12,20 +12,20 @@ import { ValgteSkolerService } from '../valgteSkoler.service';
 })
 
 export class SkoleListeComponent implements OnInit {
-  errorMessage: string;       // Feilmelding som kan oppstå ved henting av data fra file eller server
-  skoler: Skole[];            // Skole objekter som bruker kan velge i mellom
-  skolenavn: string = '';       // String som blir hentet fra søkefelt
-  mineSkoler: Array<string>;  // Valgte skoler
-  skoleIndekser: Array<number> = []; // Lagrer posisjon på utvalgte skoler slik at de kan bli lagt tilbake i listen.
+  private errorMessage: string;       // Feilmelding som kan oppstå ved henting av data fra file eller server
+  private skoler: Skole[];            // Skole objekter som bruker kan velge i mellom
+  private skolenavn: string = '';       // String som blir hentet fra søkefelt
+  private mineSkoler: Array<string>;  // Valgte skoler
+  private skoleIndekser: Array<number> = []; // Lagrer posisjon på utvalgte skoler slik at de kan bli lagt tilbake i listen.
                                   // Rekkefølgen på indeksen blir lik rekkefølgen som skolene blir valgt.
-  visSkole = true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
+  private visSkole = true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
 
   ngOnInit() { this.getSkoler(); }
 
-  getSkoler() {
+    private getSkoler() {
     this.skoledataService.getSkoler()
                      .subscribe(
                        skoler => this.skoler = skoler,
@@ -47,7 +47,6 @@ export class SkoleListeComponent implements OnInit {
     private fjernSkole(minskole: string) {
       let indeksTilFjernetSkole = this.valgteSkolerService.fjernSkole(minskole);
       this.skoler[indeksTilFjernetSkole].Skolenavn = minskole;
-      this.valgteSkoler();
     }
 
     private fjernValgtSkoleFraListe(skole: Skole) {  //

@@ -5,6 +5,7 @@ Todo:
 Må lage en funksjon som kobler skolen mot skoledata(elevdager , sfo etc)
   Venter på at vi skal få komprimert skolerute data i et eksternt program
 
+Sortere skolene som blir vist i alfabetisk rekkefølge
 
 Filer:
 

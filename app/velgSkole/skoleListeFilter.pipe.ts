@@ -7,7 +7,7 @@ import { Skole } from './skole';
 
 export class SkoleListeFilterPipe implements PipeTransform {
 
-  transform(skoler: Skole[], skolenavn: string): any {
+  transform(skoler: Skole[], skolenavn: string): Skole[] {
     let skolenavnUpperCase = skolenavn.toLocaleUpperCase();
     let barneskole = 613;     // 613 er byggnr som viser til barneskoler i skoler.json
     let ungdomskole = 614;    // 614 er byggnr som viser til ungdomskoler i skoler.json

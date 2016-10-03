@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 export class SkoleDataService {
   constructor (private http: Http) {}
 
-  getSkoler (): Observable<Skole[]> {
+  public getSkoler (): Observable<Skole[]> {
     let skoleUrl = 'app/velgSkole/skoler.json'; // Liste med skoler i stavanger
     return this.http.get(skoleUrl)
                     .map(this.extractData)
