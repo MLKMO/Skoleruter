@@ -81,6 +81,7 @@
       }
     ],
     "variable-name": false,
+    "skipBlankLines": true,
     "whitespace": [
       true,
       "check-branch",
