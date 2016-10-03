@@ -1,4 +1,4 @@
-import { NgModule }       from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA }       from '@angular/core';
 import { FormsModule }    from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 
@@ -12,5 +12,6 @@ import { ListeComponent } from './liste.component';
     imports: [ CommonModule , FormsModule, skoleruterRouting],
     declarations: [KalenderComponent, ListeComponent],
     providers: [],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class SkoleruteModule { }

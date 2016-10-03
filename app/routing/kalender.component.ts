@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     moduleId: module.id,
     selector: 'kalender',
-    template: '<h1> Kalender </h1>'
+    template: '<p> Kalender </p>'
 })
 export class KalenderComponent implements OnInit {
     constructor() { }

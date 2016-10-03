@@ -1,7 +1,8 @@
-import { NgModule }      from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { routing, appRoutingProviders }  from './app.routing';
 import { FormsModule }    from '@angular/forms';
+import { RouterModule } from '@angular/router'
 
 import { AppComponent }  from './app.component';
 import { FinnSkolerComponent} from './routing/finn-skoler.component';
@@ -12,7 +13,7 @@ import { PageNotFoundComponent} from './page-not-found.component';
 import { SkoleruteModule } from './routing/skoleruter.module';
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule ],
+  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule],
   declarations: 
   [ 
     AppComponent, 
@@ -21,7 +22,8 @@ import { SkoleruteModule } from './routing/skoleruter.module';
     InfoComponent,
     PageNotFoundComponent, 
   ],
-  providers: [ appRoutingProviders ],
-  bootstrap: [ AppComponent ]
+    providers: [ appRoutingProviders ],
+    bootstrap: [ AppComponent ], 
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
