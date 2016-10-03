@@ -15,5 +15,4 @@ const skoleruterRoutes: Routes =
     ]},
 ];
 
-
 export const skoleruterRouting: ModuleWithProviders = RouterModule.forChild(skoleruterRoutes);
