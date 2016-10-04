@@ -17,6 +17,6 @@ export class SkoleListeFilterPipe implements PipeTransform {
     }
 
     return skoler.filter(skole => skole.Skolenavn.toLocaleUpperCase().indexOf(skolenavnUpperCase) !== -1
-    && (skole.BYGGTYP_NBR === barneskole || skole.BYGGTYP_NBR === ungdomskole));
+    && (skole.BYGGTYP_NBR === barneskole || skole.BYGGTYP_NBR === ungdomskole)||(skole.TrykketPa));
    }
 }
