@@ -43,7 +43,7 @@ Denne seksjonen inneholder retningslinjer for hvordan kode og mappestruktur bør
 - Alle .js -filene blir automatisk lagt inn i "built" som ligger under "app". I built-mappen 
 - Alle testfiler legges i "test" under egen mappe (se eks. under). Mer info om testing finnes senere i dokumentet. 
 
-Dette gjør at mappestrukturen blir noe alà dette: 
+Dette gjør at mappestrukturen blir noe alà dette (feil): 
 
 ```
 ├── app/

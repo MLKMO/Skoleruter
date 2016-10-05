@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'skoleruter',
-    templateUrl: 'app/routing/html/skoleruter.component.html' 
+    templateUrl: 'app/routing/html/skoleruter.component.html'
 })
 export class SkoleruterComponent implements OnInit {
     constructor() { }

@@ -1,0 +1,42 @@
+.visSkoleruteKnapp {
+    border-radius: 0;
+    position: fixed;
+    left: 50%;
+    bottom: 0%;
+    transform: translateX(-50%);
+    height: 4em;
+    z-index: 150;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.firkant {
+  border-radius: 0;
+}
+
+#sokefelt {
+  border-radius: 20px;
+  padding-left: 1em;
+}
+
+.listeContainer {
+  padding: 0.1em;
+  align-self: center;
+}
+
+.velgSkoleInfo {
+  background-color: lightgrey;
+}
+
+.mellomrom {
+  height: 5em;
+}
+
+.right-inner-addon i {
+    position: absolute;
+    right: 7%;
+    top: 35%;
+    pointer-events: none;
+}

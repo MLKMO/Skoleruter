@@ -1,0 +1,26 @@
+<div class="listeContainer">
+    <p style="border-radius:0px;"class="list-group-item right-inner-addon ">
+    <i class="glyphicon glyphicon-search"></i>
+    <input type="text"
+           id="sokefelt"
+           class="form-control "
+           placeholder=" Søk eller velg fra listen under . . ."
+          [(ngModel)]="skolenavn" /></p>
+    <div class="list-group" >
+        <p class="list-group-item velgSkoleInfo firkant">
+          Legg til så mange skoler du vil og trykk på <b>Vis Skolerute</b>
+          </p>
+        <div>
+          <div *ngFor="let skole of skoler | skoleListeFilter: skolenavn"
+              (click) ="leggTilSkole(skole)">
+              <p *ngIf="!skole.TrykketPa" class="list-group-item firkant" >
+              {{skole.Skolenavn}}</p>
+              <p *ngIf="skole.TrykketPa"class="list-group-item active firkant right-inner-addon" >
+              <i class="glyphicon glyphicon-trash"></i>{{skole.Skolenavn}}</p>
+          </div>
+          <div class="mellomrom"></div>
+          <button class="col-xs-12 btn btn-primary visSkoleruteKnapp" (click)="skoleruter()"><b>Vis Skolerute</b></button>
+      </div>
+    </div>
+</div>
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>

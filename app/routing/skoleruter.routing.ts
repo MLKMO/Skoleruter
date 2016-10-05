@@ -11,7 +11,8 @@ const skoleruterRoutes: Routes =
     children:
     [    
         {path:'kalender', component: KalenderComponent},
-        {path: 'liste', component: ListeComponent}
+        {path: 'liste', component: ListeComponent},
+        {path: '', redirectTo: 'kalender', pathMatch: 'full'}
     ]},
 ];
 
