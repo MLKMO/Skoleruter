@@ -18,7 +18,7 @@ export class SkoleListeComponent implements OnInit {
   private mineSkoler: Array<string>;  // Valgte skoler
   private visSkole = true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
   private skoleRute: SkoleRuteData[];
-  private valgteSkoleRuter: SkoleRuteData[];
+
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
@@ -59,8 +59,19 @@ export class SkoleListeComponent implements OnInit {
     }
 
     private visSkolerute () {
-      console.log(this.skoleRute);
-      console.log(this.skoler);
-    }
+      let valgteSkoleRuter: Array<any>= [];
+      for (let skole of this.skoleRute){
+        for (let valgtSkole of this.mineSkoler){
+          if(valgtSkole === skole.skole){
+            valgteSkoleRuter.push(skole);
+          }
+        }
+      }
+      console.log(valgteSkoleRuter[1]);
+      console.log(valgteSkoleRuter[1].dato);
+      console.log(valgteSkoleRuter[1].skole);
+      console.log(valgteSkoleRuter);
+
+      }
 
   }
