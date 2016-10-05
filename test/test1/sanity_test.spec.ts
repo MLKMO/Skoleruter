@@ -1,10 +1,10 @@
-
 import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AppComponent } from './../../app/app.component';
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-          declarations: [],
+          declarations: [AppComponent],
           schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
        TestBed.compileComponents();
