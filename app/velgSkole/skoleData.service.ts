@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Skole } from './skole';
 import { Observable } from 'rxjs/Observable';
+import { SkoleRuteData} from './skoleRuteData';
 
 @Injectable()
 export class SkoleDataService {
@@ -10,6 +11,12 @@ export class SkoleDataService {
   public getSkoler (): Observable<Skole[]> {
     let skoleUrl = 'app/velgSkole/skoler.json'; // Liste med skoler i stavanger
     return this.http.get(skoleUrl)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  public hentSkoleRuteData (): Observable<SkoleRuteData[]> {
+    let skoleRuteUrl = 'app/velgSkole/skolerute-2016-17.json'; // Liste med skoler i stavanger
+    return this.http.get(skoleRuteUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

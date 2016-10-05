@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Skole } from './skole';
-
 import { SkoleDataService } from './skoleData.service';
 import { ValgteSkolerService } from '../valgteSkoler.service';
+import { SkoleRuteData } from './skoleRuteData';
 
 @Component({
   selector: 'skoleListe',
@@ -17,11 +17,16 @@ export class SkoleListeComponent implements OnInit {
   private skolenavn: string = '';       // String som blir hentet fra søkefelt
   private mineSkoler: Array<string>;  // Valgte skoler
   private visSkole = true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
+  private skoleRute: SkoleRuteData[];
+  private valgteSkoleRuter: SkoleRuteData[];
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService) {}
 
-  ngOnInit() { this.getSkoler(); }
+  ngOnInit() {
+    this.getSkoler();
+    this.hentSkoleRuteData();
+  }
 
     private getSkoler() {
     this.skoledataService.getSkoler()
@@ -45,4 +50,17 @@ export class SkoleListeComponent implements OnInit {
     private valgteSkoler() {
       this.mineSkoler = this.valgteSkolerService.mineSkoler();
     }
+
+    private hentSkoleRuteData() {
+      this.skoledataService.hentSkoleRuteData()
+                       .subscribe(
+                         skoleRute => this.skoleRute = skoleRute,
+                         error =>  this.errorMessage = <any>error);
+    }
+
+    private visSkolerute () {
+      console.log(this.skoleRute);
+      console.log(this.skoler);
+    }
+
   }

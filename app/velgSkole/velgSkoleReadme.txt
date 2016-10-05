@@ -1,6 +1,9 @@
 Dokumentasjon på velgSkole komponenter
 
 Todo:
+Gjøre ferdig visSkolerute metoden i skoleListe.component.ts så skolerute blir printet i console når vi trykker på
+Vis Skolerute knappen.
+
 
 Må lage en funksjon som kobler skolen mot skoledata(elevdager , sfo etc)
   Venter på at vi skal få komprimert skolerute data i et eksternt program
