@@ -9,6 +9,7 @@ import { FinnSkolerComponent} from './routing/finn-skoler.component';
 import { SkoleruterComponent } from './routing/skoleruter.component';
 import { InfoComponent } from './routing/info.component';
 import { PageNotFoundComponent} from './page-not-found.component';
+import { NavbarComponent } from './navbar/navbar.component'
 
 import { SkoleruteModule } from './routing/skoleruter.module';
 
@@ -21,6 +22,7 @@ import { SkoleruteModule } from './routing/skoleruter.module';
     SkoleruterComponent,
     InfoComponent,
     PageNotFoundComponent, 
+    NavbarComponent
   ],
     providers: [ appRoutingProviders ],
     bootstrap: [ AppComponent ], 

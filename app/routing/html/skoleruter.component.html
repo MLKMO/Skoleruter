@@ -1,0 +1,8 @@
+  <h1> Skoleruter </h1>
+  <ul class="nav nav-tabs">
+    <li class="active"><a routerLink="/skoleruter/kalender" [routerLinkActive]="['is-active']" data-toggle="tab">Kalender</a></li>
+    <li><a routerLink="/skoleruter/liste" [routerLinkActive]="['is-active']" data-toggle="tab">Liste</a></li>
+</ul>
+<div *ngIf="errorCount > 0" class="error">
+<router-outlet></router-outlet>
+            

@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
+import { NavbarComponent } from './navbar/navbar.component'
 import { FinnSkolerComponent} from './routing/finn-skoler.component';
 import { SkoleruterComponent } from './routing/skoleruter.component';
 import { InfoComponent } from './routing/info.component';

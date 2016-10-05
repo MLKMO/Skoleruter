@@ -3,15 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'skoleruter',
-    template: 
-            `    
-            <h1> Skoleruter </h1>
-                <nav>
-                    <a routerLink="/skoleruter/kalender">Kalender</a>
-                    <a routerLink="/skoleruter/liste">Liste</a>
-                </nav>
-            <router-outlet></router-outlet>
-            `
+    templateUrl: 'app/routing/html/skoleruter.component.html' 
 })
 export class SkoleruterComponent implements OnInit {
     constructor() { }
