@@ -4,12 +4,13 @@
     left: 50%;
     bottom: 0%;
     transform: translateX(-50%);
-    height: 4em;
+    height: 3em;
     z-index: 150;
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
+    font-size: 19px;
 }
 
 .firkant {
@@ -36,7 +37,10 @@
 
 .right-inner-addon i {
     position: absolute;
-    right: 7%;
-    top: 35%;
+    right: 2.5em;
+    top: 1.7em;
     pointer-events: none;
+}
+.trashIkon{
+  top:1.1em!important;
 }

@@ -1,3 +1,12 @@
+<div class="jumbotron litenMargin">
+  <div class="container">
+    <p>Finn skoleruter for alle barne- og ungdoms-skoler i Stavanger- og Gjesdal- kommune.
+        Velg skoler ved bruk av søkefeltet nedenfor eller ved å trykke på de skolene du er interessert i ved å velge
+        fra listen.
+    </p>
+  </div>
+</div>
+
 <div class="listeContainer">
     <p style="border-radius:0px;"class="list-group-item right-inner-addon ">
     <i class="glyphicon glyphicon-search"></i>
@@ -16,7 +25,7 @@
               <p *ngIf="!skole.TrykketPa" class="list-group-item firkant" >
               {{skole.Skolenavn}}</p>
               <p *ngIf="skole.TrykketPa"class="list-group-item active firkant right-inner-addon" >
-              <i class="glyphicon glyphicon-trash"></i>{{skole.Skolenavn}}</p>
+              <i class="glyphicon glyphicon-trash trashIkon"></i>{{skole.Skolenavn}}</p>
           </div>
           <div class="mellomrom"></div>
           <button class="col-xs-12 btn btn-primary visSkoleruteKnapp" (click)="skoleruter()"><b>Vis Skolerute</b></button>

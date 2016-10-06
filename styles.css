@@ -1,9 +1,16 @@
-body {
+/*body {
   text-align: center;
  }
-
+*/
 #page-wrap {
   text-align: left;
-  width: 1000px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+.litenMargin{
+  margin-bottom: 0.5em;
+}
+.overskrift{
+  vertical-align: middle;
 }

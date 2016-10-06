@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Skole } from './skole';
-
 import { SkoleDataService } from './skoleData.service';
 import { ValgteSkolerService } from '../valgteSkoler.service';
+import { SkoleRuteData } from './skoleRuteData';
 
 @Component({
   selector: 'skoleListe',
@@ -18,12 +18,17 @@ export class SkoleListeComponent implements OnInit {
   private skolenavn: string = '';       // String som blir hentet fra søkefelt
   private mineSkoler: Array<string>;  // Valgte skoler
   private visSkole = true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
+  private skoleRute: SkoleRuteData[];
+
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService,
       private router: Router) {}
 
-  ngOnInit() { this.getSkoler(); }
+  ngOnInit() {
+    this.getSkoler();
+    this.hentSkoleRuteData();
+  }
 
     private getSkoler() {
     this.skoledataService.getSkoler()
@@ -48,7 +53,31 @@ export class SkoleListeComponent implements OnInit {
       this.mineSkoler = this.valgteSkolerService.mineSkoler();
     }
 
-    private skoleruter(){
-      this.router.navigate(['/skoleruter'])
+
+    private skoleruter() {
+      this.visSkolerute();
+      this.router.navigate(['/skoleruter']);
     }
+
+    private hentSkoleRuteData() {
+      this.skoledataService.hentSkoleRuteData()
+                       .subscribe(
+                         skoleRute => this.skoleRute = skoleRute,
+                         error =>  this.errorMessage = <any>error);
+    }
+
+    private visSkolerute () {
+      let valgteSkoleRuter: Array<any>= [];
+      for (let skole of this.skoleRute){
+        for (let valgtSkole of this.mineSkoler){
+          if(valgtSkole === skole.skole){
+            valgteSkoleRuter.push(skole);
+          }
+        }
+      }
+      console.log(valgteSkoleRuter[1]);
+      console.log(valgteSkoleRuter[1].dato);
+      console.log(valgteSkoleRuter[1].skole);
+      console.log(valgteSkoleRuter);
+      }
   }
