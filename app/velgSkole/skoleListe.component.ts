@@ -55,6 +55,10 @@ export class SkoleListeComponent implements OnInit {
 
 
     private skoleruter() {
+      if (this.mineSkoler === undefined || this.mineSkoler.length == 0) {
+        alert("Du må velge en skole for å gå videre.");
+        return;
+      }
       this.visSkolerute();
       this.router.navigate(['/skoleruter']);
     }
