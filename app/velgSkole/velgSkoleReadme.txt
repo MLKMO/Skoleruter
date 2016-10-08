@@ -5,6 +5,17 @@ Gjøre ferdig visSkolerute metoden i skoleListe.component.ts så skolerute blir 
 Vis Skolerute knappen.
 
 
+
+
+
+Få til hover på listeelementene og endre musepeker når det hovres
+Få til data pasing mellom komponenter
+
+
+
+
+
+
 Må lage en funksjon som kobler skolen mot skoledata(elevdager , sfo etc)
   Venter på at vi skal få komprimert skolerute data i et eksternt program
 
