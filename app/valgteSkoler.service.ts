@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-
+import { Subject }    from 'rxjs/Subject';
 @Injectable()
 
 export class ValgteSkolerService
 {
     private valgteSkoler: Array<string> = [];
+    public delteValgteSkoleRuter: Array<any>= [];
 
-    public leggTilSkole(skole: string, indeks: number) :void {
+    public leggTilSkole(skole: string, indeks: number): void {
         for(let skolen of this.valgteSkoler) {
           if(skolen === skole) {
             this.fjernSkole(skole);

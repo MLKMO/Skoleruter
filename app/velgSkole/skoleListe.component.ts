@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Skole } from './skole';
 import { SkoleDataService } from './skoleData.service';
@@ -9,17 +9,16 @@ import { SkoleRuteData } from './skoleRuteData';
   selector: 'skoleListe',
   templateUrl: 'app/velgSkole/html/skoleListe.component.html',
   styleUrls:['app/velgSkole/css/velgSkoleStyle.css'],
-  providers: [ SkoleDataService, ValgteSkolerService ],
+  providers: [ SkoleDataService ],
 })
 
-export class SkoleListeComponent implements OnInit {
+export class SkoleListeComponent implements OnInit, OnDestroy {
   private errorMessage: string;       // Feilmelding som kan oppstå ved henting av data fra file eller server
   private skoler: Skole[];            // Skole objekter som bruker kan velge i mellom
-  private skolenavn: string = '';       // String som blir hentet fra søkefelt
+  private skolenavn: string = '';     // String som blir hentet fra søkefelt
   private mineSkoler: Array<string>;  // Valgte skoler
-  private visSkole = true;              // Lager en horisontal linje før hvert skoleobjekt som har Skolenavn
-  private skoleRute: SkoleRuteData[];
-
+  private skoleRute: SkoleRuteData[]; // Brukes til å hente ut skoleruter for valgte skoler
+  private valgteSkoleRuter: Array<any>= []; // Data som skal brukes i kalender og liste
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService,
@@ -28,6 +27,9 @@ export class SkoleListeComponent implements OnInit {
   ngOnInit() {
     this.getSkoler();
     this.hentSkoleRuteData();
+  }
+  ngOnDestroy(){
+    this.valgteSkolerService.delteValgteSkoleRuter = this.valgteSkoleRuter;
   }
 
     private getSkoler() {
@@ -43,7 +45,7 @@ export class SkoleListeComponent implements OnInit {
       }else{
         skole.TrykketPa=false;
       }
-      this.valgteSkolerService.leggTilSkole(skole.Skolenavn,
+      this.valgteSkolerService.leggTilSkole(skole.skole,
          this.skoler.indexOf(skole));
       this.valgteSkoler();
       console.log(this.mineSkoler); // Fjernes når elevdager data er på plass
@@ -52,7 +54,6 @@ export class SkoleListeComponent implements OnInit {
     private valgteSkoler() {
       this.mineSkoler = this.valgteSkolerService.mineSkoler();
     }
-
 
     private skoleruter() {
       if (this.mineSkoler === undefined || this.mineSkoler.length == 0) {
@@ -71,17 +72,12 @@ export class SkoleListeComponent implements OnInit {
     }
 
     private visSkolerute () {
-      let valgteSkoleRuter: Array<any>= [];
       for (let skole of this.skoleRute){
         for (let valgtSkole of this.mineSkoler){
           if(valgtSkole === skole.skole){
-            valgteSkoleRuter.push(skole);
+            this.valgteSkoleRuter.push(skole);
+            }
           }
         }
-      }
-      console.log(valgteSkoleRuter[1]);
-      console.log(valgteSkoleRuter[1].dato);
-      console.log(valgteSkoleRuter[1].skole);
-      console.log(valgteSkoleRuter);
       }
   }
