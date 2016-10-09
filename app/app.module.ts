@@ -15,11 +15,13 @@ import { NavbarComponent } from './navbar/navbar.component'
 import { SkoleListeFilterPipe} from'./velgSkole/skoleListeFilter.pipe';
 import { SkoleDataService } from './velgSkole/skoleData.service';
 import { ValgteSkolerService } from './valgteSkoler.service';
+import { NesteFridagComponent } from './nestefridag/neste-fridag.component';
 
 import { SkoleruteModule } from './routing/skoleruter.module';
+import { NesteFridagModule } from './nestefridag/neste-fridag.module';
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule, HttpModule, JsonpModule],
+  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule, HttpModule, JsonpModule, NesteFridagModule],
   declarations: 
   [ 
     AppComponent, 
@@ -28,7 +30,8 @@ import { SkoleruteModule } from './routing/skoleruter.module';
     InfoComponent,
     PageNotFoundComponent, 
     NavbarComponent, 
-    SkoleListeFilterPipe
+    SkoleListeFilterPipe,
+    NesteFridagComponent
   ],
     providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService ],
     bootstrap: [ AppComponent ], 

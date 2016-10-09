@@ -1,0 +1,14 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Neste fridag for valgte skoler</h3>
+  </div>
+  <div class="panel-body">
+   <ul>
+       <li *ngFor="let fridager of nesteFridager">
+           <b>{{ fridager.dato | date:"dd-MM-yyyy" }},
+           {{ fridager.skole }},
+           {{ fridager.kommentar }}</b>
+       </li>
+   </ul>
+  </div>
+</div>

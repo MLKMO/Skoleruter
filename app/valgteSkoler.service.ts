@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 export class ValgteSkolerService
 {
     private valgteSkoler: Array<string> = [];
+    public mineSkoleruter: Array<any> = [];
 
     public leggTilSkole(skole: string, indeks: number) :void {
         for(let skolen of this.valgteSkoler) {
@@ -25,5 +26,16 @@ export class ValgteSkolerService
       if (indeks > -1) {
           this.valgteSkoler.splice(indeks, 1);
       }
+    }
+
+    public settMineSkoleruter(skoleruter:Array<any>)
+    {
+        this.mineSkoleruter = skoleruter;
+        console.log("hei " + this.mineSkoleruter)
+    }
+
+    public hentMineSkoleruter()
+    {
+        return this.mineSkoleruter
     }
 }

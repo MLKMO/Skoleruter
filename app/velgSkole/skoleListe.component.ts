@@ -79,9 +79,11 @@ export class SkoleListeComponent implements OnInit {
           }
         }
       }
+
+      this.valgteSkolerService.settMineSkoleruter(valgteSkoleRuter);
       console.log(valgteSkoleRuter[1]);
       console.log(valgteSkoleRuter[1].dato);
       console.log(valgteSkoleRuter[1].skole);
-      console.log(valgteSkoleRuter);
+      console.log(  valgteSkoleRuter);
       }
   }
