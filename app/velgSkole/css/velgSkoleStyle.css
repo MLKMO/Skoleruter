@@ -44,3 +44,14 @@
 .trashIkon{
   top:1.1em!important;
 }
+.musePeker{
+  cursor: pointer;
+  cursor: hand;
+}
+.musePeker:hover{
+  background-color: #E9EEEF;
+}
+.musePekertrykketPa{
+  cursor: pointer;
+  cursor: hand;
+}

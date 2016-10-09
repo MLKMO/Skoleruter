@@ -1,5 +1,4 @@
 export class Skole {
-     BYGGTYP_NBR: number;
-     Skolenavn: string;
+     skole: string;
      TrykketPa: boolean;
 }

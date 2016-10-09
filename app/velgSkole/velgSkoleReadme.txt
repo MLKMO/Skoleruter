@@ -1,14 +1,24 @@
 Dokumentasjon på velgSkole komponenter
 
+NB!
+For å få lastet inn json data så må json fila starte på følgende måte:
+{
+  "data": [
+    {
+      "skole": "Auglend skole"
+    },
+
+
+
+
 Todo:
-Gjøre ferdig visSkolerute metoden i skoleListe.component.ts så skolerute blir printet i console når vi trykker på
-Vis Skolerute knappen.
+
+Få til data pasing mellom komponenter
+
+Kan koble kontakt informasjon til skolene som blir valgt så disse kan bli vist med en info tag
 
 
-Må lage en funksjon som kobler skolen mot skoledata(elevdager , sfo etc)
-  Venter på at vi skal få komprimert skolerute data i et eksternt program
 
-Sortere skolene som blir vist i alfabetisk rekkefølge
 
 Filer:
 
