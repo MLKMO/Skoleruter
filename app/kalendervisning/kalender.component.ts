@@ -47,7 +47,7 @@ export class KalenderComponent {
     kalenderen(tomme :string, mnd: number, aar: number) :string {
         var kalender :string ='';
 
-        kalender += '<table width="100%" height="100%" align="center" cellpadding=2> <tr> <th> Man <th> Tir <th> Ons <th> Tor <th> Fre <th> Lør <th> Søn </tr>';
+        kalender += '<table width="100%" height="100%"> <tr> <th> Man <th> Tir <th> Ons <th> Tor <th> Fre <th> Lør <th> Søn </tr>';
         if (tomme != '') {
             kalender += '<tr>';
             kalender += tomme;
@@ -58,7 +58,7 @@ export class KalenderComponent {
             if (this.antallRuter % 7 == 0) {
                 kalender += ('<tr>');
             }
-            kalender += ('<td>' + j + '</td>');
+            kalender += ('<td width="14.28%">' + j + '</td>');
             this.antallRuter++;
         
 
