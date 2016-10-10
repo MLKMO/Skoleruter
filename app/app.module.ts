@@ -1,6 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { KalenderComponent } from './kalendervisning/kalender.component';
 import { routing, appRoutingProviders }  from './app.routing';
 import { FormsModule }    from '@angular/forms';
 import { RouterModule } from '@angular/router'
@@ -35,7 +34,6 @@ import { NesteFridagModule } from './nestefridag/neste-fridag.module';
     SkoleListeFilterPipe,
     NesteFridagComponent,
     DatoPipe,
-    KalenderComponent
   ],
     providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService ],
     bootstrap: [ AppComponent ], 

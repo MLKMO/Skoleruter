@@ -3,7 +3,7 @@ import { FormsModule }    from '@angular/forms';
 import { CommonModule }   from '@angular/common';
 
 import { skoleruterRouting } from './skoleruter.routing';
-import { KalenderComponent }   from './kalender.component';
+import { KalenderComponent }   from './../kalendervisning/kalender.component';
 import { ListeComponent } from './liste.component';
 
 @NgModule
