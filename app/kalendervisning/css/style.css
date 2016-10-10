@@ -6,7 +6,7 @@ body {
     }
 
     p {
-        height: 75vh;
+        height: 60vh;
     }
 
     table, td, th {
@@ -16,9 +16,11 @@ body {
 
 /* mnd header */
 .mnd {
+    padding: 70px 25px;
     width: 100%;
     background: #1abc9c;
     height: 10vh;
+    text-align: center;
 }
 
 /* mnd list */
@@ -31,7 +33,7 @@ body {
     color: white;
     font-size: 20px;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 20px;
 }
 
 /* forrigeious button inside mnd header */
@@ -41,7 +43,7 @@ body {
 }
 
 /* Next button */
-.mnd neste {
+.mnd .neste {
     float: right;
     padding-top: 10px;
 }
@@ -54,3 +56,6 @@ body {
 }
 
 /* Til presentasjon av prosjekt */
+td:hover {
+    background-color: red;
+}
