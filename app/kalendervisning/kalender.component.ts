@@ -54,23 +54,23 @@ export class KalenderComponent {
             kalender += '</tr>'
         }
             
-/*        for (var j = 1; j <= this.antallDager(mnd, aar); j++) {
+        for (var j = 1; j <= this.antallDager(mnd, aar); j++) {
             if (this.antallRuter % 7 == 0) {
                 kalender += ('<tr>');
             }
             kalender += ('<td>' + j + '</td>');
             this.antallRuter++;
-        }*/
+        
 
-// Til presentasjon av prosjekt
+/* Til presentasjon av prosjekt
         for (var j = 1; j <= this.antallDager(mnd, aar) - 3; j++) {
             if (this.antallRuter % 7 == 0) {
                 kalender += ('<tr>');
             }
             kalender += ('<td>' + j + '</td>');
-            this.antallRuter++;
+            this.antallRuter++;*/
         }
-        kalender += '<td style="background-color:black;"> 29 </td>';
+        //kalender += '<td style="background-color:black;"> 29 </td>';
 
         kalender += '</tr> </table>';
         this.antallRuter = 0;
