@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { KalenderComponent } from './kalendervisning/kalender.component';
 
 @Component({
     selector: 'my-app',
-    template: '<h1>My First Angular App</h1>'
+    template: `<kalender></kalender>`
 })
 export class AppComponent { }
+
