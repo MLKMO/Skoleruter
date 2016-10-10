@@ -3,6 +3,9 @@
 <ul class="nav nav-tabs">
   <li [routerLinkActive]="['active']"><a routerLink="/skoleruter/kalender" data-toggle="tab">Kalender</a></li>
   <li [routerLinkActive]="['active']"><a routerLink="/skoleruter/liste" data-toggle="tab">Liste</a></li>
+  <ul class="nav nav-tabs navbar-right">
+    <li [routerLinkActive]="['active']"><button class="btn btn-default endreknapp" routerLink="/skoleliste" data-toggle="tab">Endre valgte skoler</button></li>
+  </ul>
 </ul>
 
 <router-outlet></router-outlet>
