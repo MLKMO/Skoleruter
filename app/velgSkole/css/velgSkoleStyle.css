@@ -11,6 +11,10 @@
     padding-left: 15px;
     padding-right: 15px;
     font-size: 19px;
+    background-color: red;
+}
+.visSkoleruteKnapp:hover{
+  background-color: grey ;
 }
 
 .firkant {

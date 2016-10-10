@@ -25,11 +25,23 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       private router: Router) {}
 
   ngOnInit() {
-    this.getSkoler();
-    this.hentSkoleRuteData();
+
+    this.valgteSkolerService.hentLagretData();
+    if(this.valgteSkolerService.skoler === null ){
+      this.getSkoler();
+      this.hentSkoleRuteData();
+    }else{
+      this.skoler = this.valgteSkolerService.skoler;
+      this.mineSkoler = this.valgteSkolerService.mineSkoler();
+      this.skoleRute = this.valgteSkolerService.skoleRute;
+    }
   }
   ngOnDestroy(){
     this.valgteSkolerService.delteValgteSkoleRuter = this.valgteSkoleRuter;
+    this.valgteSkolerService.skoler = this.skoler;
+    this.valgteSkolerService.skoleRute = this.skoleRute;
+    this.valgteSkolerService.lagreDataLokalt();
+    this.valgteSkolerService.hentLagretData();
   }
 
     private getSkoler() {
@@ -48,7 +60,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.valgteSkolerService.leggTilSkole(skole.skole,
          this.skoler.indexOf(skole));
       this.valgteSkoler();
-      console.log(this.mineSkoler); // Fjernes når elevdager data er på plass
     }
 
     private valgteSkoler() {
@@ -65,10 +76,10 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
 
     private hentSkoleRuteData() {
-      this.skoledataService.hentSkoleRuteData()
-                       .subscribe(
-                         skoleRute => this.skoleRute = skoleRute,
-                         error =>  this.errorMessage = <any>error);
+        this.skoledataService.hentSkoleRuteData()
+                         .subscribe(
+                           skoleRute => this.skoleRute = skoleRute,
+                           error =>  this.errorMessage = <any>error);
     }
 
     private visSkolerute () {

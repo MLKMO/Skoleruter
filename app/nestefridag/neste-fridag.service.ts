@@ -7,7 +7,7 @@ export class NesteFridagService implements OnInit
 {
     public nesteFridag: Array<any> = [];
     private skoler: Array<any> = [];
-    private dagensDato: any; 
+    private dagensDato: any;
     private dagensDag: number;
     private dagensMaaned: number;
     private dagensAar: number;
@@ -17,7 +17,7 @@ export class NesteFridagService implements OnInit
     constructor(private valgteSkolerService: ValgteSkolerService) {}
 
     setDagensDato()
-    {       
+    {
         this.dagensDato =  new Date().toISOString().slice(0, 10);
         this.dagensAar = parseInt(this.dagensDato.slice(0,4));
         this.dagensMaaned = parseInt(this.dagensDato.slice(5,8));
@@ -33,11 +33,11 @@ export class NesteFridagService implements OnInit
     {
 
         for (var i = 0; i < valgteSkoleruter.length; i++)
-        {   
+        {
             this.skoleAar = parseInt(valgteSkoleruter[i].dato.slice(0,4))
             this.skoleMaaned = parseInt(valgteSkoleruter[i].dato.slice(5,8))
             this.skoleDag = parseInt(valgteSkoleruter[i].dato.slice(8,10))
-           
+
             if(this.skoler.indexOf(valgteSkoleruter[i].skole) == -1 && this.skoleAar >= this.dagensAar)
             {
                 if(this.skoleMaaned >= this.dagensMaaned)
@@ -51,10 +51,16 @@ export class NesteFridagService implements OnInit
 
             }
         }
-        return this.nesteFridag;   
+        return this.nesteFridag;
     }
 
-        ngOnInit() 
+    tomNesteFridagListe()
+    {
+      this.skoler = [];
+      this.nesteFridag = [];
+    }
+
+        ngOnInit()
     {
        this.setDagensDato();
     }
