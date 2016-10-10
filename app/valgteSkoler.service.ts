@@ -13,7 +13,6 @@ export class ValgteSkolerService
     public skoleRute: SkoleRuteData[];
 
     public leggTilSkole(skole: string, indeks: number): void {
-      console.log(this.valgteSkoler);
         for(let skolen of this.valgteSkoler) {
           if(skolen === skole) {
             this.fjernSkole(skole);
@@ -43,37 +42,17 @@ export class ValgteSkolerService
     public hentLagretData(){
       let hentdelteValgteSkoleRuter = localStorage.getItem("delteValgteSkoleRuter");
       this.delteValgteSkoleRuter = JSON.parse(hentdelteValgteSkoleRuter);
-      console.log(this.delteValgteSkoleRuter);
 
       let hentskoler = localStorage.getItem("skoler");
       this.skoler = JSON.parse(hentskoler);
-      console.log(this.skoler);
 
       let hentskoleRute = localStorage.getItem("skoleRute");
       this.skoleRute = JSON.parse(hentskoleRute);
-      console.log(this.skoleRute);
 
       let hentvalgteSkoler = localStorage.getItem("valgteSkoler");
       this.valgteSkoler = JSON.parse(hentvalgteSkoler);
       if(this.valgteSkoler === null){ // Den kan ikke være null fordi da vil vi ikke kunne bruke push til å legge til skoler.
         this.valgteSkoler = [];
       }
-      console.log(this.valgteSkoler);
-    }
-
-
-
-
-
-
-    public settMineSkoleruter(skoleruter:Array<any>)
-    {
-        this.mineSkoleruter = skoleruter;
-        console.log("hei " + this.mineSkoleruter)
-    }
-
-    public hentMineSkoleruter()
-    {
-        return this.mineSkoleruter
     }
 }

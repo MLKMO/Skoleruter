@@ -12,9 +12,10 @@ export class ListeComponent implements OnInit, OnDestroy {
     constructor(private valgteSkolerService: ValgteSkolerService) { }
 
     ngOnInit() {
+      this.valgteSkolerService.hentLagretData();
       this.valgteSkoleRuter = this.valgteSkolerService.delteValgteSkoleRuter;
     }
-    
+
     ngOnDestroy(){
     }
 }
