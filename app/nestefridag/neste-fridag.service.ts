@@ -1,27 +1,27 @@
-import { Injectable, Attribute, OnInit } from '@angular/core';
-import { NesteFridagArray}  from './neste-fridag.array';
-import { DatePipe } from '@angular/common';
+import { Injectable, Attribute, OnInit, OnDestroy } from '@angular/core';
+
 import { ValgteSkolerService } from './../valgteSkoler.service';
+
 @Injectable()
 export class NesteFridagService implements OnInit
 {
-    ngOnInit() 
-    {
-       this.setDagensDato();
-    }
     public nesteFridag: Array<any> = [];
-    private test: Array<any> = [];
-    private dagensDato: Date;   
-    constructor(private nesteFridagArray:NesteFridagArray,
-                private valgteSkolerService: ValgteSkolerService) {}
-
-    private fridager: Array<any> = this.valgteSkolerService.hentMineSkoleruter();
+    private skoler: Array<any> = [];
+    private dagensDato: any; 
+    private dagensDag: number;
+    private dagensMaaned: number;
+    private dagensAar: number;
+    private skoleAar:number;
+    private skoleMaaned:number;
+    private skoleDag:number;
+    constructor(private valgteSkolerService: ValgteSkolerService) {}
 
     setDagensDato()
-    {
-        var dataPipe = new DatePipe();        
-        this.dagensDato =  new Date(); 
-        this.dagensDato = dataPipe.transform(this.dagensDato, 'yyyy-MM-dd')
+    {       
+        this.dagensDato =  new Date().toISOString().slice(0, 10);
+        this.dagensAar = parseInt(this.dagensDato.slice(0,4));
+        this.dagensMaaned = parseInt(this.dagensDato.slice(5,8));
+        this.dagensDag = parseInt(this.dagensDato.slice(8,10));
     }
 
     hentDagensDato()
@@ -29,21 +29,33 @@ export class NesteFridagService implements OnInit
         return this.dagensDato;
     }
 
-    finnNesteFridag()
+    finnNesteFridag(valgteSkoleruter:Array<any>)
     {
-        
 
-        for (var i = 0; i < this.fridager.length; i++)
-        {
-            if(this.test.indexOf(this.fridager[i].skole) == -1 && this.fridager[i].dato > this.dagensDato)
+        for (var i = 0; i < valgteSkoleruter.length; i++)
+        {   
+            this.skoleAar = parseInt(valgteSkoleruter[i].dato.slice(0,4))
+            this.skoleMaaned = parseInt(valgteSkoleruter[i].dato.slice(5,8))
+            this.skoleDag = parseInt(valgteSkoleruter[i].dato.slice(8,10))
+           
+            if(this.skoler.indexOf(valgteSkoleruter[i].skole) == -1 && this.skoleAar >= this.dagensAar)
             {
-                this.test.push(this.fridager[i].skole);
-                this.nesteFridag.push(this.fridager[i])
+                if(this.skoleMaaned >= this.dagensMaaned)
+                {
+                    if(this.skoleDag >= this.dagensDag)
+                    {
+                        this.skoler.push(valgteSkoleruter[i].skole);
+                        this.nesteFridag.push(valgteSkoleruter[i])
+                    }
+                }
+
             }
         }
-        console.log(this.dagensDato);
-        console.log(this.nesteFridag);
-        return this.nesteFridag;
+        return this.nesteFridag;   
     }
 
+        ngOnInit() 
+    {
+       this.setDagensDato();
+    }
 }
