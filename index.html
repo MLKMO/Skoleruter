@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Angular QuickStart</title>
+    <base href="/">
+    <title>Skolerruter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 
     <!-- Polyfill(s) for older browsers -->
@@ -15,11 +17,13 @@
 
     <script src="systemjs.config.js"></script>
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+      System.import('app/built/app/main').catch(function(err){ console.error(err); });
     </script>
   </head>
 
   <body>
+    <div id="page-wrap">
     <my-app>Loading...</my-app>
   </body>
+    </div>
 </html>

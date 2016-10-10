@@ -1,0 +1,61 @@
+.visSkoleruteKnapp {
+    border-radius: 0;
+    position: fixed;
+    left: 50%;
+    bottom: 0%;
+    transform: translateX(-50%);
+    height: 3em;
+    z-index: 150;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 19px;
+    background-color: red;
+}
+.visSkoleruteKnapp:hover{
+  background-color: grey ;
+}
+
+.firkant {
+  border-radius: 0;
+}
+
+#sokefelt {
+  border-radius: 20px;
+  padding-left: 1em;
+}
+
+.listeContainer {
+  padding: 0.1em;
+  align-self: center;
+}
+
+.velgSkoleInfo {
+  background-color: lightgrey;
+}
+
+.mellomrom {
+  height: 5em;
+}
+
+.right-inner-addon i {
+    position: absolute;
+    right: 2.5em;
+    top: 1.7em;
+    pointer-events: none;
+}
+.trashIkon{
+  top:1.1em!important;
+}
+.musePeker{
+  cursor: pointer;
+  cursor: hand;
+}
+.musePeker:hover{
+  background-color: #E9EEEF;
+}
+.musePekertrykketPa{
+  cursor: pointer;
+  cursor: hand;
+}
