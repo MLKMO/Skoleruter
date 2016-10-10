@@ -1,0 +1,56 @@
+#calendar {
+    width: 28em;
+    margin: 2em 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+    overflow: hidden;
+    font: 100% Arial, sans-serif;
+    position: relative;
+}
+
+#calendar li {
+    width: 4em;
+    height: 4em;
+    display: block;
+    margin: 0;
+}
+
+#calendar li.day {
+	background: #ffffa0;
+	text-align: center;
+	line-height: 4;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+
+#calendar li a {
+    display: block;
+    float: left;
+    width: 100%;
+    height: 100%;
+    line-height: 4;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    margin: 0;
+}
+
+#calendar li a span {
+	display: block;
+	background: yellowgreen;
+	width: 100%;
+	text-align: center;
+	cursor: help;
+	position: absolute;
+	top: -1000em;
+	color: white;
+	font-weight: bold;
+}
+
+#calendar li a:hover span {
+	top: 0;
+	left: 0;
+}
+
+#calendar li.empty {background: #ccc;}

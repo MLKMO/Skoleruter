@@ -3,14 +3,20 @@ import { listeService } from './liste.service';
 
 @Component({
     selector: 'liste',
-    templateUrl: 'app/listevisning/liste.component.html'
+    templateUrl: 'app/listevisning/liste.component.html',
+    providers: [ listeService ],
     
 })
 export class listeComponent implements OnInit {
 
-    mineSkoler: Array<string>;
+ 
     
-    constructor() { }
+    constructor() { 
+          
+    }
 
-    ngOnInit() { }
+    ngOnInit() { 
+       listeService.sjekkListe();      
+    }
+    
 }
