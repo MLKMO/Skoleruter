@@ -21,9 +21,10 @@ import { DatoPipe } from './nestefridag/dato.pipe';
 import { ListeComponent } from './listevisning/liste.component';
 import { SkoleruteModule } from './routing/skoleruter.module';
 import { NesteFridagModule } from './nestefridag/neste-fridag.module';
+import { ListeModule } from './listevisning/liste.module';
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule, HttpModule, JsonpModule, NesteFridagModule],
+  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule, HttpModule, JsonpModule, NesteFridagModule, ListeModule],
   declarations: 
   [ 
     AppComponent, 

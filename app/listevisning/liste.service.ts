@@ -7,13 +7,25 @@ import { ValgteSkolerService } from './../valgteSkoler.service';
 export class ListeService{
     private valgteSkoleRuter: Array<any>= [];
 
-    
-    nesteSkole(valgteSkoleRuter:Array<any>){
-        for (var i = 0; i < valgteSkoleRuter.length; i++){
+        public skole1: Array<any> = [];
+        public skole2: Array<any> = [];
+        public skole3: Array<any> = [];
+    nesteSkole(valgteSkoleRuter:Array<any>,skole1: Array<any>,skole2: Array<any>,skole3: Array<any>){
+        var antallValgteSkoler = 1;
+
+        for (var i = 1; i < valgteSkoleRuter.length; i++){
             if(valgteSkoleRuter[i].skole != valgteSkoleRuter[i-1].skole){
-                //her vil jeg lage et "hopp"" slik at vi får en ny liste ved siden av den første skolen
+                antallValgteSkoler ++;
+            }
+            if(antallValgteSkoler == 1){
+                skole1 += valgteSkoleRuter[i];
+            }else if(antallValgteSkoler == 2){
+                skole2 += valgteSkoleRuter[i];
+            }else if(antallValgteSkoler == 3){
+                skole3 += valgteSkoleRuter[i];
             }
         }
+        return this.skole1, this.skole2, this.skole3;
     }
 
     constructor(private valgteSkolerService: ValgteSkolerService) { }

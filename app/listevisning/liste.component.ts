@@ -6,17 +6,21 @@ import { ValgteSkolerService } from '../valgteSkoler.service';
 @Component({
     moduleId: module.id,
     selector: 'liste',
-    template: `<h2> Liste </h2>
-    <p *ngFor="let rute of valgteSkoleRuter"> {{rute.dato}} {{rute.skole}} {{rute.kommentar}} </p>`
+    templateUrl: 'app/listevisning/html/liste.html'
 })
 export class ListeComponent implements OnInit, OnDestroy {
-    private valgteSkoleRuter: Array<any>= [];
-
     
-    constructor(private valgteSkolerService: ValgteSkolerService) { }
+    private skole1: Array<any> = [];
+    private skole2: Array<any> = [];
+    private skole3: Array<any> = [];
+    
+    constructor(private listeService: ListeService) { }
 
     ngOnInit() {
-      this.valgteSkoleRuter = this.valgteSkolerService.delteValgteSkoleRuter;
+      
+      this.skole1 = this.listeService.skole1;
+      this.skole2 = this.listeService.skole2;
+      this.skole3 = this.listeService.skole3;
     }
     
     ngOnDestroy(){
