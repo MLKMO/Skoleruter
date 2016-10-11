@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 import { KalenderComponent} from './../kalendervisning/kalender.component';
-import { ListeComponent } from './liste.component';
+import { ListeComponent } from '../listevisning/liste.component';
 import { SkoleruterComponent } from './skoleruter.component';
 
 const skoleruterRoutes: Routes = 

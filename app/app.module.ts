@@ -18,7 +18,7 @@ import { SkoleDataService } from './velgSkole/skoleData.service';
 import { ValgteSkolerService } from './valgteSkoler.service';
 import { NesteFridagComponent } from './nestefridag/neste-fridag.component';
 import { DatoPipe } from './nestefridag/dato.pipe';
-
+import { ListeComponent } from './listevisning/liste.component';
 import { SkoleruteModule } from './routing/skoleruter.module';
 import { NesteFridagModule } from './nestefridag/neste-fridag.module';
 

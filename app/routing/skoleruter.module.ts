@@ -4,7 +4,7 @@ import { CommonModule }   from '@angular/common';
 
 import { skoleruterRouting } from './skoleruter.routing';
 import { KalenderComponent }   from './../kalendervisning/kalender.component';
-import { ListeComponent } from './liste.component';
+import { ListeComponent } from '../listevisning/liste.component';
 
 @NgModule
 ({
