@@ -5,27 +5,32 @@ import { ValgteSkolerService } from './../valgteSkoler.service';
 @Injectable()
 
 export class ListeService{
-    private valgteSkoleRuter: Array<any>= [];
 
-        public skole1: Array<any> = [];
-        public skole2: Array<any> = [];
-        public skole3: Array<any> = [];
     nesteSkole(valgteSkoleRuter:Array<any>,skole1: Array<any>,skole2: Array<any>,skole3: Array<any>){
         var antallValgteSkoler = 1;
+        var j = 0;
+        var h = 0;
+        var g = 0;
+        
 
-        for (var i = 1; i < valgteSkoleRuter.length; i++){
-            if(valgteSkoleRuter[i].skole != valgteSkoleRuter[i-1].skole){
+        for (var i = 0; i < valgteSkoleRuter.length; i++){
+            if(i > 0){
+            if(valgteSkoleRuter[i-1].skole != valgteSkoleRuter[i].skole){
                 antallValgteSkoler ++;
             }
+            }
             if(antallValgteSkoler == 1){
-                skole1 += valgteSkoleRuter[i];
+                skole1[g] = valgteSkoleRuter[i];
+                g++;
             }else if(antallValgteSkoler == 2){
-                skole2 += valgteSkoleRuter[i];
+                skole2[j] = valgteSkoleRuter[i];
+                j ++;
             }else if(antallValgteSkoler == 3){
-                skole3 += valgteSkoleRuter[i];
+                skole3[h] = valgteSkoleRuter[i];
+                h++;
             }
         }
-        return this.skole1, this.skole2, this.skole3;
+        return skole1, skole2, skole3;
     }
 
     constructor(private valgteSkolerService: ValgteSkolerService) { }
