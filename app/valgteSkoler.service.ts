@@ -6,11 +6,10 @@ import { SkoleRuteData } from './velgSkole/skoleRuteData';
 
 export class ValgteSkolerService
 {
-    public valgteSkoler: Array<string> = [];
-    public mineSkoleruter: Array<any> = [];
-    public delteValgteSkoleRuter: Array<any> = [];
-    public skoler: Skole[];
-    public skoleRute: SkoleRuteData[];
+    private valgteSkoler: Array<string> = [];
+    private valgteSkoleRuter: Array<any> = [];
+    private skoler: Skole[];
+    private skoleRute: SkoleRuteData[];
 
     public leggTilSkole(skole: string, indeks: number): void {
         for(let skolen of this.valgteSkoler) {
@@ -22,26 +21,58 @@ export class ValgteSkolerService
         this.valgteSkoler.push(skole);
     }
 
-    public mineSkoler(): Array<string> {
-        return this.valgteSkoler;
-    }
-
-    public fjernSkole(skole: string) {
+    private fjernSkole(skole: string) {
       let indeks = this.valgteSkoler.indexOf(skole);
       if (indeks > -1) {
           this.valgteSkoler.splice(indeks, 1);
       }
     }
 
-    public lagreDataLokalt(){
-      localStorage.setItem("delteValgteSkoleRuter", JSON.stringify(this.delteValgteSkoleRuter));
+    public nullstillVariabler() {
+      this.valgteSkoler = [];
+      this.valgteSkoleRuter = [];
+      this.skoler = null;
+      this.skoleRute = null;
+    }
+
+    public setValgteSkoleRuter(valgteSkoleRuter: Array<any>) {
+      this.valgteSkoleRuter = valgteSkoleRuter;
+    }
+
+    public getValgteSkoleRuter() {
+      return this.valgteSkoleRuter;
+    }
+
+    public getValgteSkoler(): Array<string> {
+        return this.valgteSkoler;
+    }
+
+    public setSkoler(skoler: Skole[]) {
+      this.skoler = skoler;
+    }
+
+    public getSkoler() {
+      return this.skoler;
+    }
+
+    public setSkoleRute(skoleRute: SkoleRuteData[]) {
+      this.skoleRute = skoleRute;
+    }
+
+    public getSkoleRute() {
+      return this.skoleRute;
+    }
+
+    public setLagreDataLokalt() {
+      localStorage.setItem("valgteSkoleRuter", JSON.stringify(this.valgteSkoleRuter));
       localStorage.setItem("skoler", JSON.stringify(this.skoler));
       localStorage.setItem("skoleRute", JSON.stringify(this.skoleRute));
       localStorage.setItem("valgteSkoler", JSON.stringify(this.valgteSkoler));
     }
-    public hentLagretData(){
-      let hentdelteValgteSkoleRuter = localStorage.getItem("delteValgteSkoleRuter");
-      this.delteValgteSkoleRuter = JSON.parse(hentdelteValgteSkoleRuter);
+
+    public getLagretData() {
+      let hentvalgteSkoleRuter = localStorage.getItem("valgteSkoleRuter");
+      this.valgteSkoleRuter = JSON.parse(hentvalgteSkoleRuter);
 
       let hentskoler = localStorage.getItem("skoler");
       this.skoler = JSON.parse(hentskoler);
@@ -55,4 +86,12 @@ export class ValgteSkolerService
         this.valgteSkoler = [];
       }
     }
+
+    public fjernLagretData() {
+      localStorage.removeItem("valgteSkoleRuter");
+      localStorage.removeItem("skoler");
+      localStorage.removeItem("skoleRute");
+      localStorage.removeItem("valgteSkoler");
+    }
+
 }

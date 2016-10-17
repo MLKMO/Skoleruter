@@ -13,35 +13,36 @@ import { SkoleRuteData } from './skoleRuteData';
 })
 
 export class SkoleListeComponent implements OnInit, OnDestroy {
-  private errorMessage: string;       // Feilmelding som kan oppstå ved henting av data fra file eller server
-  private skoler: Skole[];            // Skole objekter som bruker kan velge i mellom
-  private skolenavn: string = '';     // String som blir hentet fra søkefelt
-  private mineSkoler: Array<string>;  // Valgte skoler
-  private skoleRute: SkoleRuteData[]; // Brukes til å hente ut skoleruter for valgte skoler
-  private valgteSkoleRuter: Array<any>= []; // Data som skal brukes i kalender og liste
+  private errorMessage: string;              // Feilmelding som kan oppstå ved henting av data fra file eller server.
+  private skoler: Skole[];                   // Skole objekter som bruker kan velge i mellom.
+  private skolenavn: string = '';            // String som blir hentet fra søkefelt.
+  private mineSkoler: Array<string>;         // Valgte skoler. Brukes ogå som boolean for visning av liste etc.
+  private skoleRute: SkoleRuteData[];        // Brukes til å hente ut skoleruter for valgte skoler.
+  private valgteSkoleRuter: Array<any> = []; // Data som skal brukes i kalender og liste.
+  private skoleruteKnapp = false;            // Boolsk variabel som styrer visning av knapper (Vis skolerute og Fjern Skoler).
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService,
       private router: Router) {}
 
   ngOnInit() {
-
-    this.valgteSkolerService.hentLagretData();
-    if(this.valgteSkolerService.skoler === null ){
+    this.valgteSkolerService.getLagretData();
+    if(this.valgteSkolerService.getSkoler() === null ){
       this.getSkoler();
-      this.hentSkoleRuteData();
+      this.getSkoleRuteData();
     }else{
-      this.skoler = this.valgteSkolerService.skoler;
-      this.mineSkoler = this.valgteSkolerService.mineSkoler();
-      this.skoleRute = this.valgteSkolerService.skoleRute;
+      this.skoler = this.valgteSkolerService.getSkoler();
+      this.mineSkoler = this.valgteSkolerService.getValgteSkoler();
+      this.visEllerSkjulKnapper();
+      this.skoleRute = this.valgteSkolerService.getSkoleRute();
     }
   }
+
   ngOnDestroy(){
-    this.valgteSkolerService.delteValgteSkoleRuter = this.valgteSkoleRuter;
-    this.valgteSkolerService.skoler = this.skoler;
-    this.valgteSkolerService.skoleRute = this.skoleRute;
-    this.valgteSkolerService.lagreDataLokalt();
-    this.valgteSkolerService.hentLagretData();
+    this.valgteSkolerService.setValgteSkoleRuter(this.valgteSkoleRuter);
+    this.valgteSkolerService.setSkoler(this.skoler);
+    this.valgteSkolerService.setSkoleRute(this.skoleRute);
+    this.valgteSkolerService.setLagreDataLokalt();
   }
 
     private getSkoler() {
@@ -53,29 +54,44 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
 
     private leggTilSkole(skole: Skole) {
       if(!skole.TrykketPa){
-        skole.TrykketPa=true;
+        skole.TrykketPa = true;
       }else{
-        skole.TrykketPa=false;
+        skole.TrykketPa = false;
       }
       this.valgteSkolerService.leggTilSkole(skole.skole,
          this.skoler.indexOf(skole));
       this.valgteSkoler();
+      this.visEllerSkjulKnapper();
+      this.skolenavn = "";
+      console.log(this.mineSkoler);
+    }
+
+    private fjernValgteSkoler() {
+      this.valgteSkolerService.nullstillVariabler();
+      this.valgteSkolerService.fjernLagretData();
+      this.nullstillVariabler();
+      this.visEllerSkjulKnapper();
+      console.log(this.mineSkoler);
     }
 
     private valgteSkoler() {
-      this.mineSkoler = this.valgteSkolerService.mineSkoler();
+      this.mineSkoler = this.valgteSkolerService.getValgteSkoler();
     }
 
-    private skoleruter() {
+    private visEllerSkjulKnapper() {
       if (this.mineSkoler === undefined || this.mineSkoler.length == 0) {
-        alert("Du må velge en skole for å gå videre.");
-        return;
+        this.skjulSkoleruteKnapp();
+      }else{
+        this.visSkoleruteKnapp();
       }
+    }
+
+    private gaVidereTilSkoleruter() {
       this.visSkolerute();
       this.router.navigate(['/skoleruter']);
     }
 
-    private hentSkoleRuteData() {
+    private getSkoleRuteData() {
         this.skoledataService.hentSkoleRuteData()
                          .subscribe(
                            skoleRute => this.skoleRute = skoleRute,
@@ -90,5 +106,26 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
             }
           }
         }
+    }
+
+    private visSkoleruteKnapp() {
+      this.skoleruteKnapp = true;
+    }
+
+    private skjulSkoleruteKnapp() {
+      this.skoleruteKnapp = false;
+    }
+
+    private nullstillVariabler() {
+      for(let skole of this.skoler){
+        if(skole.TrykketPa === true){
+          skole.TrykketPa = false;
+        }
       }
+      this.skolenavn = '';
+      this.mineSkoler = [];
+      this.valgteSkoleRuter = [];
+      this.skoleruteKnapp = false;
+    }
+
   }

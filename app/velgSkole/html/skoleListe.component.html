@@ -1,50 +1,45 @@
+<!-- Viser infotekst og søkefelt -->
 <div class="jumbotron">
-  <div class="container">
     <p id="infotekst">Finn skoleruter for alle barne- og ungdoms-skoler i Stavanger- og Gjesdal- kommune.
         Velg skoler ved bruk av søkefeltet nedenfor eller ved å trykke på de skolene du er interessert i ved å velge
         fra listen.
     </p>
-
-    <div id="sokeFeltDiv" class="col-md-offset-3 col-md-6 col-xs-12">
-    <i class="glyphicon glyphicon-search"></i>
-    <input type="text"
+    <div id="sokeFeltDiv" class="col-sm-offset-3 col-sm-6 col-xs-12">
+      <i class="glyphicon glyphicon-search"></i>
+      <input type="text"
            id="sokefelt"
            class="form-control "
            placeholder=" Søk eller velg fra listen under . . ."
           [(ngModel)]="skolenavn" />
     </div>
+</div>
 
 
+<!-- Viser knapper(Vis Skolerute og fjernSkole) og de valgte skolene -->
+<div *ngIf="skoleruteKnapp">
+  <div  class="valgteSkolerListe col-xs-offset-6 col-xs-6 col-sm-offset-7 col-sm-3 col-md-offset-7 col-md-3 col-lg-offset-5 col-lg-2">
+    <div *ngFor="let skole of skoler">
+      <div  class="btn btn-info col-xs-12 " *ngIf="skole.TrykketPa" (click) ="leggTilSkole(skole)">
+        <p class="valgteSkoler" >{{skole.skole}}</p>
+        <span class="glyphicon glyphicon-trash soppelkasse" ></span>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 knapper">
+    <button class="btn btn-danger col-xs-6 col-sm-4 col-sm-offset-2" (click)="fjernValgteSkoler()"><b>Fjern Valg</b></button>
+    <button class="btn btn-warning col-xs-6 col-sm-4" (click)="gaVidereTilSkoleruter()"><b>Vis Skolerute</b></button>
+  </div>
+</div>
 
-
+<!-- Viser liste med skoler -->
+<div class="list-group col-sm-offset-3 col-sm-6 col-xs-12">
+  <div *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
+      <p *ngIf="!skole.TrykketPa" class="list-group-item liste" (click) ="leggTilSkole(skole)">
+        {{skole.skole}}</p>
   </div>
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    <div class="list-group col-md-offset-3 col-md-6 col-xs-12" >
-        <div>
-          <div *ngFor="let skole of skoler | skoleListeFilter: skolenavn"
-              (click) ="leggTilSkole(skole)">
-              <p *ngIf="!skole.TrykketPa" class="list-group-item firkant liste" >
-              {{skole.skole}}</p>
-              <p *ngIf="skole.TrykketPa"class="list-group-item active firkant right-inner-addon elementTrykketPa" >
-              <i class="glyphicon glyphicon-trash trashIkon"></i>{{skole.skole}}</p>
-          </div>
-          <div class="mellomrom"></div>
-          <button class="col-xs-12 btn btn-primary visSkoleruteKnapp" (click)="skoleruter()"><b>Vis Skolerute</b></button>
-      </div>
-    </div>
 
 <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>

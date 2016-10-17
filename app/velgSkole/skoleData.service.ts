@@ -16,7 +16,7 @@ export class SkoleDataService {
   }
 
   public hentSkoleRuteData (): Observable<SkoleRuteData[]> {
-    let skoleRuteUrl = 'app/velgSkole/skolerute-2016-17.json'; // Liste med skoler i stavanger
+    let skoleRuteUrl = 'app/velgSkole/skolerute-felles-2016-17.json'; // Liste med skoler i stavanger
     return this.http.get(skoleRuteUrl)
                     .map(this.extractData)
                     .catch(this.handleError);

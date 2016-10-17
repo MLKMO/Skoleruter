@@ -7,8 +7,12 @@
   p {
     font-size: 80%!important;
   }
-
 }
+p{
+  margin:0;
+}
+
+/*Søke felt*/
 #sokefelt {
   border-radius: 30px;
   padding-left: 1em;
@@ -23,18 +27,71 @@
   position: relative;
 }
 #infotekst{
+  padding:1em;
   font: 400 20px/1.5 Helvetica, Verdana, sans-serif;
 }
 
+/* VALGTESKOLER*/
+.btn{
+  border-radius: 0!important;
+}
+.valgteElementer{
+  pointer-events: none!important;
+}
+.valgteSkoler:hover{
+
+}
+.valgteSkoler{
+  float:left;
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 8.5em;
+}
+
+.valgteSkolerListe{
+  bottom:5em;
+  position: fixed;
+  z-index: 150;
+  padding:0!important;
+
+  -webkit-box-shadow: -4px 9px 32px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: -4px 9px 32px -9px rgba(0,0,0,0.75);
+  box-shadow: -4px 9px 32px -9px rgba(0,0,0,0.75);
+}
+.btn-group{
+  float:right;
+}
+.soppelkasse{
+  float:right;
+}
+.soppelkasse:hover{
+  color: rgb(231, 95, 84);
+}
 
 
-
+/* Vis Skolerute og Fjern valg knapper */
+.knapper{
+  position: fixed;
+  bottom: 0%;
+  height: 2.3em;
+  z-index: 150;
+  font-size: 19px;
+  border:0px;
+  padding:0;
+  opacity: 0.9;
+  max-width: 1000px;
+}
 
 /*CSS FOR LISTEELEMENTENE*/
-p.list-group-item.firkant.liste{
+div.list-group{
+  padding-bottom: 3em;
+  padding-right: 0;
+}
+p.list-group-item.liste{
   text-indent: 5%;
 }
-p.list-group-item.active.firkant.right-inner-addon.elementTrykketPa{
+p.list-group-item.active.right-inner-addon.elementTrykketPa{
   text-indent: 5%;
 }
 .list-group-item{
@@ -43,9 +100,6 @@ p.list-group-item.active.firkant.right-inner-addon.elementTrykketPa{
   border-left: 0!important;
   border-right: 0!important;
   font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
-  /*border-bottom: 1px solid #ccc!important;*/
-
-
 }
 .liste{
   font-size: 1em!important;
@@ -69,18 +123,7 @@ p.list-group-item.active.firkant.right-inner-addon.elementTrykketPa{
   -ms-transition: font-size 0.25s ease, background-color 0.25s ease !important;
   transition: font-size 0.25s ease, background-color 0.25s ease !important;
 }
-.elementTrykketPa{
-  cursor: pointer;
-  cursor: hand;
-  border-radius: 0;
-  background-color: #28BB9C;
-}
-.elementTrykketPa:hover{
-  cursor: pointer;
-  cursor: hand;
-  border-radius: 0;
-  background-color: #28BB9C;
-}
+
 .right-inner-addon i {
     position: absolute;
     right: 2.5em;

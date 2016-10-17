@@ -24,10 +24,10 @@ export class NesteFridagComponent implements OnInit {
     ngOnInit()
     {
         this.nesteFridagService.setDagensDato(); this.dato();
-        this.valgteSkolerService.hentLagretData();
+        this.valgteSkolerService.getLagretData();
         this.nesteFridagService.setDagensDato();
         this.dato();
-        this.nesteFridager = this.valgteSkolerService.delteValgteSkoleRuter;
+        this.nesteFridager = this.valgteSkolerService.getValgteSkoleRuter();
         this.nesteFridager = this.nesteFridagService.finnNesteFridag(this.nesteFridager);
         this.nesteFridagService.tomNesteFridagListe();
     }
