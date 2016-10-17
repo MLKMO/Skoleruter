@@ -14,6 +14,7 @@ export class ListeService{
         
 
         for (var i = 0; i < valgteSkoleRuter.length; i++){
+            
             if(i > 0){
             if(valgteSkoleRuter[i-1].skole != valgteSkoleRuter[i].skole){
                 antallValgteSkoler ++;
@@ -31,9 +32,30 @@ export class ListeService{
             }
         }
         return skole1, skole2, skole3;
+    }/*del opp og lag en metode som lager hver skole array */
+
+    datoer(valgteSkoleRuter:Array<any>, datoArray: Array<any>){
+        for (var i = 0; i < valgteSkoleRuter.length; i++){
+            datoArray[i] = valgteSkoleRuter[i].dato;
+        }
+
+        datoArray = datoArray.sort();
+        for (var i = 1; i < valgteSkoleRuter.length; i++){
+            if (datoArray[i].equals(datoArray[i-1])){
+                datoArray.splice(i);
+            }
+
+        }
+
+        return datoArray;
     }
 
     constructor(private valgteSkolerService: ValgteSkolerService) { }
 
 
 }
+
+
+
+/*en array for dato, og en if for å sjekke om hver skole har noe kommentar
+for den datoen, returnerer bare "" om ikke.*/ 
