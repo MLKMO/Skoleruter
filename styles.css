@@ -9,7 +9,8 @@
 }
 
 .litenMargin{
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
+  border-radius: 0;
 }
 .overskrift{
   vertical-align: middle;
@@ -17,11 +18,10 @@
 
 .firkant {
   border-radius: 0;
-
 }
 
 .endreknapp {
-  
+
   margin-right: 15px;
   border-bottom: none;
   border-radius: 4px 4px 0 0;
@@ -37,6 +37,3 @@
   border-width: 2px;
   background-color: white;
 }
-
-
-
