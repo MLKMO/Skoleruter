@@ -153,7 +153,7 @@ private datoArray: Array<any> = [];
         var skolesortert: Array<any> = [];
 
         for (var i = 0; i < this.datoArray.length; i++){
-            skolesortert.push("%%");
+            skolesortert.push("-");
             for(var j = 0; j < skole.length; j++){
                 if (skole[j].dato === this.datoArray[i]){  
                     skolesortert[i] = skole[j].kommentar;

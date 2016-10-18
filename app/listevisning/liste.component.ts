@@ -9,6 +9,7 @@ import { ValgteSkolerService } from '../valgteSkoler.service';
     template: 
     `
     <style>
+        
         li {
             display: inline-block;
            
@@ -17,8 +18,12 @@ import { ValgteSkolerService } from '../valgteSkoler.service';
         h5 {
             font-weight: bold;
         }
+        div {
+            width: 980px;
+            margin: 0 auto;
+        }
     </style>
-
+    <div>
     <ul>
         <li><h5 style = "margin-left: 20px; margin-right: 20px;">Dato</h5></li>
         <li><h5 style = "margin-left: 10px; margin-right: 20px;">{{this.skolenavn1}}</h5></li>
@@ -34,7 +39,8 @@ import { ValgteSkolerService } from '../valgteSkoler.service';
         <li><p *ngFor="let rute3 of this.skole3"> {{rute3}} </p></li>
         <li><p *ngFor="let rute4 of this.skole4"> {{rute4}} </p></li>
         <li><p *ngFor="let rute5 of this.skole5"> {{rute5}} </p></li>
-    </ul>`
+    </ul>
+    </div>`
 })
 export class ListeComponent implements OnInit, OnDestroy {
     private valgteSkoleRuter: Array<any>= [];
