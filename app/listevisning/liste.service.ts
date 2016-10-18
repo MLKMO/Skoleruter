@@ -90,47 +90,77 @@ export class ListeService{
         }
         return skolerute;
     }
-
+    skole4(valgteSkoleRuter:Array<any>,skolerute: Array<any>){
+        var g = 0;
+        var antallValgteSkoler = 1;
+        for (var i = 0; i < valgteSkoleRuter.length; i++){
+            
+            if(i > 0){
+            if(valgteSkoleRuter[i-1].skole != valgteSkoleRuter[i].skole){
+                antallValgteSkoler ++;
+            }
+            }
+            if(antallValgteSkoler == 4){
+                skolerute[g] = valgteSkoleRuter[i];
+                g++;
+            }
+        }
+        return skolerute;
+    }
+    skole5(valgteSkoleRuter:Array<any>,skolerute: Array<any>){
+        var g = 0;
+        var antallValgteSkoler = 1;
+        for (var i = 0; i < valgteSkoleRuter.length; i++){
+            
+            if(i > 0){
+            if(valgteSkoleRuter[i-1].skole != valgteSkoleRuter[i].skole){
+                antallValgteSkoler ++;
+            }
+            }
+            if(antallValgteSkoler == 5){
+                skolerute[g] = valgteSkoleRuter[i];
+                g++;
+            }
+        }
+        return skolerute;
+    }
+private datoArray: Array<any> = [];
     datoer(valgteSkoleRuter:Array<any>, datoArray: Array<any>){
         for (var i = 0; i < valgteSkoleRuter.length; i++){
-            datoArray[i] = valgteSkoleRuter[i].dato;
+            this.datoArray[i] = valgteSkoleRuter[i].dato;
         }
 
-        datoArray = datoArray.sort();
-        /*for (var i = 0; i < valgteSkoleRuter.length; i++){
-            datoArray[i] = new Date(datoArray[i]);
-        }*/
-       /* for (var i = 1; i < valgteSkoleRuter.length; i++){  // funker ikke, Hvordan sammmenligne datoer eller strenger?
-            if (datoArray[i-1] === datoArray[i]){
-                datoArray.splice(i);
+        this.datoArray = this.datoArray.sort();
+        
+        for (var i = 1; i < this.datoArray.length; i++) {  
+            if (this.datoArray[i] === this.datoArray[i-1]) {
+                this.datoArray.splice(i, 1);
             }
 
-        }*/
-        let datoArrayFiltrert = Object.keys(datoArray.reduce((c,a) => {c[a] = true; return c;}))
+        }
+        for (var i = 1; i < this.datoArray.length; i++) { 
+            if (this.datoArray[i] === this.datoArray[i-1]) {
+                this.datoArray.splice(i, 1);
+            }
 
-
-        /*return datoArray;*/
+        }
+        return this.datoArray;
     }
 
-    sjekkOmSkoleHarDato(valgteSkoleRuter:Array<any>, skole: Array<any>){
+
+     
+    sjekkOmSkoleHarDato(skole: Array<any>){
         var skolesortert: Array<any> = [];
-        var datoArray: Array<any> = [];
-        for (var i = 0; i < valgteSkoleRuter.length; i++){
-            datoArray[i] = valgteSkoleRuter[i].dato;
-        }
 
-        datoArray = datoArray.sort();
-
-
-        for (var i = 0; i < datoArray.length; i++){
+        for (var i = 0; i < this.datoArray.length; i++){
+            skolesortert.push("%%");
             for(var j = 0; j < skole.length; j++){
-                if (skole[j].dato == datoArray[i]){  // vil ikke funke før jeg har funnet en måte å sammenligne datoer/strenger
-                    skolesortert[i] = skole[j];
-                }else{
-                    skolesortert[i] = {}
+                if (skole[j].dato === this.datoArray[i]){  
+                    skolesortert[i] = skole[j].kommentar;
                 }
             }
         }
+        return skolesortert;
     }
 
     constructor(private valgteSkolerService: ValgteSkolerService) { }
@@ -139,6 +169,3 @@ export class ListeService{
 }
 
 
-
-/*en array for dato, og en if for å sjekke om hver skole har noe kommentar
-for den datoen, returnerer bare "" om ikke.*/ 
