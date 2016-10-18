@@ -1,7 +1,33 @@
+describe('1st tests', () => {
+  it('true is true', () => expect(true).toBe(true));
+});
+
+describe('universal truths', () => {
+  it('should do math', () => {
+    expect(1 + 1).toEqual(2);
+
+    expect(5).toBeGreaterThan(4);
+  });
+
+  xit('should skip this', () => {
+    expect(4).toEqual(40);
+  });
+});
 /*
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
+
+
+
+
+
+
+//Teseter filtrering av skoler når brukerene søker etter skole
 import { SkoleListeFilterPipe} from'../../../velgSkole/skoleListeFilter.pipe';
 import { Skole } from'../../../velgSkole/skole';
-//Test variabler
+
 
 
 describe('skoleListeFilterPipe', () => {
@@ -17,4 +43,3 @@ describe('skoleListeFilterPipe', () => {
     expect(pipe.transform(skoler, skolenavn)).toBe(skolerResultat);
   });
 });
-*/
