@@ -25,12 +25,12 @@ import { ValgteSkolerService } from '../valgteSkoler.service';
     </style>
     <div>
     <ul>
-        <li><h5 style = "margin-left: 20px; margin-right: 20px;">Dato</h5></li>
-        <li><h5 style = "margin-left: 10px; margin-right: 20px;">{{this.skolenavn1}}</h5></li>
-        <li><h5 style = "margin-left: 40px; margin-right: 20px;">{{this.skolenavn2}}</h5></li>
-        <li><h5 style = "margin-left: 40px; margin-right: 20px;">{{this.skolenavn3}}</h5></li>
-        <li><h5 style = "margin-left: 40px; margin-right: 20px;">{{this.skolenavn4}}</h5></li>
-        <li><h5 style = "margin-left: 40px; margin-right: 20px;">{{this.skolenavn5}}</h5></li>
+        <li style = "width: 80px;"><h5 style = "margin-left: 20px; margin-right: 10px;">Dato</h5></li>
+        <li style = "width: 145px; text-aligned: center;"><h5>{{this.skolenavn1}}</h5></li>
+        <li style = "width: 145px; text-aligned: center;"><h5>{{this.skolenavn2}}</h5></li>
+        <li style = "width: 145px; text-aligned: center;"><h5>{{this.skolenavn3}}</h5></li>
+        <li style = "width: 145px; text-aligned: center;"><h5>{{this.skolenavn4}}</h5></li>
+        <li style = "width: 145px; text-aligned: center;"><h5>{{this.skolenavn5}}</h5></li>
     </ul>    
     <ul>
         <li><p *ngFor="let dato of datoArray">{{dato}}</p></li>

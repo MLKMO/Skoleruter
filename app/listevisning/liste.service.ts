@@ -138,6 +138,18 @@ private datoArray: Array<any> = [];
             }
 
         }
+         for (var i = 1; i < this.datoArray.length; i++) {  
+            if (this.datoArray[i] === this.datoArray[i-1]) {
+                this.datoArray.splice(i, 1);
+            }
+
+        }
+         for (var i = 1; i < this.datoArray.length; i++) {  
+            if (this.datoArray[i] === this.datoArray[i-1]) {
+                this.datoArray.splice(i, 1);
+            }
+
+        }
         for (var i = 1; i < this.datoArray.length; i++) { 
             if (this.datoArray[i] === this.datoArray[i-1]) {
                 this.datoArray.splice(i, 1);
