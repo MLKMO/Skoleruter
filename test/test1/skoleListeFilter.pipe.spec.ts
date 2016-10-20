@@ -1,22 +1,16 @@
-import { async, TestBed, ComponentFixture } from '@angular/core/testing';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SkoleListeFilterPipe} from'../../app/velgSkole/skoleListeFilter.pipe';
+import { Skole } from'../../app/velgSkole/skole';
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-          declarations: [],
-          schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    });
-       TestBed.compileComponents();
-  }));
+describe('skoleListeFilterPipe', () => {
+  let skoler : Array<any>;
+  skoler = [{skole: "Auglend skole"}, {skole: "Storhaug skole"}, {skole: "Ullandhaug skole"}];
+  let skolerResultat: Array<any>;
+  skolerResultat = [{skole: "Auglend skole"}];
 
-describe('universal truths', () => {
-  it('should do math', () => {
-    expect(1 + 1).toEqual(2);
-
-    expect(5).toBeGreaterThan(4);
-  });
-
-  xit('should skip this', () => {
-    expect(4).toEqual(40);
+  let skolenavn = "auglend";
+  // This pipe is a pure, stateless function so no need for BeforeEach
+  let pipe = new SkoleListeFilterPipe();
+  it('Filtrerer skoler array med auglend som inputs', () => {
+    expect(pipe.transform(skoler, skolenavn)).toEqual(skolerResultat);
   });
 });

@@ -26,9 +26,10 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       private router: Router) {}
 
   ngOnInit() {
+
     this.valgteSkolerService.getLagretData();
     if(this.valgteSkolerService.getSkoler() === null ){
-      this.getSkoler();
+      this.getSkolerData();
       this.getSkoleRuteData();
     }else{
       this.skoler = this.valgteSkolerService.getSkoler();
@@ -38,18 +39,31 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.valgteSkolerService.setValgteSkoleRuter(this.valgteSkoleRuter);
     this.valgteSkolerService.setSkoler(this.skoler);
     this.valgteSkolerService.setSkoleRute(this.skoleRute);
     this.valgteSkolerService.setLagreDataLokalt();
   }
+    public getSkoler() {
+      return this.skoler;
+    }
+    public getSkoleRute() {
+      return this.skoleRute;
+    }
 
-    private getSkoler() {
+    private getSkolerData() {
     this.skoledataService.getSkoler()
                      .subscribe(
                        skoler => this.skoler = skoler,
                        error =>  this.errorMessage = <any>error);
+    }
+
+    private getSkoleRuteData() {
+        this.skoledataService.hentSkoleRuteData()
+                         .subscribe(
+                           skoleRute => this.skoleRute = skoleRute,
+                           error =>  this.errorMessage = <any>error);
     }
 
     private leggTilSkole(skole: Skole) {
@@ -63,7 +77,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.valgteSkoler();
       this.visEllerSkjulKnapper();
       this.skolenavn = "";
-      console.log(this.mineSkoler);
     }
 
     private fjernValgteSkoler() {
@@ -71,7 +84,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.valgteSkolerService.fjernLagretData();
       this.nullstillVariabler();
       this.visEllerSkjulKnapper();
-      console.log(this.mineSkoler);
     }
 
     private valgteSkoler() {
@@ -89,13 +101,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     private gaVidereTilSkoleruter() {
       this.visSkolerute();
       this.router.navigate(['/skoleruter']);
-    }
-
-    private getSkoleRuteData() {
-        this.skoledataService.hentSkoleRuteData()
-                         .subscribe(
-                           skoleRute => this.skoleRute = skoleRute,
-                           error =>  this.errorMessage = <any>error);
     }
 
     private visSkolerute () {
