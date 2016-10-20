@@ -26,7 +26,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       private router: Router) {}
 
   ngOnInit() {
-
     this.valgteSkolerService.getLagretData();
     if(this.valgteSkolerService.getSkoler() === null ){
       this.getSkolerData();

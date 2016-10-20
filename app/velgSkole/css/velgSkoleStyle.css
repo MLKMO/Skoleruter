@@ -4,6 +4,10 @@
   margin-bottom:0;
 }
 @media screen and (max-width: 768px) {
+  #sorterKnapp{
+    font-size: 90%!important;
+
+  }
   .valgteSkoler{
     float:left;
     white-space: nowrap;
