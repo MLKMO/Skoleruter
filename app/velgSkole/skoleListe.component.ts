@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Skole } from './skole';
+import { BrukerPosisjonService } from './brukerPosisjon.service';
+
+
 import { SkoleDataService } from './skoleData.service';
 import { ValgteSkolerService } from '../valgteSkoler.service';
 import { SkoleRuteData } from './skoleRuteData';
@@ -9,23 +12,29 @@ import { SkoleRuteData } from './skoleRuteData';
   selector: 'skoleListe',
   templateUrl: 'app/velgSkole/html/skoleListe.component.html',
   styleUrls:['app/velgSkole/css/velgSkoleStyle.css'],
-  providers: [ SkoleDataService ],
+  providers: [ SkoleDataService, BrukerPosisjonService ],
 })
 
 export class SkoleListeComponent implements OnInit, OnDestroy {
   private errorMessage: string;              // Feilmelding som kan oppstå ved henting av data fra file eller server.
-  private skoler: Skole[];                   // Skole objekter som bruker kan velge i mellom.
+  private skoler: Array<Skole>;                   // Skole objekter som brukeren kan velge i mellom.
   private skolenavn: string = '';            // String som blir hentet fra søkefelt.
   private mineSkoler: Array<string>;         // Valgte skoler. Brukes ogå som boolean for visning av liste etc.
-  private skoleRute: SkoleRuteData[];        // Brukes til å hente ut skoleruter for valgte skoler.
+  private skoleRute: Array<SkoleRuteData>;        // Brukes til å hente ut skoleruter for valgte skoler.
   private valgteSkoleRuter: Array<any> = []; // Data som skal brukes i kalender og liste.
   private skoleruteKnapp = false;            // Boolsk variabel som styrer visning av knapper (Vis skolerute og Fjern Skoler).
+  private brukerPosisjonLatutude: number;
+  private brukerPosisjonLongitude: number;
+  private skolerMedLokasjon: Array<Skole>;
+  private sorterKnappTrykketPa = false;
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService,
-      private router: Router) {}
+      private router: Router,
+      private brukerPosisjonService: BrukerPosisjonService) {}
 
   ngOnInit() {
+    this.getSkolerMedLokasjon();
     this.valgteSkolerService.getLagretData();
     if(this.valgteSkolerService.getSkoler() === null ){
       this.getSkolerData();
@@ -59,10 +68,33 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
 
     private getSkoleRuteData() {
-        this.skoledataService.hentSkoleRuteData()
+        this.skoledataService.getSkoleRuteData()
                          .subscribe(
                            skoleRute => this.skoleRute = skoleRute,
                            error =>  this.errorMessage = <any>error);
+    }
+
+    private getSkolerMedLokasjon() {
+        this.skoledataService.getSkolerMedLokasjon()
+                         .subscribe(
+                           skolerMedLokasjon => this.skolerMedLokasjon = skolerMedLokasjon,
+                           error =>  this.errorMessage = <any>error);
+    }
+
+    private getBrukerPosisjon() :boolean{
+        if (navigator.geolocation) {
+            this.brukerPosisjonService.getBrukerPosisjon().forEach(
+                (position: Position) => {
+                        this.brukerPosisjonLatutude = position.coords.latitude;
+                        this.brukerPosisjonLongitude =  position.coords.longitude;
+                        this.skoler = this.brukerPosisjonService.sorterSkolerEtterAvstand(this.brukerPosisjonLatutude,
+                          this.brukerPosisjonLongitude, this.skolerMedLokasjon, this.skoler);
+                          this.sorterKnappTrykketPa = true;
+                    })
+        } else {
+            alert("Du må bruke en støttet nettleser for å sortere lokasjon");
+        }
+        return true;
     }
 
     private leggTilSkole(skole: Skole) {
@@ -131,5 +163,4 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.valgteSkoleRuter = [];
       this.skoleruteKnapp = false;
     }
-
   }

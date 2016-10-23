@@ -3,9 +3,16 @@
   padding-bottom: 1em;
   margin-bottom:0;
 }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}
 @media screen and (max-width: 768px) {
   #sorterKnapp{
-    font-size: 90%!important;
+    font-size: 1em!important;
 
   }
   .valgteSkoler{
@@ -16,10 +23,10 @@
       max-width: 8.5em;
   }
   p {
-    font-size: 80%!important;
+    font-size: 1em!important;
   }
   .knapp{
-    font-size: 65%;
+    font-size: 1em;
     padding-left: 0.5em;
   }
 
@@ -40,7 +47,7 @@ p{
 
 /*Søke felt*/
 #sokefelt {
-  border-radius: 30px;
+  border-radius: 0px;
   padding-left: 1em;
   height:2.2em;
 }
@@ -51,6 +58,7 @@ p{
 }
 #sokeFeltDiv{
   position: relative;
+  padding:1px;
 }
 #infotekst{
   padding:1em;
@@ -113,6 +121,12 @@ p.list-group-item.active.right-inner-addon.elementTrykketPa{
   border-left: 0!important;
   border-right: 0!important;
   font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+.list-group{
+  margin-bottom: 0;
+}
+.kmKnapp{
+  font: 200 1em Helvetica, Verdana, sans-serif;
 }
 
 @media screen and (min-width: 768px) {

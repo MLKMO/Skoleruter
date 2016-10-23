@@ -1,20 +1,4 @@
-<!-- script for å hente klient posisjon ved hjelp av jquery og googles geolocation api -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script>
-$.ajax({
-   url: 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDqZEXqM2C050o7yzkyJx57bHp6i4AgXn0',  //Denne nøkkellen er begrenset til 10000 requests pr dag.
-   data: JSON.stringify({ "considerIp": "true" }),
-   type: 'POST',
-   contentType: 'application/json',
-   success: function(data) {
-     if(data.location) {
-       alert(data.location.lat + ', ' + data.location.lng);
-     } else {
-       alert('not found');
-     }
-   }
- });
-</script>
+
 <!-- Viser infotekst og søkefelt -->
 <div class="jumbotron">
     <p id="infotekst">Finn skoleruter for alle barne- og ungdoms-skoler i Stavanger- og Gjesdal- kommune.
@@ -33,7 +17,7 @@ $.ajax({
 
 <!-- Knapp for sortering av liste -->
 <div  class="valgteSkolerListe col-xs-offset-6 col-xs-6 col-sm-offset-6 col-sm-4 col-md-offset-6 col-md-4 col-lg-offset-5 col-lg-3">
-  <button id="sorterKnapp" class="btn btn-danger knapp col-xs-12" (click)="fjernValgteSkoler()"><b>Sorter etter nærmeste</b></button>
+  <button *ngIf="!sorterKnappTrykketPa" id="sorterKnapp" class="btn btn-danger knapp col-xs-12" (click)="getBrukerPosisjon()"><b>Sorter etter nærmeste</b></button>
 </div>
 
 <!-- Viser knapper(Vis Skolerute og fjernSkole) og de valgte skolene -->
@@ -52,12 +36,14 @@ $.ajax({
 </div>
 
 <!-- Viser liste med skoler -->
-<div class="list-group col-sm-offset-3 col-sm-6 col-xs-12">
-  <div *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
-      <p *ngIf="!skole.TrykketPa" class="list-group-item liste" (click) ="leggTilSkole(skole)">
-        {{skole.skole}}</p>
-  </div>
-</div>
+
+  <table class="list-group col-sm-8 col-xs-12" *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
+    <tr *ngIf="!skole.TrykketPa">
+      <td class="list-group-item liste col-sm-offset-1 col-xs-8 col-sm-7" (click) ="leggTilSkole(skole)">{{skole.skole}}</td>
+      <td class="kmKnapp col-xs-4 col-sm-4"*ngIf="sorterKnappTrykketPa"> {{skole.avstand}} Km</td>
+    </tr>
+  </table>
+
 
 
 
