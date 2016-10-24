@@ -37,7 +37,7 @@
 
 <!-- Viser liste med skoler -->
 <!-- col-sm-offset-3 skapte problemer med safari ved sortering -->
-  <table class="list-group col-sm-offset-3 col-sm-8 col-xs-12" *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
+  <table class="list-group col-sm-offset-3 col-sm-6 col-xs-12" *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
     <tr *ngIf="!skole.TrykketPa">
       <td class="list-group-item liste col-sm-offset-1 col-xs-8 col-sm-7" (click) ="leggTilSkole(skole)">{{skole.skole}}</td>
       <td class="kmKnapp col-xs-4 col-sm-4"*ngIf="sorterKnappTrykketPa"> {{skole.avstand}} Km</td>
