@@ -23,7 +23,7 @@ export class NesteFridagComponent implements OnInit {
 
     ngOnInit()
     {
-        this.nesteFridagService.setDagensDato(); this.dato();
+        //this.nesteFridagService.setDagensDato(); //this.dato();
         this.valgteSkolerService.getLagretData();
         this.nesteFridagService.setDagensDato();
         this.dato();
