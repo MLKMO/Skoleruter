@@ -34,6 +34,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       private brukerPosisjonService: BrukerPosisjonService) {}
 
   ngOnInit() {
+
     this.getSkolerMedLokasjon();
     this.valgteSkolerService.getLagretData();
     if(this.valgteSkolerService.getSkoler() === null ){
@@ -81,7 +82,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
                            error =>  this.errorMessage = <any>error);
     }
 
-    private getBrukerPosisjon() :boolean{
+    private getBrukerPosisjon() {
         if (navigator.geolocation) {
             this.brukerPosisjonService.getBrukerPosisjon().forEach(
                 (position: Position) => {
@@ -90,11 +91,11 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
                         this.skoler = this.brukerPosisjonService.sorterSkolerEtterAvstand(this.brukerPosisjonLatutude,
                           this.brukerPosisjonLongitude, this.skolerMedLokasjon, this.skoler);
                           this.sorterKnappTrykketPa = true;
-                    })
+                          console.log(this.skoler);
+            })
         } else {
             alert("Du må bruke en støttet nettleser for å sortere lokasjon");
         }
-        return true;
     }
 
     private leggTilSkole(skole: Skole) {
@@ -132,6 +133,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     private gaVidereTilSkoleruter() {
       this.visSkolerute();
       this.router.navigate(['/skoleruter']);
+      window.scrollTo(0,0); //Scroller window til toppen av siden
     }
 
     private visSkolerute () {
