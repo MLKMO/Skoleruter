@@ -5,27 +5,21 @@ import { ValgteSkolerService } from './../valgteSkoler.service';
 
 @Component
 ({
+    moduleId: module.id,
     selector: 'neste-fridag',
-    templateUrl:'app/nestefridag/html/neste-fridag.html'
+    templateUrl:'html/neste-fridag.html'
 })
 export class NesteFridagComponent implements OnInit {
 
-    private dagensDato : Date;
-    private nesteFridager: Array<any> = [];
+    public nesteFridager: Array<any> = [];
 
     constructor(private nesteFridagService: NesteFridagService,
                 private valgteSkolerService: ValgteSkolerService){}
-
-    dato()
-    {
-        this.dagensDato = this.nesteFridagService.hentDagensDato();
-    }
 
     ngOnInit()
     {
         this.valgteSkolerService.hentLagretData();
         this.nesteFridagService.setDagensDato(); 
-        this.dato();
         this.nesteFridager = this.valgteSkolerService.delteValgteSkoleRuter;
         this.nesteFridager = this.nesteFridagService.finnNesteFridag(this.nesteFridager);
         this.nesteFridagService.tomNesteFridagListe();
