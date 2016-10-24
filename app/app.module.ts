@@ -7,6 +7,7 @@ import { HttpModule, JsonpModule }  from '@angular/http';
 
 //Egenproduserte components
 import { AppComponent }  from './app.component';
+
 import { SkoleListeComponent} from './velgSkole/skoleListe.component';
 import { SkoleruterComponent } from './routing/skoleruter.component';
 import { InfoComponent } from './routing/info.component';
@@ -17,12 +18,13 @@ import { SkoleDataService } from './velgSkole/skoleData.service';
 import { ValgteSkolerService } from './valgteSkoler.service';
 import { NesteFridagComponent } from './nestefridag/neste-fridag.component';
 import { DatoPipe } from './nestefridag/dato.pipe';
-
+import { ListeComponent } from './listevisning/liste.component';
 import { SkoleruteModule } from './routing/skoleruter.module';
 import { NesteFridagModule } from './nestefridag/neste-fridag.module';
+import { ListeModule } from './listevisning/liste.module';
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule, HttpModule, JsonpModule, NesteFridagModule],
+  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule, HttpModule, JsonpModule, NesteFridagModule, ListeModule],
   declarations: 
   [ 
     AppComponent, 
@@ -38,6 +40,7 @@ import { NesteFridagModule } from './nestefridag/neste-fridag.module';
     providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService ],
     bootstrap: [ AppComponent ], 
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+
 })
 
 export class AppModule { }

@@ -18,3 +18,6 @@ npm-debug.log
 !systemjs.config.js
 !typings/typings.d.ts
 !wallaby.js
+
+.vscode/.BROWSE.VC.DB
+.vscode/.BROWSE.VC.DB-wal

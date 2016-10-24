@@ -8,9 +8,9 @@ export class NesteFridagService implements OnInit
     public nesteFridag: Array<any> = [];
     private skoler: Array<any> = [];
     private dagensDato: any;
-    private dagensDag: number;
-    private dagensMaaned: number;
-    private dagensAar: number;
+    public dagensDag: number;
+    public dagensMaaned: number;
+    public dagensAar: number;
     private skoleAar:number;
     private skoleMaaned:number;
     private skoleDag:number;
@@ -22,6 +22,7 @@ export class NesteFridagService implements OnInit
         this.dagensAar = parseInt(this.dagensDato.slice(0,4));
         this.dagensMaaned = parseInt(this.dagensDato.slice(5,8));
         this.dagensDag = parseInt(this.dagensDato.slice(8,10));
+        console.log(this.dagensDato)
     }
 
     hentDagensDato()
