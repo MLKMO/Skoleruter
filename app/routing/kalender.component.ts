@@ -12,8 +12,8 @@ export class KalenderComponent implements OnInit, OnDestroy {
     constructor(private valgteSkolerService: ValgteSkolerService) { }
 
     ngOnInit() {
-      this.valgteSkolerService.hentLagretData();
-      this.valgteSkoleRuter = this.valgteSkolerService.delteValgteSkoleRuter;
+      this.valgteSkolerService.getLagretData();
+        this.valgteSkoleRuter = this.valgteSkolerService.getValgteSkoleRuter();
     }
 
     ngOnDestroy() {

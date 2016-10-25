@@ -8,16 +8,23 @@ import { SkoleRuteData} from './skoleRuteData';
 export class SkoleDataService {
   constructor (private http: Http) {}
 
-  public getSkoler (): Observable<Skole[]> {
+  public getSkoler (): Observable<Array<Skole>>{
     let skoleUrl = 'app/velgSkole/skolenavn-felles-2016-17.json'; // Liste med skoler i stavanger
     return this.http.get(skoleUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
-  public hentSkoleRuteData (): Observable<SkoleRuteData[]> {
-    let skoleRuteUrl = 'app/velgSkole/skolerute-2016-17.json'; // Liste med skoler i stavanger
+  public getSkoleRuteData (): Observable<Array<SkoleRuteData>> {
+    let skoleRuteUrl = 'app/velgSkole/skolerute-felles-2016-17.json'; // Liste med skoler i stavanger
     return this.http.get(skoleRuteUrl)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  public getSkolerMedLokasjon (): Observable<Array<Skole>> {
+    let skolerMedLokasjonUrl = 'app/velgSkole/skoler.json'; // Liste med skoler i stavanger
+    return this.http.get(skolerMedLokasjonUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

@@ -9,13 +9,13 @@ export class DatoPipe implements PipeTransform {
     private aar: string;
     private dag: string;
     private nyDato: string;
-    private maanedNavn: Array <string> = 
+    private maanedNavn: Array <string> =
     [
         'januar', 'februar', 'mars', 'april', 'mai', 'juni',
-        'juli', 'august', 'september', 'oktober', 'november', 'desember'
+        'juli', 'august', 'september','oktober', 'november', 'desember'
     ];
 
-    transform(value: string): any 
+    transform(value: string): any
     {
         this.aar = value.slice(0,4);
         this.maaned = value.slice(5,8);

@@ -22,7 +22,6 @@ export class NesteFridagService implements OnInit
         this.dagensAar = parseInt(this.dagensDato.slice(0,4));
         this.dagensMaaned = parseInt(this.dagensDato.slice(5,8));
         this.dagensDag = parseInt(this.dagensDato.slice(8,10));
-        console.log(this.dagensDato)
     }
 
     hentDagensDato()

@@ -4,7 +4,7 @@ import { ValgteSkolerService } from '../valgteSkoler.service';
 @Component({
     moduleId: module.id,
     selector: 'liste',
-    template: `<h2> Liste </h2>
+    template: `
     <p *ngFor="let rute of valgteSkoleRuter"> {{rute.dato}} {{rute.skole}} {{rute.kommentar}} </p>`
 })
 export class ListeComponent implements OnInit, OnDestroy {
@@ -12,9 +12,10 @@ export class ListeComponent implements OnInit, OnDestroy {
     constructor(private valgteSkolerService: ValgteSkolerService) { }
 
     ngOnInit() {
-      this.valgteSkoleRuter = this.valgteSkolerService.delteValgteSkoleRuter;
+      this.valgteSkolerService.getLagretData();
+      this.valgteSkoleRuter = this.valgteSkolerService.getValgteSkoleRuter();
     }
-    
+
     ngOnDestroy(){
     }
 }
