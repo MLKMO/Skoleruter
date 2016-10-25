@@ -12,7 +12,7 @@ export class DatoPipe implements PipeTransform {
     private maanedNavn: Array <string> = 
     [
         'januar', 'februar', 'mars', 'april', 'mai', 'juni',
-        'juli', 'august', 'september', 'november', 'desember'
+        'juli', 'august', 'september', 'oktober', 'november', 'desember'
     ];
 
     transform(value: string): any 

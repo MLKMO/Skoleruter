@@ -41,13 +41,18 @@ export class NesteFridagService implements OnInit
 
             if(this.skoler.indexOf(valgteSkoleruter[i].skole) == -1 && this.skoleAar >= this.dagensAar)
             {
-                if(this.skoleMaaned >= this.dagensMaaned)
+                if(this.skoleMaaned == this.dagensMaaned)
                 {
                     if(this.skoleDag >= this.dagensDag)
                     {
                         this.skoler.push(valgteSkoleruter[i].skole);
                         this.nesteFridag.push(valgteSkoleruter[i])
                     }
+                }
+                else if(this.skoleMaaned > this.dagensMaaned)
+                {
+                     this.skoler.push(valgteSkoleruter[i].skole);
+                     this.nesteFridag.push(valgteSkoleruter[i])   
                 }
 
             }
