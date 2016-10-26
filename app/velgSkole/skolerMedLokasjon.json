@@ -1,0 +1,298 @@
+﻿{
+    "data":[
+    {
+        "Hjemmeside": "http://www.minskole.no/auglend",
+        "Latitude": "58.946483",
+        "Longitude": "5.726794",
+        "skole": "Auglend skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/austbo",
+        "Latitude": "58.995224",
+        "Longitude": "5.735939",
+        "skole": "Austbø skole"
+    },
+    {
+        "Hjemmeside": "https://www.minskole.no/buoy",
+        "Latitude": "58.985646",
+        "Longitude": "5.734782",
+        "skole": "Buøy skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/byfjord",
+        "Latitude": "58.980302",
+        "Longitude": "5.702956",
+        "skole": "Byfjord skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/eiganes",
+        "Latitude": "58.964696",
+        "Longitude": "5.707375",
+        "skole": "Eiganes skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/gausel",
+        "Latitude": "58.898492",
+        "Longitude": "5.734005",
+        "skole": "Gausel skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/gautesete",
+        "Latitude": "58.899177",
+        "Longitude": "5.723171",
+        "skole": "Gautesete skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/godeset",
+        "Latitude": "58.900337",
+        "Longitude": "5.714215",
+        "skole": "Godeset skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/gosen",
+        "Latitude": "58.940468",
+        "Longitude": "5.684139",
+        "skole": "Gosen skole"
+    },
+    {
+        "Hjemmeside": "https://www.minskole.no/hafrsfjord",
+        "Latitude": "58.940129",
+        "Longitude": "5.648528",
+        "skole": "Hafrsfjord skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/hinna",
+        "Latitude": "58.917831",
+        "Longitude": "5.722232",
+        "skole": "Hinna skole"
+    },
+    {
+        "Hjemmeside": "https://www.minskole.no/hundvaag",
+        "Latitude": "58.996488",
+        "Longitude": "5.732501",
+        "skole": "Hundvåg skole"
+    },
+    {
+        "Hjemmeside": "http://www.velkommentiljohannes.no/",
+        "Latitude": "58.967258",
+        "Longitude": "5.755176",
+        "skole": "Johannes læringssenter"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/jaatten",
+        "Latitude": "58.915223",
+        "Longitude": "5.724265",
+        "skole": "Jåtten skole"
+    },
+    {
+        "Hjemmeside": "https://www.minskole.no/kampen",
+        "Latitude": "58.972132",
+        "Longitude": "5.716442",
+        "skole": "Kampen skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/kannik",
+        "Latitude": "58.964407",
+        "Longitude": "5.722864",
+        "skole": "Kannik skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/kristianslyst",
+        "Latitude": "58.937474",
+        "Longitude": "5.735075",
+        "skole": "Kristianlyst skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/kvaleberg",
+        "Latitude": "58.944487",
+        "Longitude": "5.745595",
+        "skole": "Kvaleberg skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/kvernevik",
+        "Latitude": "58.966325",
+        "Longitude": "5.604738",
+        "skole": "Kvernevik skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/lassa",
+        "Latitude": "58.957328",
+        "Longitude": "5.694603",
+        "skole": "Lassa skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/lenden",
+        "Latitude": "58.969773",
+        "Longitude": "5.746894",
+        "skole": "Lenden skole og ressurssenter"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/lunde",
+        "Latitude": "59.001910",
+        "Longitude": "5.740156",
+        "skole": "Lunde skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/lenden/seksjon/457",
+        "Latitude": "59.004233",
+        "Longitude": "5.755628",
+        "skole": "Lundsvågen naturskole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/madlamark",
+        "Latitude": "58.949703",
+        "Longitude": "5.678294",
+        "skole": "Madlamark skole"
+    },
+    {
+        "Hjemmeside": "https://www.minskole.no/madlavoll",
+        "Latitude": "58.942698",
+        "Longitude": "5.690870",
+        "skole": "Madlavoll skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/nylund",
+        "Latitude": "58.964777",
+        "Longitude": "5.751061",
+        "skole": "Nylund skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/revheim",
+        "Latitude": "58.952239",
+        "Longitude": "5.642161",
+        "skole": "Revheim skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/roaldsoy",
+        "Latitude": "58.993310",
+        "Longitude": "5.763836",
+        "skole": "Roaldsøy skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/skeie",
+        "Latitude": "59.002382",
+        "Longitude": "5.726685",
+        "skole": "Skeie skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/smiodden",
+        "Latitude": "58.968396",
+        "Longitude": "5.607635",
+        "skole": "Smiodden skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/storhaug",
+        "Latitude": "58.966167",
+        "Longitude": "5.741133",
+        "skole": "Storhaug skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/svithun",
+        "Latitude": "58.964691",
+        "Longitude": "5.740410",
+        "skole": "St. Svithun skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/sunde",
+        "Latitude": "58.961695",
+        "Longitude": "5.620735",
+        "skole": "Sunde skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/tastarustaa",
+        "Latitude": "58.986345",
+        "Longitude": "5.691965",
+        "skole": "Tastarustå skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/tasta",
+        "Latitude": "58.983763",
+        "Longitude": "5.679844",
+        "skole": "Tasta skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/tastaveden",
+        "Latitude": "58.979680",
+        "Longitude": "5.701133",
+        "skole": "Tastaveden skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/teinaa",
+        "Latitude": "58.990000",
+        "Longitude": "5.682240",
+        "skole": "Teinå skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/tjensvoll",
+        "Latitude": "58.951250",
+        "Longitude": "5.704012",
+        "skole": "Tjensvoll skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/ullandhaug",
+        "Latitude": "58.950132",
+        "Longitude": "5.723977",
+        "skole": "Ullandhaug skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/vardenes",
+        "Latitude": "58.973756",
+        "Longitude": "5.723932",
+        "skole": "Vardenes skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/vassoy",
+        "Latitude": "58.997708",
+        "Longitude": "5.785826",
+		"skole": "Vassøy skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/vaulen",
+        "Latitude": "58.931107",
+        "Longitude": "5.732774",
+        "skole": "Vaulen skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/vaaland",
+        "Latitude": "58.962164",
+        "Longitude": "5.732761",
+        "skole": "Våland skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/baerland",
+        "Latitude": "58.775837",
+        "Longitude": "5.827090",
+		"skole": "Bærland skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/dirdal",
+        "Latitude": "58.816019",
+        "Longitude": "5.218247",
+		"skole": "Dirdal skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/gjesdal",
+        "Latitude": "58.769047",
+        "Longitude": "5.866946",
+		"skole": "Gjesdal ungdomsskole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/oltedal",
+        "Latitude": "58.826541",
+        "Longitude": "6.034768",
+		"skole": "Oltedal skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/solaas",
+        "Latitude": "58.773437",
+        "Longitude": "5.864214",
+		"skole": "Solås skole"
+    },
+    {
+        "Hjemmeside": "http://www.minskole.no/baerland",
+        "Latitude": "58.775837",
+        "Longitude": "5.827090",
+		"skole": "Ålgård Skole"
+    }
+    ]
+}
