@@ -1,3 +1,5 @@
+/* for å virke med innerHtml, bruker du :host /deep/ foran tag */
+
 ul {list-style-type: none;}
 
 body {
@@ -5,21 +7,27 @@ body {
     height: 100%;
     }
 
-    p {
-        height: 60vh;
+.kalender {height: 50vh;}
+
+table, td, th {
+    text-align: left;
+    border: 1px solid black;
+    vertical-align: text-top;
+    padding: 5px;
     }
 
-    table, td, th {
-    border: 1px solid black;
-    text-align: left;
-    }  
+table {
+    height: 100%;
+    width: 100%;
+}
+
+td {width: 14.28%;}
 
 /* mnd header */
 .mnd {
-    padding: 70px 25px;
+    padding: 15px 15px;
     width: 100%;
     background: #1abc9c;
-    height: 10vh;
     text-align: center;
 }
 
@@ -48,14 +56,9 @@ body {
     padding-top: 10px;
 }
 
-/* Highlight the "current" day */
+/* Highlight the "current" day 
 .days li .active {
     padding: 5px;
     background: #1abc9c;
     color: white !important
-}
-
-/* Til presentasjon av prosjekt */
-td:hover {
-    background-color: red;
-}
+}*/

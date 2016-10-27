@@ -9,9 +9,9 @@
 
 <div class="mnd"> 
   <ul>
-    <a routerLink="juli.html"> <li class="forrige"> &#10094; </li> </a>
-    <a routerLink="september.html"> <li class="neste">  &#10095; </li> </a>
-    <li>August<br>
+    <li class="forrige"> <a href"">&#10094;</a> </li>
+    <li class="neste"> <a href"">&#10095;</a> </li>
+    <li>September<br>
       <span style="font-size:18px">2016</span>
     </li>
   </ul>
@@ -19,7 +19,7 @@
 
 
 <div class="kalender">
-    <table *ngIf="datoer">
+    <table>
         <tr>
             <td *ngFor="let cell of ukeEn(8, 2016)" 
                 [attr.title]="cell.id">{{cell.text}}</td>
@@ -42,8 +42,6 @@
         </tr>
     </table>
   </div>
-
-  <p *ngFor="let dato of datoer"> {{dato.dato}}  </p>
 
 </body>
 </html>
