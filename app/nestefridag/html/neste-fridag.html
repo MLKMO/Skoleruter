@@ -3,12 +3,17 @@
     <h3 class="panel-title">Neste fridag for valgte skoler</h3>
   </div>
   <div class="panel-body">
-   <ul class="list-unstyled">
-       <li *ngFor="let fridager of nesteFridager">
-           <b>{{ fridager.dato | dato}}
-           {{ fridager.skole }},
-           {{ fridager.kommentar }}</b>
-       </li>
-   </ul>
+    <ul class="list-unstyled">
+      <li *ngFor="let fridager of nesteFridager">
+        <b>
+          {{ fridager.dato | dato}}
+          {{ fridager.skole }},
+          {{ fridager.kommentar }}
+        </b>
+      </li>
+    </ul>
+    <div class="midten">
+      <button class="btn btn-warning btn-sm" routerLink="/skoleliste" data-toggle="tab">Endre valgte skoler</button>
+    </div>
   </div>
 </div>

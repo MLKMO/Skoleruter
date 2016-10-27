@@ -1,7 +1,8 @@
-/*body {
+.midten {
   text-align: center;
  }
-*/
+
+
 #page-wrap {
   text-align: left;
   max-width: 1000px;
@@ -20,20 +21,3 @@
   border-radius: 0;
 }
 
-.endreknapp {
-
-  margin-right: 15px;
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  border-width:1px;
-  background-color: white;
-  -webkit-text-fill-color: black;
-  border-top-color: rgb(236, 240, 241);
-  border-right-color: rgb(236, 240, 241);
-  border-left-color: rgb(236, 240, 241);
-  border-bottom-color: rgb(236, 240, 241);
-}
-.endreknapp:hover{
-  border-width: 2px;
-  background-color: white;
-}

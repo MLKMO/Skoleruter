@@ -5,8 +5,9 @@ import { ValgteSkolerService } from './../valgteSkoler.service';
 
 @Component
 ({
+    moduleId: module.id,
     selector: 'neste-fridag',
-    templateUrl:'app/nestefridag/html/neste-fridag.html'
+    templateUrl:'html/neste-fridag.html'
 })
 export class NesteFridagComponent implements OnInit {
 
