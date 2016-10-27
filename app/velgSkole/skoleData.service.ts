@@ -7,7 +7,14 @@ import { SkoleRuteData} from './skoleRuteData';
 @Injectable()
 export class SkoleDataService {
   constructor (private http: Http) {}
-
+  
+  public getDato (): Observable<Array<any>>{
+    let dataUrl = '/app/velgSkole/datoer.json'; 
+    return this.http.get(dataUrl)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  } 
+  
   public getSkoler (): Observable<Array<Skole>>{
     let skoleUrl = 'app/velgSkole/skolerMedLokasjon.json'; 
     return this.http.get(skoleUrl)

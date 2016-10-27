@@ -10,6 +10,7 @@ export class ValgteSkolerService
     private valgteSkoleRuter: Array<any> = [];
     private skoler: Skole[];
     private skoleRute: SkoleRuteData[];
+    private datoer: Array<any> =[];
 
     public leggTilSkole(skole: string, indeks: number): void {
         for(let skolen of this.valgteSkoler) {
@@ -63,7 +64,16 @@ export class ValgteSkolerService
       return this.skoleRute;
     }
 
+    public getDatoer(): Array<any>  {
+		  return this.datoer;
+	  }
+
+	  public setDatoer(value: Array<any> ) {
+		  this.datoer = value;
+	  }
+
     public setLagreDataLokalt() {
+      //localStorage.setItem("datoer", JSON.stringify(this.datoer));
       localStorage.setItem("valgteSkoleRuter", JSON.stringify(this.valgteSkoleRuter));
       localStorage.setItem("skoler", JSON.stringify(this.skoler));
       localStorage.setItem("skoleRute", JSON.stringify(this.skoleRute));
@@ -74,8 +84,12 @@ export class ValgteSkolerService
       let hentvalgteSkoleRuter = localStorage.getItem("valgteSkoleRuter");
       this.valgteSkoleRuter = JSON.parse(hentvalgteSkoleRuter);
 
+      let hentdatoer = localStorage.getItem("datoer");
+      this.datoer = JSON.parse(hentdatoer);
+
       let hentskoler = localStorage.getItem("skoler");
       this.skoler = JSON.parse(hentskoler);
+      
 
       let hentskoleRute = localStorage.getItem("skoleRute");
       this.skoleRute = JSON.parse(hentskoleRute);
@@ -85,6 +99,11 @@ export class ValgteSkolerService
       if(this.valgteSkoler === null){ // Den kan ikke være null fordi da vil vi ikke kunne bruke push til å legge til skoler.
         this.valgteSkoler = [];
       }
+    }
+
+    public lagreDatoerLokalt(datoer: Array<any>){
+      this.datoer=datoer;
+       localStorage.setItem("datoer", JSON.stringify(this.datoer));
     }
 
     public fjernLagretData() {

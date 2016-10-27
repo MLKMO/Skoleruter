@@ -9,53 +9,54 @@
 
 <div class="mnd"> 
   <ul>
-    <a routerLink="juli.html"> <li class="forrige"> &#10094; </li> </a>
-    <a routerLink="september.html"> <li class="neste">  &#10095; </li> </a>
-    <li>August<br>
-      <span style="font-size:18px">2016</span>
+    <a (click)="minusMnd()"> <li class="forrige"> &#10094; </li> </a>
+    <a (click)="plussMnd()"> <li class="neste">  &#10095; </li> </a>
+    <li>{{maanedNavn[maaned-1]}}<br>
+      <span style="font-size:18px">{{aaret}}</span>
     </li>
   </ul>
 </div>
 
-
 <div class="kalender">
     <table *ngIf="datoer">
         <tr>
-            <td *ngFor="let cell of ukeEn(8, 2016)" 
+            <td *ngFor="let cell of ukeEn()" 
+                [attr.title]="cell.id">{{cell.text}}</td>
+                <div *ngIf="">
+                <div *ngFor=""></div>
+                </div>
+        </tr>
+        <tr>
+            <td *ngFor="let cell of ukeneEtter()" 
                 [attr.title]="cell.id">{{cell.text}}</td>
         </tr>
         <tr>
-            <td *ngFor="let cell of ukeneEtter(8, 2016)" 
+            <td *ngFor="let cell of ukeneEtter()" 
                 [attr.title]="cell.id">{{cell.text}}</td>
         </tr>
         <tr>
-            <td *ngFor="let cell of ukeneEtter(8, 2016)" 
+            <td *ngFor="let cell of ukeneEtter()" 
                 [attr.title]="cell.id">{{cell.text}}</td>
         </tr>
         <tr>
-            <td *ngFor="let cell of ukeneEtter(8, 2016)" 
-                [attr.title]="cell.id">{{cell.text}}</td>
-        </tr>
-        <tr>
-            <td *ngFor="let cell of ukeneEtter(8, 2016)" 
+            <td *ngFor="let cell of ukeneEtter()" 
                 [attr.title]="cell.id">{{cell.text}}</td>
         </tr>
     </table>
   </div>
 
-  <p *ngFor="let dato of datoer"> {{dato.dato}}  </p>
-
+  
 </body>
 </html>
 
-
-<!--<p class="kalender" [innerHtml]="kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016)"></p>
+<!--
+<p class="kalender" [innerHtml]="kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016)"></p>
 
 <p *ngFor="let rute of valgteSkoleRuter"> {{rute.dato}} {{rute.skole}} {{rute.kommentar}} </p>
+-->
 
-
-
-<!--<div class="kalender">
+<!--
+<div class="kalender">
   <table width="100%" height="100%"> 
     <tr> <th> Man <th> Tir <th> Ons <th> Tor <th> Fre <th> Lør <th> Søn </tr>
     <tr style="background-color:lightblue">
@@ -97,16 +98,16 @@
       </tr> 
     </table>
 </div>
+-->
+<!--
+{{kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016)}}
 
-
-<!--{{kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016)}}
-
-<!--<p *ngFor="let kalender of kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016)">
+<p *ngFor="let kalender of kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016)">
     {{kalender}}
 </p>
 
-<!--<p [innerHtml]="kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016)"></p>
-<!--
+<p [innerHtml]="kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016)"></p>
+
   <p> {{kalenderen(forsteUkedag('2016-08-01' | date:'E'), 8, 2016) }} </p>
 <p [innerHtml]="kalenderen(forsteUkedag('2016-09-01' | date:'E'), 9, 2016)"></p>
 <p [innerHtml]="kalenderen(forsteUkedag('2016-10-01' | date:'E'), 10, 2016)"></p>

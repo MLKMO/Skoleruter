@@ -26,6 +26,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
   private brukerPosisjonLatutude: number;
   private brukerPosisjonLongitude: number;
   private sorterKnappTrykketPa = false;
+  private datoer: Array<any>;               //Blir brukt til å lage en kalender basert på datoer
 
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService,
@@ -33,8 +34,10 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       private brukerPosisjonService: BrukerPosisjonService) {}
 
   ngOnInit() {
+   
     this.valgteSkolerService.getLagretData();
     if(this.valgteSkolerService.getSkoler() === null ){
+      this.setdatoene();
       this.getSkolerData();
       this.getSkoleRuteData();
     }else{
@@ -42,10 +45,13 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.mineSkoler = this.valgteSkolerService.getValgteSkoler();
       this.visEllerSkjulKnapper();
       this.skoleRute = this.valgteSkolerService.getSkoleRute();
+      this.datoer = this.valgteSkolerService.getDatoer();
     }
   }
 
+
   ngOnDestroy() {
+    this.valgteSkolerService.setDatoer(this.datoer);
     this.valgteSkolerService.setValgteSkoleRuter(this.valgteSkoleRuter);
     this.valgteSkolerService.setSkoler(this.skoler);
     this.valgteSkolerService.setSkoleRute(this.skoleRute);
@@ -57,6 +63,19 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     public getSkoleRute() {
       return this.skoleRute;
     }
+
+    private setdatoene() {
+    this.skoledataService.getDato()
+                     .subscribe(
+                       datoer => {this.datoer = datoer;
+                          this.valgteSkolerService.lagreDatoerLokalt(this.datoer);
+                       },
+                       error =>  this.errorMessage = <any>error);
+    }
+
+    public getDatoer(): Array<any>  {
+		  return this.datoer;
+	}
 
     private getSkolerData() {
     this.skoledataService.getSkoler()
@@ -154,4 +173,5 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.valgteSkoleRuter = [];
       this.skoleruteKnapp = false;
     }
+
   }

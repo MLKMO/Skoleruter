@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {SkoleDataService} from '../velgSkole/skoleData.service';
+import {Component} from '@angular/core';
 import { ValgteSkolerService } from '../valgteSkoler.service';
-import { SkoleRuteData } from '../velgSkole/skoleRuteData';
+import {SkoleRuteData} from '../velgSkole/skoleRuteData';
 import { DatoService } from './datoer.service';
 
 @Component({
@@ -9,22 +10,23 @@ import { DatoService } from './datoer.service';
     templateUrl: 'app/kalendervisning/html/kalender.html'
 })
 export class KalenderComponent {
+    constructor(private valgteSkolerService: ValgteSkolerService, private DatoService: DatoService,
+    private skoledataService: SkoleDataService) {}
 
     private skoleRute: Array<SkoleRuteData>; 
-    public datoer: any[] = [];
-
-    constructor(private valgteSkolerService: ValgteSkolerService, private DatoService: DatoService) {
-        /*this.DatoService
-        .getDato()
-        .subscribe(datoer => { this.datoer = datoer; });*/
-    }
+    public datoer: Array<Cell> = [];
+    private errorMessage: string;
+    private maaned: number=8;
+    private aaret:number=2016;
+    private maanedNavn: Array <string> = [
+        'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni',
+        'Juli', 'August', 'September','Oktober', 'November', 'Desember'
+    ];
 
     ngOnInit() {
-        this.DatoService
-            .getDato()
-            .subscribe(datoer => { this.datoer = datoer; } );
-
         this.valgteSkolerService.getLagretData();
+        console.log(this.valgteSkolerService.getDatoer());
+        this.datoer=this.valgteSkolerService.getDatoer();
         this.skoleRute = this.valgteSkolerService.getSkoleRute();
     }
 
@@ -39,15 +41,18 @@ export class KalenderComponent {
         } else {
             dager = 31
             if (mnd == 2) {
-                if (aar / 4 != 0) {
+                if (aar % 4 != 0) {
                     dager = 28
+                    console.log("Hei");
+                    
                 } else {
-                    if (aar / 100 != 0) {
+                    if (aar % 100 != 0) {
                         dager = 29
                     } else {
-                        if (aar / 400 != 0) {
+                        if (aar % 400 != 0) {
                             dager = 28
                         } else {
+                             
                             dager = 29
                         }
                     }
@@ -57,24 +62,14 @@ export class KalenderComponent {
         return dager;
             }
 
-    /*getUkeEn(mnd: number, aar: number) :Cell[] {
-        var returner: any;
-        this.DatoService
-            .getDato()
-            .subscribe(datoer => { this.datoer = datoer;
-            returner = this.ukeEn(mnd, aar); } );
-        return returner;
-    }*/
+    ukeEn() :Array<Cell> {
 
-    // Returnerer kalender på tabellform
-    ukeEn(mnd: number, aar: number) :Cell[] {
-        var cells: Array<Cell> = [];
+        let cells: Array<Cell> = [];
         this.antallRuter = 0;
-        for (this.j = 1; this.j <= this.antallDager(mnd, aar); this.j++) {
-            var cell = new Cell;
-            console.log(this.datoer[this.j]);
-            cell.id = this.datoer[this.j];
-            cell.text = this.j;       
+        for (this.j = 0; this.j < this.antallDager(this.maaned, this.aaret); this.j++) {
+            let cell = new Cell();
+            cell.id = this.datoer[this.j].dato;
+            cell.text = this.j+1;       
             cells.push(cell);
             this.antallRuter++;
             this.j = this.j;
@@ -84,13 +79,13 @@ export class KalenderComponent {
         }
         return cells;
     }
-
-  ukeneEtter(mnd: number, aar: number) :Cell[] {
+   
+  ukeneEtter() :Cell[] {
         var cells: Array<Cell> = [];
-        for (this.j += 1; this.j <= this.antallDager(mnd, aar); this.j++) {
+        for (this.j+=1 ; this.j < this.antallDager(this.maaned, this.aaret); this.j++) {
             var cell = new Cell;
-            cell.id = this.datoer[this.j];
-            cell.text = this.j;       
+            cell.id = this.datoer[this.j].dato;
+            cell.text = this.j+1;       
             cells.push(cell);
             this.antallRuter++;
             this.j = this.j;
@@ -98,6 +93,7 @@ export class KalenderComponent {
                 break;
             }
         }
+       
         return cells;
     }
 
@@ -143,12 +139,43 @@ export class KalenderComponent {
         }
         return tomme;
     }
+
+    plussMnd(){
+        if(this.maaned === 12){
+            this.maaned=1;
+            this.aaret++;
+        }else{
+            this.maaned++;
+        }
+
+        
+    }
+    minusMnd(){
+        if(this.maaned===1){
+            this.maaned=12;
+            this.aaret--;
+        }else{
+            this.maaned--;
+        }
+    }
 }
 
-class Cell {
+export class Cell {
     id: string;
     text: number;
+    dato: string;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
     // Returnerer kalender på tabellform
