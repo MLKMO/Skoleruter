@@ -31,7 +31,7 @@ export class NesteFridagService implements OnInit
 
     finnNesteFridag(valgteSkoleruter:Array<any>)
     {
-
+        
         for (var i = 0; i < valgteSkoleruter.length; i++)
         {
             this.skoleAar = parseInt(valgteSkoleruter[i].dato.slice(0,4))
@@ -51,12 +51,20 @@ export class NesteFridagService implements OnInit
                 else if(this.skoleMaaned > this.dagensMaaned)
                 {
                      this.skoler.push(valgteSkoleruter[i].skole);
-                     this.nesteFridag.push(valgteSkoleruter[i])   
+                     this.nesteFridag.push(valgteSkoleruter[i]) 
                 }
-
             }
         }
-        return this.nesteFridag;
+        // Sorterer etter dato
+        var nesteFridagSort = this.nesteFridag.slice(0);
+        nesteFridagSort.sort(function(a,b) 
+        {
+            var x = a.dato;
+            var y = b.dato;
+            return x < y ? -1 : x > y ? 1 : 0;
+        });
+
+        return nesteFridagSort;
     }
 
     tomNesteFridagListe()
