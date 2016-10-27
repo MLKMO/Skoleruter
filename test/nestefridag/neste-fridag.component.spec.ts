@@ -5,7 +5,7 @@ import { DebugElement }    from '@angular/core';
 import { NesteFridagComponent } from './../../app/nestefridag/neste-fridag.component';
 import { ValgteSkolerService } from './../../app/valgteSkoler.service';
 import { NesteFridagService } from './../../app/nestefridag/neste-fridag.service';
-import { DatoPipe } from './../../app/nestefridag/dato.pipe';
+import { DatoPipe } from './../../app/dato.pipe';
 
 let comp:    NesteFridagComponent;
 let fixture: ComponentFixture<NesteFridagComponent>;
