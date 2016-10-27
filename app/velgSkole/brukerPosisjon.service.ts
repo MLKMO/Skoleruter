@@ -2,35 +2,18 @@ import { Injectable } from '@angular/core';
 import { Observer } from 'rxjs/Observer';
 import { Observable } from 'rxjs/Observable';
 import { Skole } from './skole';
-import { Http, Response } from '@angular/http';
+
 
 @Injectable() export class BrukerPosisjonService {
-  constructor (private http: Http) {}
-
-  private skoler: Array<Skole> = []; //Array der skolene blir lagret i rekkefølge basert på avstand fra brukerposisjon
-
-  public sorterSkolerEtterAvstand(brukerLat: number, brukerLon: number, skolerMedLokasjon: Array<Skole>, skoler: Array<Skole>): Array<Skole> {
+  
+  public sorterSkolerEtterAvstand(brukerLat: number, brukerLon: number, skoler: Array<Skole>): Array<Skole> {
       //Lagrer avstand fra brukerposisjon på skolene i skolerMedLokasjon
-      for(let skole of skolerMedLokasjon){
+      for(let skole of skoler){
         skole.avstand = this.distanseMellomToPunkter(brukerLat, brukerLon, skole.Latitude, skole.Longitude);
       }
-
       //Sorterer skolene etter avstand ved hjelp av en mergesort algoritme.
-      skolerMedLokasjon = this.mergesort(skolerMedLokasjon);
-
-      //Setter den arrayen med ferrest elementer ytterst for å unngå index out of bounds. (Skolene fra gjesdal mangler i denne arrayen)
-      for (let skole of skolerMedLokasjon) {
-        //skoleObjekt blir brukt til lagring av skolenavn og avstand fra skolerMedLokasjon. Disse blir tilslutt lagret i this.skoler array
-        let skoleObjekt = new Skole();
-        skoleObjekt.avstand = skole.avstand ;
-        skoleObjekt.skole = skole.Skolenavn;
-        for (let skolerlok of skoler) {
-          if(skolerlok.skole === skole.Skolenavn) {
-            this.skoler.push(skoleObjekt);
-          }
-        }
-      }
-      return this.skoler;
+      skoler = this.mergesort(skoler);
+      return skoler;
   }
 
   private mergesort(skoler: Array<Skole>): Array<Skole> {
@@ -57,6 +40,7 @@ import { Http, Response } from '@angular/http';
         resultat.push(hoyre.shift());
     return resultat;
   }
+
   //Bruker haversine formel til å beregne avstand mellom to punkter
   private distanseMellomToPunkter(lat1: number, lon1: number, lat2: number, lon2: number): number {
       let R = 6373; // Jordens radius i km
@@ -73,10 +57,11 @@ import { Http, Response } from '@angular/http';
       let d = R * c;
       return Math.round(d * 10) / 10;
   }
+  
   //Henter brukerposisjon basert på HTML5 geolocation API
   public getBrukerPosisjon(): Observable<Position> {
         return new Observable((observer: Observer<Position>) => {
-            // Invokes getCurrentPosition method of Geolocation API.
+            // Kaller getCurrentPosition method fra Geolocation API.
             navigator.geolocation.getCurrentPosition(
                 (position: Position) => {
                     observer.next(position);

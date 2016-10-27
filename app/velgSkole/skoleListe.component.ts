@@ -25,7 +25,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
   private skoleruteKnapp = false;            // Boolsk variabel som styrer visning av knapper (Vis skolerute og Fjern Skoler).
   private brukerPosisjonLatutude: number;
   private brukerPosisjonLongitude: number;
-  private skolerMedLokasjon: Array<Skole>;
   private sorterKnappTrykketPa = false;
 
   constructor (private skoledataService: SkoleDataService,
@@ -34,8 +33,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       private brukerPosisjonService: BrukerPosisjonService) {}
 
   ngOnInit() {
-
-    this.getSkolerMedLokasjon();
     this.valgteSkolerService.getLagretData();
     if(this.valgteSkolerService.getSkoler() === null ){
       this.getSkolerData();
@@ -75,13 +72,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
                            error =>  this.errorMessage = <any>error);
     }
 
-    private getSkolerMedLokasjon() {
-        this.skoledataService.getSkolerMedLokasjon()
-                         .subscribe(
-                           skolerMedLokasjon => this.skolerMedLokasjon = skolerMedLokasjon,
-                           error =>  this.errorMessage = <any>error);
-    }
-
     private getBrukerPosisjon() {
         if (navigator.geolocation) {
             this.brukerPosisjonService.getBrukerPosisjon().forEach(
@@ -89,12 +79,11 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
                         this.brukerPosisjonLatutude = position.coords.latitude;
                         this.brukerPosisjonLongitude =  position.coords.longitude;
                         this.skoler = this.brukerPosisjonService.sorterSkolerEtterAvstand(this.brukerPosisjonLatutude,
-                          this.brukerPosisjonLongitude, this.skolerMedLokasjon, this.skoler);
+                          this.brukerPosisjonLongitude, this.skoler);
                           this.sorterKnappTrykketPa = true;
-                          console.log(this.skoler);
             })
         } else {
-            alert("Du må bruke en støttet nettleser for å sortere lokasjon");
+            alert("Du må bruke en støttet nettleser for å sortere etter lokasjon");
         }
     }
 

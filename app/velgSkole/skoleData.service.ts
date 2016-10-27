@@ -9,22 +9,15 @@ export class SkoleDataService {
   constructor (private http: Http) {}
 
   public getSkoler (): Observable<Array<Skole>>{
-    let skoleUrl = 'app/velgSkole/skolenavn-felles-2016-17.json'; // Liste med skoler i stavanger
+    let skoleUrl = 'app/velgSkole/skolerMedLokasjon.json'; 
     return this.http.get(skoleUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   public getSkoleRuteData (): Observable<Array<SkoleRuteData>> {
-    let skoleRuteUrl = 'app/velgSkole/skolerute-felles-2016-17.json'; // Liste med skoler i stavanger
+    let skoleRuteUrl = 'app/velgSkole/skolerute-felles-2016-17.json'; 
     return this.http.get(skoleRuteUrl)
-                    .map(this.extractData)
-                    .catch(this.handleError);
-  }
-
-  public getSkolerMedLokasjon (): Observable<Array<Skole>> {
-    let skolerMedLokasjonUrl = 'app/velgSkole/skoler.json'; // Liste med skoler i stavanger
-    return this.http.get(skolerMedLokasjonUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

@@ -31,7 +31,7 @@
   }
 
   .valgteSkolerListe{
-    bottom:6em!important;
+    bottom:2em!important;
     position: fixed;
     z-index: 150;
     padding:0!important;
@@ -133,6 +133,9 @@ p.list-group-item.active.right-inner-addon.elementTrykketPa{
 }
 .kmKnapp{
   font: 200 1em Helvetica, Verdana, sans-serif;
+}
+.mellomRom{
+  height:1em;
 }
 
 @media screen and (min-width: 768px) {

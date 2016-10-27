@@ -15,23 +15,21 @@
     </div>
 </div>
 
-<!-- Knapp for sortering av liste -->
-<div  class="valgteSkolerListe col-xs-offset-4 col-xs-8 col-sm-offset-6 col-sm-4 col-md-offset-6 col-md-4 col-lg-offset-5 col-lg-3">
-  <button *ngIf="!sorterKnappTrykketPa" id="sorterKnapp" class="btn btn-danger knapp col-xs-12" (click)="getBrukerPosisjon()"><b>Sorter etter nærmeste</b></button>
-</div>
-
 <!-- Viser knapper(Vis Skolerute og fjernSkole) og de valgte skolene -->
-<div *ngIf="skoleruteKnapp">
-  <div  class="valgteSkolerListe col-xs-offset-4 col-xs-8 col-sm-offset-6 col-sm-4 col-md-offset-6 col-md-4 col-lg-offset-5 col-lg-3">
+<div  class="valgteSkolerListe col-xs-offset-4 col-xs-8 col-sm-offset-6 col-sm-4 col-md-offset-6 col-md-4 col-lg-offset-5 col-lg-3">
+    
+  <div *ngIf="skoleruteKnapp">
+    <button class="btn btn-danger knapp col-xs-12" (click)="fjernValgteSkoler()"><b>Fjern Valg</b></button>
     <div *ngFor="let skole of skoler">
-      <div  class="btn btn-info col-xs-12 " *ngIf="skole.TrykketPa" (click) ="leggTilSkole(skole)">
+      <div  class="btn btn-primary col-xs-12 " *ngIf="skole.TrykketPa" (click) ="leggTilSkole(skole)">
         <p class="valgteSkoler" >{{skole.skole}}</p>
         <span class="glyphicon glyphicon-trash soppelkasse" ></span>
       </div>
     </div>
-      <button class="btn btn-danger knapp col-xs-6" (click)="fjernValgteSkoler()"><b>Fjern Valg</b></button>
-      <button class="btn btn-success knapp col-xs-6" (click)="gaVidereTilSkoleruter()"><b>Vis Skolerute</b></button>
+      <button class="btn btn-success knapp col-xs-12" (click)="gaVidereTilSkoleruter()"><b>Vis Skolerute</b></button>
   </div>
+      <div class="col-xs-12 mellomRom"></div>
+      <button *ngIf="!sorterKnappTrykketPa" id="sorterKnapp" class="btn btn-info knapp col-xs-12" (click)="getBrukerPosisjon()"><b>Sorter etter nærmeste</b></button>
 
 </div>
 
