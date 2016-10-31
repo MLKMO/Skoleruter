@@ -5,18 +5,19 @@
         Velg skoler ved bruk av søkefeltet nedenfor eller ved å trykke på de skolene du er interessert i ved å velge
         fra listen.
     </p>
-    <div id="sokeFeltDiv" class="col-sm-offset-3 col-sm-6 col-xs-offset-1 col-xs-10">
+    <div id="sokeFeltDiv" class="col-sm-offset-3 col-sm-6 col-xs-12"  (click)="sokefeltTilToppen()">
       <i class="glyphicon glyphicon-search"></i>
       <input type="text"
            id="sokefelt"
            class="form-control "
            placeholder=" Søk . . ."
-          [(ngModel)]="skolenavn" />
+          [(ngModel)]="skolenavn"
+          />
     </div>
 </div>
 
 <!-- Viser knapper(Vis Skolerute og fjernSkole) og de valgte skolene -->
-<div  class="valgteSkolerListe col-xs-offset-4 col-xs-8 col-sm-offset-6 col-sm-4 col-md-offset-6 col-md-4 col-lg-offset-5 col-lg-3">
+<div  class="valgteSkolerListe col-xs-offset-4 col-xs-8 col-sm-offset-7 col-sm-4 col-md-offset-6 col-md-4 col-lg-offset-5 col-lg-3">
     
   <div *ngIf="skoleruteKnapp">
     <button class="btn btn-danger knapp col-xs-12" (click)="fjernValgteSkoler()"><b>Fjern Valg</b></button>
@@ -28,17 +29,20 @@
     </div>
       <button class="btn btn-success knapp col-xs-12" (click)="gaVidereTilSkoleruter()"><b>Vis Skolerute</b></button>
   </div>
-      <div class="col-xs-12 mellomRom"></div>
-      <button *ngIf="!sorterKnappTrykketPa" id="sorterKnapp" class="btn btn-info knapp col-xs-12" (click)="getBrukerPosisjon()"><b>Sorter etter nærmeste</b></button>
-
+      <div class="col-xs-12 sorterKnapp">
+        <div class="col-xs-12 mellomRom"></div>
+        <div *ngIf="lasterBrukerlokasjon" class="loader col-xs-offset-5"></div>
+        <button *ngIf="!sorterKnappTrykketPa" class="btn btn-info knapp col-xs-12" (click)="getBrukerPosisjon()"><b>Sorter etter nærmeste</b></button>
+      </div>
 </div>
 
 <!-- Viser liste med skoler -->
 <!-- col-sm-offset-3 skapte problemer med safari ved sortering -->
   <table class="list-group col-sm-offset-3 col-sm-6 col-xs-12" *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
+    <tr *ngIf=" skole === -1 " class="liste alert alert-danger">Fant ingen skole med det navnet</tr>   
     <tr *ngIf="!skole.TrykketPa">
       <td class="list-group-item liste col-sm-offset-1 col-xs-8 col-sm-7" (click) ="leggTilSkole(skole)">{{skole.skole}}</td>
-      <td class="kmKnapp col-xs-4 col-sm-4"*ngIf="sorterKnappTrykketPa"> {{skole.avstand}} Km</td>
+      <td class="kmKnapp col-xs-4 col-sm-4"*ngIf="visKm"> <p class="col-xs-2">{{skole.avstand}}</p> <p class="col-xs-2"*ngIf=" skole !== -1 ">Km</p></td>
     </tr>
   </table>
 
