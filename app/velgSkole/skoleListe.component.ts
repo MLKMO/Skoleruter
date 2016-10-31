@@ -16,25 +16,26 @@ import { SkoleRuteData } from './skoleRuteData';
 })
 
 export class SkoleListeComponent implements OnInit, OnDestroy {
-  private errorMessage: string;              // Feilmelding som kan oppstå ved henting av data fra file eller server.
-  private skoler: Array<Skole>;                   // Skole objekter som brukeren kan velge i mellom.
-  private skolenavn: string = '';            // String som blir hentet fra søkefelt.
-  private mineSkoler: Array<string>;         // Valgte skoler. Brukes ogå som boolean for visning av liste etc.
-  private skoleRute: Array<SkoleRuteData>;        // Brukes til å hente ut skoleruter for valgte skoler.
-  private valgteSkoleRuter: Array<any> = []; // Data som skal brukes i kalender og liste.
-  private skoleruteKnapp = false;            // Boolsk variabel som styrer visning av knapper (Vis skolerute og Fjern Skoler).
+  private errorMessage: string;                    // Feilmelding som kan oppstå ved henting av data fra file eller server.
+  private skoler: Array<Skole>;                    // Skole objekter som brukeren kan velge i mellom.
+  private skolenavn: string = '';                  // String som blir hentet fra søkefelt.
+  private mineSkoler: Array<string>;               // Valgte skoler. Brukes ogå som boolean for visning av liste etc.
+  private skoleRute: Array<SkoleRuteData>;         // Brukes til å hente ut skoleruter for valgte skoler.
+  private valgteSkoleRuter: Array<any> = [];       // Data som skal brukes i kalender og liste.
+  private skoleruteKnapp = false;                  // Boolsk variabel som styrer visning av knapper (Vis skolerute og Fjern Skoler).
   private brukerPosisjonLatutude: number;
   private brukerPosisjonLongitude: number;
   private sorterKnappTrykketPa = false;
-  private datoer: Array<any>;               //Blir brukt til å lage en kalender basert på datoer
-
+  private datoer: Array<any>;                      //Blir brukt til å lage en kalender basert på datoer.
+  private lasterBrukerlokasjon: boolean = false;   //Brukes til å vise loading animasjon når bruker posisjon innhentes.
+  private visKm: boolean = false;
+  
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService,
       private router: Router,
       private brukerPosisjonService: BrukerPosisjonService) {}
 
   ngOnInit() {
-   
     this.valgteSkolerService.getLagretData();
     if(this.valgteSkolerService.getSkoler() === null ){
       this.setdatoene();
@@ -49,7 +50,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
   }
 
-
   ngOnDestroy() {
     this.valgteSkolerService.setDatoer(this.datoer);
     this.valgteSkolerService.setValgteSkoleRuter(this.valgteSkoleRuter);
@@ -57,6 +57,15 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     this.valgteSkolerService.setSkoleRute(this.skoleRute);
     this.valgteSkolerService.setLagreDataLokalt();
   }
+
+    public sokefeltTilToppen() {
+      if(window.innerWidth < 769) {
+        let sokefelt = document.getElementById("sokeFeltDiv");
+        let skrollTilToppen = sokefelt.offsetTop;
+        window.scrollTo(0, skrollTilToppen);
+      }
+    }
+
     public getSkoler() {
       return this.skoler;
     }
@@ -92,6 +101,8 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
 
     private getBrukerPosisjon() {
+        this.sorterKnappTrykketPa = true;
+        this.lasterBrukerlokasjon = true;
         if (navigator.geolocation) {
             this.brukerPosisjonService.getBrukerPosisjon().forEach(
                 (position: Position) => {
@@ -99,7 +110,8 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
                         this.brukerPosisjonLongitude =  position.coords.longitude;
                         this.skoler = this.brukerPosisjonService.sorterSkolerEtterAvstand(this.brukerPosisjonLatutude,
                           this.brukerPosisjonLongitude, this.skoler);
-                          this.sorterKnappTrykketPa = true;
+                          this.lasterBrukerlokasjon = false;
+                          this.visKm = true;
             })
         } else {
             alert("Du må bruke en støttet nettleser for å sortere etter lokasjon");
