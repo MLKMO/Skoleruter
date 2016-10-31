@@ -31,7 +31,8 @@
   </div>
       <div class="col-xs-12 sorterKnapp">
         <div class="col-xs-12 mellomRom"></div>
-        <div *ngIf="lasterBrukerlokasjon" class="loader col-xs-offset-5"></div>
+        <div *ngIf="lasterBrukerlokasjon" id="animasjon"class="loader col-xs-offset-5"></div>
+        <p *ngIf="lasterBrukerlokasjon" id="stedsinfo" > Stedstjenester må være aktivert for at dette skal fungere.</p>
         <button *ngIf="!sorterKnappTrykketPa" class="btn btn-info knapp col-xs-12" (click)="getBrukerPosisjon()"><b>Sorter etter nærmeste</b></button>
       </div>
 </div>
