@@ -22,6 +22,8 @@ import { ListeComponent } from './listevisning/liste.component';
 import { SkoleruteModule } from './routing/skoleruter.module';
 import { NesteFridagModule } from './nestefridag/neste-fridag.module';
 import { ListeModule } from './listevisning/liste.module';
+import { LeggIKalenderComponent } from './leggikalender/legg-i-kalender.component';
+import { LeggIKalenderService } from './leggikalender/legg-i-kalender.service';
 
 @NgModule({
   imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule, HttpModule, JsonpModule, NesteFridagModule, ListeModule],
@@ -36,8 +38,9 @@ import { ListeModule } from './listevisning/liste.module';
     SkoleListeFilterPipe,
     NesteFridagComponent,
     DatoPipe,
+    LeggIKalenderComponent
   ],
-    providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService ],
+    providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService, LeggIKalenderService ],
     bootstrap: [ AppComponent ], 
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 
