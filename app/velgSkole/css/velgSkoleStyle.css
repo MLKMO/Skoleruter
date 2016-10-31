@@ -129,6 +129,11 @@ p.list-group-item.active.right-inner-addon.elementTrykketPa{
 
 /*Ekstra regler for skjermer med minimum 768 px i bredden */
 @media screen and (min-width: 768px) {
+  .sorterKnapp{
+    padding-left: 0!important;
+    padding-right:0!important;
+
+  }
   .list-group-item:hover{
     font-size: 1.3em!important;
     padding: 6px 15px;
