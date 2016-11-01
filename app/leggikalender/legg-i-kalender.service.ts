@@ -54,4 +54,13 @@ export class LeggIKalenderService
 
         icalFil = "";
     }
+
+    public tomAlleVariabler()
+    {
+        this.icalKropp = "";
+        this.icalFil = "";
+        this.data = null; 
+        this.dagensDato = null;
+
+    }
 }
