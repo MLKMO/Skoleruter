@@ -1,7 +1,8 @@
-/*body {
+.midten {
   text-align: center;
  }
-*/
+
+
 #page-wrap {
   text-align: left;
   max-width: 1000px;
@@ -20,20 +21,30 @@
   border-radius: 0;
 }
 
-.endreknapp {
 
-  margin-right: 15px;
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  border-width:1px;
-  background-color: white;
-  -webkit-text-fill-color: black;
-  border-top-color: rgb(236, 240, 241);
-  border-right-color: rgb(236, 240, 241);
-  border-left-color: rgb(236, 240, 241);
-  border-bottom-color: rgb(236, 240, 241);
+.loader {
+    border: 0.5em solid #f3f3f3; /* Light grey */
+    border-top: 0.5em solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
 }
-.endreknapp:hover{
-  border-width: 2px;
-  background-color: white;
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
+
+
+
+
+
