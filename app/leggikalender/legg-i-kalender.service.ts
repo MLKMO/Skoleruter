@@ -7,28 +7,35 @@ export class LeggIKalenderService
     public icalKropp: string = "";
     public icalFil:string;
     public data = new Blob([], {type: 'text/ics'});
-    private dagensDato = new Date();
+    private dagensDato: Date;
 
     private icalStart: string = "BEGIN:VCALENDAR\n";
     private icalSlutt: string = "END:VCALENDAR\n";
     private icalElementStart: string = "BEGIN:VEVENT\n"
     private icalElementStopp: string = "END:VEVENT\n"
     private versjon: string = "VERSION:2.0\n"
-    private periode: string = "PRODID:-//hacksw/handcal//NONSGML v1.0//EN\n"
+    private periode: string = "PRODID:skoleruter.top/v1\n"
     private uid: string = "UID:uid1@example.com\n";
-    private organiserer: string = "ORGANIZER;CN=Skoleruter\n";
+    private organiserer: string = "ORGANIZER:CN=Skoleruter\n";
     private calscale: string = "CALSCALE:GREGORIAN\n";
+    private beskrivelse: string = "DESCRIPTION:";
 
     public LagICalKropp(dato:string, skole:string, kommentar:string)
     {
+        let skoleUtenMellomrom = this.fjernMellomrom(skole);
+        let kommentarUtenMellomrom = this.fjernMellomrom(kommentar);
+        this.dagensDato = new Date();
+
         let icalElement = 
         this.icalKropp + "" + 
         this.icalElementStart + "" + 
-        "DTSTAMP:" + "" + this.dagensDato + "\n" + 
+        this.beskrivelse + skole + ": " + kommentar + "\n" +
+        "DTSTAMP:" + "" + String(this.dagensDato)+ "\n" + 
         this.organiserer + "" + 
         "DTSTART:" + dato + "T060000Z\n" + 
-        "DTEND:" + dato + "T150000Z\n" + 
-        "SUMMARY:" + skole + ": " + kommentar + "\n" + 
+        "DTEND:"+ dato + "T150000Z\n" + 
+        "SUMMARY:" + skole + " " + kommentar + "\n" +
+        "UID:" + dato + "" + skoleUtenMellomrom + "" + kommentarUtenMellomrom + "@skoleruter.top\n" +  
         this.icalElementStopp;
         
         this.icalKropp = icalElement;
@@ -39,8 +46,8 @@ export class LeggIKalenderService
     {
         this.icalFil = 
         this.icalStart + "" + 
+        this.periode + "" + 
         this.versjon + "" + 
-        //this.periode + "" + 
         this.icalKropp + "" + 
         this.icalSlutt;
         
@@ -53,6 +60,12 @@ export class LeggIKalenderService
         saveAs(blob, "Skoleruter.ics");
 
         icalFil = "";
+    }
+
+    private fjernMellomrom(setning:string)
+    {
+        setning = setning.replace(/\s+/g, '');
+        return setning
     }
 
     public tomAlleVariabler()
