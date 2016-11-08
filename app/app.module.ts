@@ -10,7 +10,6 @@ import { AppComponent }  from './app.component';
 
 import { SkoleListeComponent} from './velgSkole/skoleListe.component';
 import { SkoleruterComponent } from './routing/skoleruter.component';
-import { InfoComponent } from './routing/info.component';
 import { PageNotFoundComponent} from './page-not-found.component';
 import { NavbarComponent } from './navbar/navbar.component'
 import { SkoleListeFilterPipe} from'./velgSkole/skoleListeFilter.pipe';
@@ -24,15 +23,26 @@ import { NesteFridagModule } from './nestefridag/neste-fridag.module';
 import { ListeModule } from './listevisning/liste.module';
 import { LeggIKalenderComponent } from './leggikalender/legg-i-kalender.component';
 import { LeggIKalenderService } from './leggikalender/legg-i-kalender.service';
+import { InfoModule } from './info/info.module';
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, routing, SkoleruteModule, RouterModule, HttpModule, JsonpModule, NesteFridagModule, ListeModule],
+  imports: 
+  [ BrowserModule, 
+  FormsModule, 
+  routing, 
+  SkoleruteModule, 
+  RouterModule, 
+  HttpModule, 
+  JsonpModule, 
+  NesteFridagModule, 
+  ListeModule,
+  InfoModule
+  ],
   declarations: 
   [ 
     AppComponent, 
     SkoleListeComponent, 
     SkoleruterComponent,
-    InfoComponent,
     PageNotFoundComponent, 
     NavbarComponent, 
     SkoleListeFilterPipe,

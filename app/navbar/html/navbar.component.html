@@ -1,12 +1,19 @@
 <nav class="navbar navbar-default litenMargin">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/skoleliste"><b>Skoleruter for Stavanger -og Gjesdal kommune</b></a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/skoleliste"><b>Skoleruter for Stavanger og Gjesdal</b></a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="skolerValgt"><a routerLink="/last-ned-kalender"><b>Last ned kalender</b></a></li>
-        <li><a routerLink="/info"><b>Info</b></a></li>
+        <li><a routerLink="/info"><b>Info</b> <span class="sr-only">(current)</span> </a></li>
       </ul>
     </div>
   </div>

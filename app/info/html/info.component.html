@@ -1,0 +1,28 @@
+
+<h1>Info</h1>
+<div style="margin-bottom: 1cm;">
+<p> Her finner du informasjon, hjelp og tips om denne applikasjonen. </p>
+</div>
+
+<div style="width:100%;"> 
+    <div style="float:left; width:25%;">
+        <div class="list-group">
+            <a routerLink="/info/omapplikasjon" class="list-group-item" [routerLinkActive]="['active']">
+                Om applikasjonen
+            </a>
+            <a routerLink="/info/velgeskoler" class="list-group-item" [routerLinkActive]="['active']">
+                Velg skoler
+            </a>
+            <a routerLink="/info/lagring"  class="list-group-item" [routerLinkActive]="['active']">
+                Lagring
+            </a>
+            <a routerLink="/info/lastnedkalender" class="list-group-item" [routerLinkActive]="['active']">
+                Last ned kalender
+            </a>
+        </div>
+    </div>
+    <div style="float:right; width:70%;">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+

@@ -4,7 +4,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { NavbarComponent } from './navbar/navbar.component'
 import { SkoleListeComponent} from './velgSkole/skoleListe.component';
 import { SkoleruterComponent } from './routing/skoleruter.component';
-import { InfoComponent } from './routing/info.component';
+import { InfoComponent } from './info/info.component';
 import { PageNotFoundComponent} from './page-not-found.component';
 import { LeggIKalenderComponent } from './leggikalender/legg-i-kalender.component'
 
@@ -15,7 +15,7 @@ const appRoutes: Routes =
     {path: 'info',       component: InfoComponent},
     {path: 'last-ned-kalender', component: LeggIKalenderComponent},
     {path: '', redirectTo: '/skoleliste', pathMatch: 'full'},
-    {path: '**',         component: PageNotFoundComponent} // Midlertidlig navn
+    {path: '**',         component: PageNotFoundComponent} 
 ];
 
 export const appRoutingProviders: any[] =
