@@ -7,6 +7,8 @@
 </head>
 <body>
 
+<div (touchstart)="touchStart($event);" (touchend)="touchEnd($event);" (touchmove)="touchMove($event);" (touchcancel)="touchCancel($event);">
+
 <div class="mnd"> 
   <ul>
     <a (click)="minusMnd()"> <li class="forrige"> &#10094; </li> </a>
@@ -20,31 +22,92 @@
 <div class="kalender">
     <table *ngIf="datoer">
         <tr>
-            <td *ngFor="let cell of ukeEn()" 
-                [attr.title]="cell.id">{{cell.text}}</td>
-                <div *ngIf="">
-                <div *ngFor=""></div>
+          <th>Man</th>
+          <th>Tir</th>
+          <th>Ons</th>
+          <th>Tor</th>
+          <th>Fre</th>
+          <th>Lør</th>
+          <th>Søn</th>
+        </tr>
+        <tr>
+            <td *ngFor="let cell of ukeEn()">
+                {{cell.text}}
+                <div class="outer" *ngIf="datoerContains(cell) != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                    {{circle.skole}} <br>
+                    {{circle.kommentar}} <br>
+                    SFO: {{circle.sfodag}}
+                  </div>
+
                 </div>
+            </td>            
         </tr>
         <tr>
-            <td *ngFor="let cell of ukeneEtter()" 
-                [attr.title]="cell.id">{{cell.text}}</td>
+            <td 
+                *ngFor="let cell of ukeneEtter()">
+                {{cell.text}}
+                <div class="outer" *ngIf="datoerContains(cell) != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                    {{circle.skole}} <br>
+                    {{circle.kommentar}} <br>
+                    SFO: {{circle.sfodag}}
+                  </div>
+
+                </div>
+            </td>            
         </tr>
         <tr>
-            <td *ngFor="let cell of ukeneEtter()" 
-                [attr.title]="cell.id">{{cell.text}}</td>
+            <td 
+                *ngFor="let cell of ukeneEtter()">
+                {{cell.text}}
+                <div class="outer" *ngIf="datoerContains(cell) != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                    {{circle.skole}} <br>
+                    {{circle.kommentar}} <br>
+                    SFO: {{circle.sfodag}}
+                  </div>
+
+                </div>
+            </td>            
         </tr>
         <tr>
-            <td *ngFor="let cell of ukeneEtter()" 
-                [attr.title]="cell.id">{{cell.text}}</td>
+            <td 
+                *ngFor="let cell of ukeneEtter()">
+                {{cell.text}}
+                <div class="outer" *ngIf="datoerContains(cell) != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                    {{circle.skole}} <br>
+                    {{circle.kommentar}} <br>
+                    SFO: {{circle.sfodag}}
+                  </div>
+
+                </div>
+            </td>            
         </tr>
         <tr>
-            <td *ngFor="let cell of ukeneEtter()" 
-                [attr.title]="cell.id">{{cell.text}}</td>
+            <td 
+                *ngFor="let cell of ukeneEtter()">
+                {{cell.text}}
+                <div class="outer" *ngIf="datoerContains(cell) != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                    {{circle.skole}} <br>
+                    {{circle.kommentar}} <br>
+                    SFO: {{circle.sfodag}}
+                  </div>
+
+                </div>
+            </td>            
         </tr>
     </table>
   </div>
 
+</div>
   
 </body>
 </html>

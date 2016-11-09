@@ -5,7 +5,7 @@ ul {list-style-type: none;}
 body {
     font-family: Verdana, sans-serif;
     height: 100%;
-    }
+}
 
 .kalender {height: 50vh;}
 
@@ -14,16 +14,46 @@ table, td, th {
     border: 1px solid black;
     vertical-align: text-top;
     padding: 5px;
-    }
+}
 
 table {
     height: 100%;
     width: 100%;
 }
 
-td {width: 14.28%;}
+th {
+    height: 1px;
+    background-color: gray;
+}
 
-/* mnd header */
+td {
+    width: 14.28%;
+    height: 16.6%;
+}
+
+.outer {position: absolute}
+
+.details {
+    display: none;
+    background-color: gray;
+    overflow: visible;
+    border: 2px solid black;
+    float: left;
+    position: relative;
+    z-index: 10;
+    padding: 5px;
+} 
+
+div:hover > .details {display: block;}
+
+.circle {
+    border-radius: 50%;
+	width: 10px;
+	height: 10px; 
+    background-color:red;
+    float: left;
+}
+
 .mnd {
     padding: 15px 15px;
     width: 100%;
@@ -31,7 +61,6 @@ td {width: 14.28%;}
     text-align: center;
 }
 
-/* mnd list */
 .mnd ul {
     margin: 0;
     padding: 0;
@@ -41,16 +70,14 @@ td {width: 14.28%;}
     color: white;
     font-size: 20px;
     text-transform: uppercase;
-    letter-spacing: 20px;
+    letter-spacing: 15px;
 }
 
-/* forrigeious button inside mnd header */
 .mnd .forrige {
     float: left;
     padding-top: 10px;
 }
 
-/* Next button */
 .mnd .neste {
     float: right;
     padding-top: 10px;
