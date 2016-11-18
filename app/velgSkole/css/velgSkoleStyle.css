@@ -37,6 +37,7 @@
   }
 
   .valgteSkolerListe{
+    opacity: 0.9!important;
     bottom:2em!important;
     position: fixed;
     z-index: 150;
@@ -122,9 +123,6 @@ p.list-group-item.active.right-inner-addon.elementTrykketPa{
 }
 .kmKnapp{
   font: 200 1em Helvetica, Verdana, sans-serif;
-}
-.mellomRom{
-  height:1em;
 }
 
 /*Ekstra regler for skjermer med minimum 768 px i bredden */
