@@ -43,7 +43,8 @@ export class Liste5Component implements OnInit, OnDestroy {
       this.valgteSkoleRuter = this.valgteSkolerService.getValgteSkoleRuter();
       this.skole5 = this.listeService.skole5(this.valgteSkolerService.getValgteSkoleRuter(), this.skole5);
       if(typeof this.skole5 !== 'undefined' && this.skole5.length > 0){this.skolenavn5 = this.skole5[1].skole};
-      this.datoArray = this.listeService.datoer(this.valgteSkolerService.getValgteSkoleRuter(), this.datoArray);
+      this.datoArray = this.listeService.datoer(this.valgteSkolerService.getValgteSkoleRuter());
+      this.datoArray = this.listeService.removePastDates(this.datoArray);
       if(typeof this.skole5 !== 'undefined' && this.skole5.length > 0){this.skole5 = this.listeService.sjekkOmSkoleHarDato(this.skole5)};
     
     }

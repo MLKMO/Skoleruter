@@ -129,12 +129,14 @@ export class ListeService{
 
 
     private datoArray: Array<any> = [];
-    datoer(valgteSkoleRuter:Array<any>, datoArray: Array<any>){ // fjerner like datoer, slik at vi bare har en av hver dato i lista
+    datoer(valgteSkoleRuter:Array<any>){ // lager datolista
 
+
+        
         for (var i = 0; i < valgteSkoleRuter.length; i++){
             this.datoArray[i] = valgteSkoleRuter[i].dato;
         }
-
+ 
         this.datoArray = this.datoArray.sort();
         
         for (var i = 1; i < this.datoArray.length; i++) {  
@@ -156,6 +158,13 @@ export class ListeService{
     }
 
 
+    removePastDates(datoArray: any) {
+          var today = new Date();
+          this.datoArray = this.datoArray.filter(function(dateString) {
+            return new Date(dateString) >= today;
+          });
+          return this.datoArray;
+    }
      
     sjekkOmSkoleHarDato(skole: Array<any>){
         var skolesortert: Array<any> = [];

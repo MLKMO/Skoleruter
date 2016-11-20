@@ -72,7 +72,8 @@ export class ListeComponent implements OnInit, OnDestroy {
       if(typeof this.skole3 !== 'undefined' && this.skole3.length > 0){this.skolenavn3 = this.skole3[1].skole};
       if(typeof this.skole4 !== 'undefined' && this.skole4.length > 0){this.skolenavn4 = this.skole4[1].skole};
       if(typeof this.skole5 !== 'undefined' && this.skole5.length > 0){this.skolenavn5 = this.skole5[1].skole};
-      this.datoArray = this.listeService.datoer(this.valgteSkolerService.getValgteSkoleRuter(), this.datoArray);
+      this.datoArray = this.listeService.datoer(this.valgteSkolerService.getValgteSkoleRuter());
+      this.datoArray = this.listeService.removePastDates(this.datoArray);
       if(typeof this.skole1 !== 'undefined' && this.skole1.length > 0){this.skole1 = this.listeService.sjekkOmSkoleHarDato(this.skole1)};
       if(typeof this.skole2 !== 'undefined' && this.skole2.length > 0){this.skole2 = this.listeService.sjekkOmSkoleHarDato(this.skole2)};
       if(typeof this.skole3 !== 'undefined' && this.skole3.length > 0){this.skole3 = this.listeService.sjekkOmSkoleHarDato(this.skole3)};

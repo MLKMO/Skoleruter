@@ -43,7 +43,8 @@ export class Liste3Component implements OnInit, OnDestroy {
       this.valgteSkoleRuter = this.valgteSkolerService.getValgteSkoleRuter();
       this.skole3 = this.listeService.skole3(this.valgteSkolerService.getValgteSkoleRuter(), this.skole3);
       if(typeof this.skole3 !== 'undefined' && this.skole3.length > 0){this.skolenavn3 = this.skole3[1].skole};
-      this.datoArray = this.listeService.datoer(this.valgteSkolerService.getValgteSkoleRuter(), this.datoArray);
+      this.datoArray = this.listeService.datoer(this.valgteSkolerService.getValgteSkoleRuter());
+      this.datoArray = this.listeService.removePastDates(this.datoArray);
       if(typeof this.skole3 !== 'undefined' && this.skole3.length > 0){this.skole3 = this.listeService.sjekkOmSkoleHarDato(this.skole3)};
     }
 
