@@ -20,7 +20,7 @@ script:
   #- npm run e2e
 
   after_script": 
-   - "cd .. && ls && python html2text.py target/site/surefire-report.html"
+   - cd .. && ls && python html2text.py target/site/surefire-report.html
 
 notifications:
   email: false
