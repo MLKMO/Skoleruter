@@ -14,7 +14,7 @@ describe('LeggIKalenderService', () => {
         let skole: string = 'Auglend skole';
         let kommentar: string = 'Planleggingsdag';
 
-        let lagICalKropp = leggIKalenderService.LagICalKropp(dato,skole,kommentar)
+        let lagICalKropp = leggIKalenderService.lagICalKropp(dato,skole,kommentar)
         expect(lagICalKropp).toContain('20160810');
         expect(lagICalKropp).toContain('Auglend skole');
         expect(lagICalKropp).toContain('Planleggingsdag');

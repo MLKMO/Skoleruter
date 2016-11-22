@@ -8,11 +8,12 @@ import { Router, NavigationStart, NavigationEnd, Event as NavigationEvent } from
 })
 export class NavbarComponent{
     private skolerValgt: boolean = false;
+    private viserInfo: boolean = false;
 
     constructor(private router: Router) 
     {
         router.events.subscribe((val) => {
-            if(location.href.includes('skoleliste') || location.href.includes('info'))
+            if(location.href.includes('skoleliste'))
             {
                 this.skolerValgt = false;
             }
@@ -20,8 +21,17 @@ export class NavbarComponent{
             {
                 this.skolerValgt = true;
             }
-    });
-        
-    }
+        });
 
+         router.events.subscribe((val) => {
+            if(location.href.includes('info') && this.skolerValgt ==true)
+            {
+                this.viserInfo = true;
+            }
+            else
+            {
+                this.viserInfo = false;
+            }
+        });   
+    }
 }

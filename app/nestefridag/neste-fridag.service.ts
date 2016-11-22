@@ -30,8 +30,7 @@ export class NesteFridagService implements OnInit
     }
 
     finnNesteFridag(valgteSkoleruter:Array<any>)
-    {
-        
+    { 
         for (var i = 0; i < valgteSkoleruter.length; i++)
         {
             this.skoleAar = parseInt(valgteSkoleruter[i].dato.slice(0,4))
