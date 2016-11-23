@@ -13,6 +13,7 @@
     <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li *ngIf="skolerValgt"><a routerLink="/last-ned-kalender"><b>Last ned kalender</b></a></li>
+        <li *ngIf="viserInfo || skolerValgt"><a routerLink="/skoleliste"><b>Velg skoler</b></a></li>
         <li *ngIf="viserInfo"><a routerLink="/skoleruter/kalender"><b>Vis skoleruter</b></a></li>
         <li><a routerLink="/info"><b>Info</b> <span class="sr-only">(current)</span> </a></li>
       </ul>

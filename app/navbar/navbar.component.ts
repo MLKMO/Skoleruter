@@ -13,18 +13,18 @@ export class NavbarComponent{
     constructor(private router: Router) 
     {
         router.events.subscribe((val) => {
-            if(location.href.includes('skoleliste'))
+            if(location.href.includes('skoleruter'))
             {
-                this.skolerValgt = false;
+                this.skolerValgt = true;
             }
             else
             {
-                this.skolerValgt = true;
+                this.skolerValgt = false;
             }
         });
 
          router.events.subscribe((val) => {
-            if(location.href.includes('info') && this.skolerValgt ==true)
+            if(location.href.includes('info'))
             {
                 this.viserInfo = true;
             }
