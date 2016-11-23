@@ -27,9 +27,10 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
   private brukerPosisjonLongitude: number;
   private sorterKnappTrykketPa = false;
   private datoer: Array<any>;                      //Blir brukt til å lage en kalender basert på datoer.
-  private lasterBrukerlokasjon: boolean = false;   //Brukes til å vise loading animasjon når bruker posisjon innhentes.
+  private sorterAnimasjon: boolean = false;   //Brukes til å vise loading animasjon når bruker posisjon innhentes.
   private visKm: boolean = false;
-  
+  private posisjonIkkeTilgjengelig :boolean = false; //Viser informasjon dersom lokasjon ikke er tilgjengelig
+
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService,
       private router: Router,
@@ -102,7 +103,9 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
 
     private getBrukerPosisjon() {
         this.sorterKnappTrykketPa = true;
-        this.lasterBrukerlokasjon = true;
+        this.sorterAnimasjon = true;
+       
+       
         if (navigator.geolocation) {
             this.brukerPosisjonService.getBrukerPosisjon().forEach(
                 (position: Position) => {
@@ -110,14 +113,14 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
                         this.brukerPosisjonLongitude =  position.coords.longitude;
                         this.skoler = this.brukerPosisjonService.sorterSkolerEtterAvstand(this.brukerPosisjonLatutude,
                           this.brukerPosisjonLongitude, this.skoler);
-                          this.lasterBrukerlokasjon = false;
                           this.visKm = true;
+                          this.sorterAnimasjon = this.brukerPosisjonService.sorterAnimasjon;
             })
         } else {
             alert("Du må bruke en støttet nettleser for å sortere etter lokasjon");
         }
     }
-
+    
     private leggTilSkole(skole: Skole) {
       if(!skole.TrykketPa){
         skole.TrykketPa = true;

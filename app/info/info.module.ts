@@ -8,6 +8,8 @@ import { InfoLagreComponent } from './info-lagre.component';
 import { InfoLastNedKalenderComponent } from './info-last-ned-kalender.component';
 import { InfoVelgeSkolerComponent } from './info-velge-skoler.component'; 
 import { InfoOmApplikasjonenComponent } from './info-om-applikasjon.component';
+import { InfoVarslingComponent } from './info-varsling.component';
+
 @NgModule
 ({
     imports: [ CommonModule , FormsModule, infoRouting],
@@ -16,7 +18,8 @@ import { InfoOmApplikasjonenComponent } from './info-om-applikasjon.component';
     InfoLagreComponent, 
     InfoLastNedKalenderComponent, 
     InfoVelgeSkolerComponent,
-    InfoOmApplikasjonenComponent
+    InfoOmApplikasjonenComponent,
+    InfoVarslingComponent
     ],
     providers: [],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

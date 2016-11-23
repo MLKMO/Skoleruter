@@ -1,11 +1,10 @@
 
 <!-- Viser infotekst og søkefelt -->
-<div class="jumbotron">
-    <p id="infotekst">Finn skoleruter for alle barne- og ungdoms-skoler i Stavanger- og Gjesdal- kommune.
-        Velg skoler ved bruk av søkefeltet nedenfor eller ved å trykke på de skolene du er interessert i ved å velge
-        fra listen.
+<div class="col-xs-12 col-sm-offset-2 col-sm-8" >
+    <p  id="infotekst">
+        Velg skoler ved bruk av søkefeltet eller velg fra listen under.
     </p>
-    <div id="sokeFeltDiv" class="col-sm-offset-3 col-sm-6 col-xs-12"  (click)="sokefeltTilToppen()">
+    <div id="sokeFeltDiv"  (click)="sokefeltTilToppen()">
       <i class="glyphicon glyphicon-search"></i>
       <input type="text"
            id="sokefelt"
@@ -22,7 +21,7 @@
   <div *ngIf="skoleruteKnapp">
     <button class="btn btn-danger knapp col-xs-12" (click)="fjernValgteSkoler()"><b>Fjern Valg</b></button>
     <div *ngFor="let skole of skoler">
-      <div  class="btn btn-primary col-xs-12 " *ngIf="skole.TrykketPa" (click) ="leggTilSkole(skole)">
+      <div  class="btn btn-primary col-xs-12 " *ngIf="skole.TrykketPa" (click) ="leggTilSkole(skole)" onclick="deleteToken()">
         <p class="valgteSkoler" >{{skole.skole}}</p>
         <span class="glyphicon glyphicon-trash soppelkasse" ></span>
       </div>
@@ -30,18 +29,18 @@
       <button class="btn btn-success knapp col-xs-12" (click)="gaVidereTilSkoleruter()"><b>Vis Skolerute</b></button>
   </div>
       <div class="col-xs-12 sorterKnapp">
-        <div *ngIf="lasterBrukerlokasjon" id="animasjon"class="loader col-xs-offset-5"></div>
-        <p *ngIf="lasterBrukerlokasjon" id="stedsinfo" > Stedstjenester må være aktivert for at dette skal fungere.</p>
+        <div *ngIf="sorterAnimasjon" id="animasjon"class="loader col-xs-offset-5"></div>
+        
         <button *ngIf="!sorterKnappTrykketPa" class="btn btn-info knapp col-xs-12" (click)="getBrukerPosisjon()"><b>Sorter etter nærmeste</b></button>
       </div>
 </div>
 
 <!-- Viser liste med skoler -->
 <!-- col-sm-offset-3 skapte problemer med safari ved sortering -->
-  <table class="list-group col-sm-offset-3 col-sm-6 col-xs-12" *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
+  <table class="list-group col-sm-12 col-xs-12" *ngFor="let skole of skoler | skoleListeFilter: skolenavn">
     <tr *ngIf=" skole === -1 " class="liste alert alert-danger">Fant ingen skole med det navnet</tr>   
     <tr *ngIf="!skole.TrykketPa">
-      <td class="list-group-item liste col-sm-offset-1 col-xs-8 col-sm-7" (click) ="leggTilSkole(skole)">{{skole.skole}}</td>
+      <td class="list-group-item liste  col-xs-8 col-sm-6 col-sm-offset-3" (click) ="leggTilSkole(skole)" onclick="deleteToken()"><p class="col-sm-12">{{skole.skole}}</p></td>
       <td class="kmKnapp col-xs-4 col-sm-4"*ngIf="visKm"> <p class="col-xs-2">{{skole.avstand}}</p> <p class="col-xs-2"*ngIf=" skole !== -1 ">Km</p></td>
     </tr>
   </table>

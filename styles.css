@@ -2,6 +2,11 @@
   text-align: center;
  }
 
+ .panel_color{
+   background_color: lightgrey!important;
+
+ }
+
 
 #page-wrap {
   text-align: left;
@@ -21,6 +26,9 @@
   border-radius: 0;
 }
 
+.navbar-brand{
+  height:70px!important;
+}
 
 .loader {
     border: 0.5em solid #f3f3f3; /* Light grey */
