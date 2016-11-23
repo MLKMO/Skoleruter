@@ -1,7 +1,8 @@
 .jumbotron{
-  padding-top: 1em;
+  padding-top: 0;
   padding-bottom: 1em;
   margin-bottom:0;
+  background-color: white; 
 }
 
 /*For å forhindre zoom på ios enheter */
@@ -37,6 +38,7 @@
   }
 
   .valgteSkolerListe{
+    opacity: 0.9!important;
     bottom:2em!important;
     position: fixed;
     z-index: 150;
@@ -53,6 +55,7 @@ p{
   border-color:  rgba(0,0,0,0.75);
 }
 #sokefelt {
+  border-radius: 20px;
   padding-left: 1em;
   margin-bottom: 1em;
   height:2.2em;
@@ -123,9 +126,6 @@ p.list-group-item.active.right-inner-addon.elementTrykketPa{
 .kmKnapp{
   font: 200 1em Helvetica, Verdana, sans-serif;
 }
-.mellomRom{
-  height:1em;
-}
 
 /*Ekstra regler for skjermer med minimum 768 px i bredden */
 @media screen and (min-width: 768px) {
@@ -184,6 +184,8 @@ p.list-group-item.active.right-inner-addon.elementTrykketPa{
   padding:0.5em;
   opacity: 1;
   background-color:lightgrey;
+   font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+   text-align: center;
 }
 #animasjon{
   margin-top:1em;

@@ -6,7 +6,7 @@ import { InfoVelgeSkolerComponent } from './info-velge-skoler.component';
 import { InfoLagreComponent } from './info-lagre.component';
 import { InfoLastNedKalenderComponent } from './info-last-ned-kalender.component';
 import { InfoOmApplikasjonenComponent } from './info-om-applikasjon.component';
-
+import { InfoVarslingComponent } from './info-varsling.component';
 
 
 const infoRoutes: Routes = 
@@ -18,6 +18,7 @@ const infoRoutes: Routes =
         {path: 'lagring', component: InfoLagreComponent},
         {path: 'lastnedkalender', component: InfoLastNedKalenderComponent}, 
         {path: 'omapplikasjon', component: InfoOmApplikasjonenComponent}, 
+        {path: 'varsling', component: InfoVarslingComponent}
     ]},
 ];
 

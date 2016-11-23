@@ -5,7 +5,8 @@ import { Skole } from './skole';
 
 
 @Injectable() export class BrukerPosisjonService {
-  
+     public sorterAnimasjon: boolean;
+     
   public sorterSkolerEtterAvstand(brukerLat: number, brukerLon: number, skoler: Array<Skole>): Array<Skole> {
       //Lagrer avstand fra brukerposisjon på skolene i skolerMedLokasjon
       for(let skole of skoler){
@@ -68,7 +69,8 @@ import { Skole } from './skole';
                     observer.complete();
                 },
                 (error: PositionError) => {
-                    console.log('Geolocation service: ' + error.message);
+                    this.sorterAnimasjon = false;
+                    alert("Fikk ikke hentet ut din posisjon fra nettleseren, men du kan fortsatt søke etter eller velge skoler fra listen");
                     observer.error(error);
                 }
             );

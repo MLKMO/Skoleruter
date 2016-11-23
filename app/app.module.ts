@@ -30,6 +30,9 @@ import { ListeModule } from './listevisning/liste.module';
 import { LeggIKalenderComponent } from './leggikalender/legg-i-kalender.component';
 import { LeggIKalenderService } from './leggikalender/legg-i-kalender.service';
 import { InfoModule } from './info/info.module';
+import { VarslingKomponent } from './varsling/varsling.component';
+import { VarslingModule } from './varsling/varsling.module';
+
 
 @NgModule({
   imports: 
@@ -42,7 +45,8 @@ import { InfoModule } from './info/info.module';
   JsonpModule, 
   NesteFridagModule, 
   ListeModule,
-  InfoModule
+  InfoModule,
+  VarslingModule
   ],
   declarations: 
   [ 
@@ -61,7 +65,8 @@ import { InfoModule } from './info/info.module';
     Liste2Component, 
     Liste3Component, 
     Liste4Component, 
-    Liste5Component
+    Liste5Component,
+    VarslingKomponent
   ],
     providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService, LeggIKalenderService ],
     bootstrap: [ AppComponent ], 

@@ -100,17 +100,19 @@ export class ValgteSkolerService
         this.valgteSkoler = [];
       }
     }
-
+    
+    //Datoene må lastes inn før kalendervisningen blir trigget. 
     public lagreDatoerLokalt(datoer: Array<any>){
       this.datoer=datoer;
        localStorage.setItem("datoer", JSON.stringify(this.datoer));
     }
-
+  
     public fjernLagretData() {
       localStorage.removeItem("valgteSkoleRuter");
       localStorage.removeItem("skoler");
       localStorage.removeItem("skoleRute");
       localStorage.removeItem("valgteSkoler");
+      localStorage.removeItem("topicsListe");
     }
 
 }

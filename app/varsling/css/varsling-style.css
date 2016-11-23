@@ -1,0 +1,15 @@
+/*Lager en regel som gjemmer varsling ved skjermbredde mindre enn 768 piksler */
+@media screen and (max-width: 768px) {
+    #varslinger{
+        visibility: hidden;
+        height:0px;
+    }
+}
+
+.hvit_knapp{
+    background-color: white;
+    color: black;
+}
+.hvit_knapp:hover{
+    background-color: lightblue;
+}
