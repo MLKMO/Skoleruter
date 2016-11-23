@@ -5,20 +5,14 @@
     <title>Skolerruter</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-
     <link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.min.css">
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="/manifest.json">
 
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
-
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
@@ -32,12 +26,15 @@
 
   <body>
     <div id="page-wrap">
-    <my-app> <br><div class="loader" style="margin-left: 45%;margin-top:25%;"></div><h3 style="padding-left:1em;">Laster inn skolerutedata<h3></my-app>
-  </body> 
+    <my-app> <br><div class="loader" style="margin-left: 45%;margin-top:25%;"></div>
+      <h3 style="padding-left:1em;">Laster inn skolerutedata<h3></my-app>
     </div>
+  </body> 
+
+
+<!-- Initierer Firebase Cloud Messaging -->    
 <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
 <script>
-  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBKvAHdMkcBOs-LaRfbNwjqnue_Pz9CanQ",
     authDomain: "skoleruter-1476962437581.firebaseapp.com",
@@ -46,44 +43,41 @@
     messagingSenderId: "27318779670"
   };
   firebase.initializeApp(config);
-
 </script>
+
+<!-- Funksjoner for initiering, abonnering og avslutting av abonnement -->
 <script>
   const messaging = firebase.messaging();
-
   messaging.onTokenRefresh(function() {
     messaging.getToken()
     .then(function(refreshedToken) {
-      console.log('Token refreshed.');
+      console.log('Token ble oppdatert.');
     })
     .catch(function(err) {
-      console.log('Unable to retrieve refreshed token ', err);
+      console.log('Fikk ikke oppdatert token ', err);
     });
   });
 
-  function requestPermission() {
-    console.log('Requesting permission...');
+  function sporrOmTillatelseTilVarsling() {
+    console.log('Spørr om tillatelse...');
     messaging.requestPermission()
     .then(function() {
-      console.log('Notification permission granted.');
+      console.log('Fikk tillatelse til å varsle.');
        messaging.getToken()
     .then(function(currentToken) {
-      console.log(currentToken);
       localStorage.setItem("token", currentToken);
-      abonner(currentToken);
+      abonnerPaVarsling(currentToken);
     })
     })
     .catch(function(err) {
-      console.log('Unable to get permission to notify.', err);
+      console.log('Fikk ikke tillatelse til å varsle.', err);
     });
   }
 
-
-  function abonner(currentToken){
+  function abonnerPaVarsling(currentToken){
     "use strict"
       let topics_lagret = localStorage.getItem("topicsListe");
       let topics = JSON.parse(topics_lagret);
-      console.log(topics);
       for (let i = 0; i < topics.length; i++){
       let data = null;
       
@@ -104,25 +98,22 @@
       localStorage.setItem("abonnerer", abonnerer);
    }
 
-  function deleteToken() {
+  function stoppVarsling() {
     messaging.getToken()
     .then(function(currentToken) {
       messaging.deleteToken(currentToken)
       .then(function() {
-        console.log('Token deleted.');
         let abonnerer ="";
       localStorage.setItem("abonnerer", abonnerer);
       })
       .catch(function(err) {
-        console.log('Unable to delete token. ', err);
+        console.log('Fikk ikke slettet token. ', err);
       });
     })
     .catch(function(err) {
-      console.log('Error retrieving Instance ID token. ', err);
+      console.log('Error oppstod ved henting av token. ', err);
     });
   }
 
 </script>
-
-
 </html>
