@@ -1,37 +1,21 @@
 import { Injectable, Attribute, OnInit, OnDestroy } from '@angular/core';
-
 import { ValgteSkolerService } from './../valgteSkoler.service';
 
 @Injectable()
-export class VarslingService implements OnInit{
+export class VarslingService {
     constructor(private valgteSkolerService: ValgteSkolerService) {}
     private valgte_skoler :Array<string> = [];
     private topics:Array<string> = [];
     private abonnerer = "";
     private gammel_topics_liste: any;
     
-    ngOnInit()
-    {
-        
+ 
+    public getTopics(){
         this.valgteSkolerService.getLagretData();
         this.valgte_skoler = this.valgteSkolerService.getValgteSkoler();
         this.topics = this.lag_topic_liste(this.valgte_skoler);
-        //Sjekker om brukeren allerede har laget en topics liste. 
-       /*
-        if(localStorage.getItem("topicsListe") !== null){
-            this.gammel_topics_liste = localStorage.getItem("topicsListe");
-            let hent_gamle_topics = localStorage.getItem("valgteSkoler");
-      this.valgteSkoler = JSON.parse(hentvalgteSkoler);
-
-        }
-        */
-
-        
         localStorage.setItem("topicsListe", JSON.stringify(this.topics));
-        if(localStorage.getItem("abonnerer") !== null){
-            this.abonnerer = localStorage.getItem("abonnerer");
-        }
-        
+        console.log(this.topics);
     }
 
 //Funksjon som lager topics navn basert på Valgte skoler.

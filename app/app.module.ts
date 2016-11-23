@@ -32,7 +32,7 @@ import { LeggIKalenderService } from './leggikalender/legg-i-kalender.service';
 import { InfoModule } from './info/info.module';
 import { VarslingKomponent } from './varsling/varsling.component';
 import { VarslingModule } from './varsling/varsling.module';
-
+import { VarslingService } from './varsling/varsling.service';
 
 @NgModule({
   imports: 
@@ -68,7 +68,7 @@ import { VarslingModule } from './varsling/varsling.module';
     Liste5Component,
     VarslingKomponent
   ],
-    providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService, LeggIKalenderService ],
+    providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService, LeggIKalenderService, VarslingService ],
     bootstrap: [ AppComponent ], 
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 

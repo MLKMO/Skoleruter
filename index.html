@@ -110,6 +110,8 @@
       messaging.deleteToken(currentToken)
       .then(function() {
         console.log('Token deleted.');
+        let abonnerer ="";
+      localStorage.setItem("abonnerer", abonnerer);
       })
       .catch(function(err) {
         console.log('Unable to delete token. ', err);
