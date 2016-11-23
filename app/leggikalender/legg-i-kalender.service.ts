@@ -55,7 +55,7 @@ export class LeggIKalenderService
 
     public skrivTilFil(icalFil:string)
     {
-        var blob = new Blob([icalFil], {type: "text/plain;charset=utf-8"});
+        var blob = new Blob([icalFil], {type: "application/octet-stream"});
         saveAs(blob, "Skoleruter.ics");
 
         icalFil = "";
