@@ -9,6 +9,7 @@ import { Router, NavigationStart, NavigationEnd, Event as NavigationEvent } from
 export class NavbarComponent{
     private skolerValgt: boolean = false;
     private viserInfo: boolean = false;
+    private viserLastNedKalender: boolean = false;
 
     constructor(private router: Router) 
     {
@@ -32,6 +33,17 @@ export class NavbarComponent{
             {
                 this.viserInfo = false;
             }
-        });   
+        });  
+
+        router.events.subscribe((val) => {
+            if(location.href.includes('last-ned-kalender'))
+            {
+                this.viserLastNedKalender = true;
+            }
+            else
+            {
+                this.viserLastNedKalender = false;
+            }
+        }); 
     }
 }
