@@ -17,7 +17,13 @@ import { SkoleDataService } from './velgSkole/skoleData.service';
 import { ValgteSkolerService } from './valgteSkoler.service';
 import { NesteFridagComponent } from './nestefridag/neste-fridag.component';
 import { DatoPipe } from './dato.pipe';
+import { KortDatoPipe } from './kortDato.pipe';
 import { ListeComponent } from './listevisning/liste.component';
+import { Liste1Component } from './listevisning/liste1.component';
+import { Liste2Component } from './listevisning/liste2.component';
+import { Liste3Component } from './listevisning/liste3.component';
+import { Liste4Component } from './listevisning/liste4.component';
+import { Liste5Component } from './listevisning/liste5.component';
 import { SkoleruteModule } from './routing/skoleruter.module';
 import { NesteFridagModule } from './nestefridag/neste-fridag.module';
 import { ListeModule } from './listevisning/liste.module';
@@ -48,7 +54,14 @@ import { InfoModule } from './info/info.module';
     SkoleListeFilterPipe,
     NesteFridagComponent,
     DatoPipe,
-    LeggIKalenderComponent
+    KortDatoPipe,
+    LeggIKalenderComponent,
+    ListeComponent, 
+    Liste1Component, 
+    Liste2Component, 
+    Liste3Component, 
+    Liste4Component, 
+    Liste5Component
   ],
     providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService, LeggIKalenderService ],
     bootstrap: [ AppComponent ], 
