@@ -6,11 +6,14 @@
   <div class="panel-body">
     <div class="midten">
       <div *ngIf="!isSafari">
+        <p *ngIf="abonnerer === ''">Du kan få varsling 7 dager før planleggingsdag/ferie.</p>
+        <hr *ngIf="abonnerer === ''">
       <button *ngIf="abonnerer === ''" class="btn btn-danger btn-sm" data-toggle="tab" (click)="set_abonnerer()"onclick="requestPermission()" >
         <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Abonner på varslinger</button>
-        <hr *ngIf="abonnerer === ''">
-        <p *ngIf="abonnerer === ''">Du kan få varsling 7 dager før planleggingsdag/ferie.</p>
+       
+        
         <p *ngIf="abonnerer === 'true'">Du vil få varsling 7 dager før planleggingsdag/ferie.</p>
+         <hr *ngIf="abonnerer === 'true'">
        <button *ngIf="abonnerer === 'true'" class="btn btn-danger btn-sm" data-toggle="tab" onclick="deleteToken()" (click)="stopp_abonnement()">
          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Stopp Varslinger</button>
       </div>

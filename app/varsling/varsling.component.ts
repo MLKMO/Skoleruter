@@ -14,19 +14,24 @@ export class VarslingKomponent implements OnInit {
     private abonnerer = "";
     private isSafari = false;
     
+
     ngOnInit()
     {
         this.skjul_for_safari();
+        this.varslingService.getTopics();
+        /*
         if(localStorage.getItem("abonnerer") !== null){
             this.abonnerer = localStorage.getItem("abonnerer");
         }
+        */
     }
+    
     // Skjuler varsling for safari fordi firebase cloud messaging ikke er støttet på safari
    private skjul_for_safari(){
         this.isSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
                    navigator.userAgent && !navigator.userAgent.match('CriOS');
    }
-   private ga_til_infoside(){
+   private ga_til_infoside() {
       this.router.navigate(['/info/varsling']);
       window.scrollTo(0,0); //Scroller window til toppen av siden
     }
