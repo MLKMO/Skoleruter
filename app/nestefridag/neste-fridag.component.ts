@@ -8,7 +8,8 @@ import { ValgteSkolerService } from './../valgteSkoler.service';
     selector: 'neste-fridag',
     templateUrl:'app/nestefridag/html/neste-fridag.html'
 })
-export class NesteFridagComponent implements OnInit {
+export class NesteFridagComponent implements OnInit 
+{
 
     private dagensDato : Date;
     private nesteFridager: Array<any> = [];
@@ -30,6 +31,7 @@ export class NesteFridagComponent implements OnInit {
         this.dato();
         this.nesteFridager = this.valgteSkolerService.getValgteSkoleRuter();
         this.nesteFridager = this.nesteFridagService.finnNesteFridag(this.nesteFridager);
+        
         if(this.nesteFridager.length == 0)
         {
             this.skolerValgt = false;
