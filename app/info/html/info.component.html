@@ -6,24 +6,26 @@
 <div class="col-xs-12 col-sm-12"> 
     <div class="col-xs-12 col-sm-4">
         <div class="list-group">
-            <a routerLink="/info/omapplikasjon" class="list-group-item" [routerLinkActive]="['active']">
+            <a routerLink="/info/omapplikasjon" class="list-group-item" [routerLinkActive]="['active']" (click)="skrollOmApplikasjonen()">
                 Om applikasjonen
             </a>
-            <a routerLink="/info/velgeskoler" class="list-group-item" [routerLinkActive]="['active']">
+            <a routerLink="/info/velgeskoler" class="list-group-item" [routerLinkActive]="['active']" (click)="skrollVelgSkoler()">
                 Velg skoler
             </a>
-            <a routerLink="/info/lagring"  class="list-group-item" [routerLinkActive]="['active']">
+            <a routerLink="/info/lagring"  class="list-group-item" [routerLinkActive]="['active']" (click)="skrollLagring()">
                 Lagring
             </a>
-            <a routerLink="/info/lastnedkalender" class="list-group-item" [routerLinkActive]="['active']">
+            <a routerLink="/info/lastnedkalender" class="list-group-item" [routerLinkActive]="['active']" (click)="skrollLastNedKalender()">
                 Last ned kalender
             </a>
-            <a routerLink="/info/varsling" class="list-group-item" [routerLinkActive]="['active']">
+            
+            <a routerLink="/info/varsling" class="list-group-item" [routerLinkActive]="['active']" (click)="skrollVarsling()">
                 Varslinger
             </a>
+        
         </div>
     </div>
-    <div class ="col-xs-12 col-sm-8">
+    <div class ="informasjon col-xs-12 col-sm-8">
         <router-outlet></router-outlet>
     </div>
 </div>

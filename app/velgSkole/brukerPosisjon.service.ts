@@ -62,7 +62,6 @@ import { Skole } from './skole';
   //Henter brukerposisjon basert på HTML5 geolocation API
   public getBrukerPosisjon(): Observable<Position> {
         return new Observable((observer: Observer<Position>) => {
-            // Kaller getCurrentPosition method fra Geolocation API.
             navigator.geolocation.getCurrentPosition(
                 (position: Position) => {
                     observer.next(position);

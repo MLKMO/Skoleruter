@@ -206,7 +206,3 @@ p.list-group-item.active.right-inner-addon.elementTrykketPa{
     100% { transform: rotate(360deg); }
 }
 
-/* Gjør det lettere å velge de siste elementene i listen */
-#scrollForbiBunnen{
-  height:30em;
-}

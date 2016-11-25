@@ -6,6 +6,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoVarslingComponent implements OnInit {
     constructor() { }
-
     ngOnInit() { }
 }
