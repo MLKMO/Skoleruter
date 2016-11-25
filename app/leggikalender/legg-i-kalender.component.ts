@@ -17,7 +17,7 @@ export class LeggIKalenderComponent implements OnInit, OnDestroy
 
     lastNedKalender(kalenderFil:string)
     {
-        this.leggIKalenderService.skrivTilFil(kalenderFil);
+        this.leggIKalenderService.lastNedKalender(kalenderFil);
     }
 
     lagKalenderFil()

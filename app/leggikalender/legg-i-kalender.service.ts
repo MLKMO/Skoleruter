@@ -53,7 +53,7 @@ export class LeggIKalenderService
         return this.icalFil;
     }
 
-    public skrivTilFil(icalFil:string)
+    public lastNedKalender(icalFil:string)
     {
         var blob = new Blob([icalFil], {type: "application/octet-stream"});
         saveAs(blob, "Skoleruter.ics");
