@@ -8,7 +8,7 @@ Hvis du ikke har dette installert på maskinen kan det lastes ned her:
 
 [Node.js og npm](https://nodejs.org/en/download/)
 
-1. Klone repoet
+1. Klone repoet.
 
 2. Kjør følgende kommandoer i terminalvinduet:
 
