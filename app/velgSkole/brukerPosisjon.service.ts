@@ -8,11 +8,9 @@ import { Skole } from './skole';
      public sorterAnimasjon: boolean;
      
   public sorterSkolerEtterAvstand(brukerLat: number, brukerLon: number, skoler: Array<Skole>): Array<Skole> {
-      //Lagrer avstand fra brukerposisjon på skolene i skolerMedLokasjon
       for(let skole of skoler){
         skole.avstand = this.distanseMellomToPunkter(brukerLat, brukerLon, skole.Latitude, skole.Longitude);
       }
-      //Sorterer skolene etter avstand ved hjelp av en mergesort algoritme.
       skoler = this.mergesort(skoler);
       return skoler;
   }

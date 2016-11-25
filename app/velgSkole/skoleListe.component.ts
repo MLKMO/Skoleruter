@@ -53,6 +53,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.lagSkoleruteForValgteSkoler();
     this.valgteSkolerService.setDatoer(this.datoer);
     this.valgteSkolerService.setValgteSkoleRuter(this.valgteSkoleRuter);
     this.valgteSkolerService.setSkoler(this.skoler);
@@ -158,12 +159,13 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
 
     private gaVidereTilSkoleruter() {
-      this.visSkolerute();
+      
       this.router.navigate(['/skoleruter']);
       window.scrollTo(0,0); 
     }
 
-    private visSkolerute () {
+
+    private lagSkoleruteForValgteSkoler () {
       for (let skole of this.skoleRuterFraJsonFil){
         for (let valgtSkole of this.mineSkoler){
           if(valgtSkole === skole.skole){
@@ -172,6 +174,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
           }
         }
     }
+    
 
     private visSkoleruteKnapp() {
       this.visKnapper = true;
