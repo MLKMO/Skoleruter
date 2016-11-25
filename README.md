@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/MLKMO/Skoleruter.svg?branch=master)](https://travis-ci.org/MLKMO/Skoleruter)
+[![npm version](https://badge.fury.io/js/%40angular%2Fcore.svg)](https://badge.fury.io/js/%40angular%2Fcore)
 
 # Hvordan kjøre koden
 
