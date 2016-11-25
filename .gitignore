@@ -21,5 +21,7 @@ CHANGELOG.md
 !typings/typings.d.ts
 !wallaby.js
 
+.vscode
+
 .vscode/.BROWSE.VC.DB
 .vscode/.BROWSE.VC.DB-wal
