@@ -4,32 +4,10 @@ import { ListeService } from './liste.service';
 import { ValgteSkolerService } from '../valgteSkoler.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'liste3',
-    template:
-    `
-    <style>
+    templateUrl: 'app/listevisning/html/liste3.html',
+    styleUrls: ['app/listevisning/css/style.css']
 
-        li {
-            display: inline-block;
-
-            margin: 10px;
-        }
-        h5 {
-            font-weight: bold;
-        }
-    </style>
-     <div>
-    <ul>
-        <li style = "width: 95px;"><h5 style = "margin-left: 20px; margin-right: 10px;">Dato</h5></li>
-        <li style = "width: 145px; text-aligned: center;"><h5>{{this.skolenavn3}}</h5></li>
-    </ul>
-    <ul>
-        <li><p *ngFor="let dato of datoArray">{{dato | kortDato}}</p></li>
-        <li><p *ngFor="let rute3 of this.skole3"> {{rute3}} </p></li>
-    </ul>
-    </div>
-    `
 })
 export class Liste3Component implements OnInit, OnDestroy {
     private valgteSkoleRuter: Array<any>= [];

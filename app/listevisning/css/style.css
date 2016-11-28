@@ -1,0 +1,12 @@
+       li {
+            display: inline-block;
+
+            margin: 5px;
+        }
+        h5 {
+            font-weight: bold;
+        }
+        div {
+            width: 980px;
+            margin: 0 auto;
+        }
