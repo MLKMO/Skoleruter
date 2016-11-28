@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LeggIKalenderService } from './legg-i-kalender.service';
-import { ValgteSkolerService } from './../valgteSkoler.service';
+import { ValgteSkolerService } from './../valgte-skoler.service';
 
 @Component({
     selector: 'legg-i-kalender',

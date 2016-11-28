@@ -1,7 +1,7 @@
 import { Component, OnInit, Attribute, OnDestroy } from '@angular/core';
 
 import { NesteFridagService } from './neste-fridag.service';
-import { ValgteSkolerService } from './../valgteSkoler.service';
+import { ValgteSkolerService } from './../valgte-skoler.service';
 
 @Component
 ({

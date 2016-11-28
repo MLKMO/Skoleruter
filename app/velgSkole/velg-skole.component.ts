@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Skole } from './skole';
-import { BrukerPosisjonService } from './brukerPosisjon.service';
 
-
-import { SkoleDataService } from './skoleData.service';
-import { ValgteSkolerService } from '../valgteSkoler.service';
-import { SkoleRuteData } from './skoleRuteData';
+import { Skole } from './skole.type';
+import { BrukerPosisjonService } from './bruker-posisjon.service';
+import { SkoleDataService } from './skole-data.service';
+import { ValgteSkolerService } from '../valgte-skoler.service';
+import { SkoleRuteData } from './skole-rute-data.type';
 
 @Component({
   selector: 'skoleListe',
@@ -19,17 +18,17 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
   private errorMessage: string;                               // Feilmelding som kan oppstå ved henting av data fra file eller server.
   private skoler: Array<Skole>;                               // Skole objekter som brukeren kan velge i mellom.
   private skolenavn: string = '';                             // String som blir hentet fra søkefelt.
-  private mineSkoler: Array<string>;                          // Valgte skoler. Brukes også som boolean for visning av liste etc.
+  private brukerensValgteSkoler: Array<string>;                          // Valgte skoler. Brukes også som boolean for visning av liste etc.
   private skoleRuterFraJsonFil: Array<SkoleRuteData>;         // Brukes til å hente ut skoleruter for valgte skoler.
   private valgteSkoleRuter: Array<any> = [];                  // Data som skal brukes i kalender og liste.
   private visKnapper = false;                                 // Boolsk variabel som styrer visning av knapper (Vis skolerute og Fjern Skoler).
   private brukerPosisjonLatutude: number;
   private brukerPosisjonLongitude: number;
   private sorterKnappTrykketPa = false;
-  private datoer: Array<any>;                      //Array som blir hentet inn og brukt i kalendervisningen til å skille datorutene fra hverandre.
-  private sorterAnimasjon: boolean = false;        //Brukes til å vise loading animasjon når bruker posisjon innhentes.
+  private datoer: Array<any>;                                //Array som blir hentet inn og brukt i kalendervisningen til å skille datorutene fra hverandre.
+  private sorterAnimasjon: boolean = false;                  //Brukes til å vise loading animasjon når bruker posisjon innhentes.
   private visKm: boolean = false;
-  private posisjonIkkeTilgjengelig :boolean = false; //Viser informasjon dersom lokasjon ikke er tilgjengelig
+  private posisjonIkkeTilgjengelig :boolean = false;         
   private visSorterKnapp:boolean = true;
 
   constructor (private skoledataService: SkoleDataService,
@@ -45,7 +44,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.getSkoleRuteData();
     }else{
       this.skoler = this.valgteSkolerService.getSkoler();
-      this.mineSkoler = this.valgteSkolerService.getValgteSkoler();
+      this.brukerensValgteSkoler = this.valgteSkolerService.getValgteSkoler();
       this.visEllerSkjulKnapper();
       this.skoleRuterFraJsonFil = this.valgteSkolerService.getSkoleRute();
       this.datoer = this.valgteSkolerService.getDatoer();
@@ -147,11 +146,11 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
 
     private valgteSkoler() {
-      this.mineSkoler = this.valgteSkolerService.getValgteSkoler();
+      this.brukerensValgteSkoler = this.valgteSkolerService.getValgteSkoler();
     }
 
     private visEllerSkjulKnapper() {
-      if (this.mineSkoler === undefined || this.mineSkoler.length == 0) {
+      if (this.brukerensValgteSkoler === undefined || this.brukerensValgteSkoler.length == 0) {
         this.skjulSkoleruteKnapp();
       }else{
         this.visSkoleruteKnapp();
@@ -167,7 +166,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
 
     private lagSkoleruteForValgteSkoler () {
       for (let skole of this.skoleRuterFraJsonFil){
-        for (let valgtSkole of this.mineSkoler){
+        for (let valgtSkole of this.brukerensValgteSkoler){
           if(valgtSkole === skole.skole){
             this.valgteSkoleRuter.push(skole);
             }
@@ -175,7 +174,6 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
         }
     }
     
-
     private visSkoleruteKnapp() {
       this.visKnapper = true;
     }
@@ -191,9 +189,8 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
         }
       }
       this.skolenavn = '';
-      this.mineSkoler = [];
+      this.brukerensValgteSkoler = [];
       this.valgteSkoleRuter = [];
       this.visKnapper = false;
     }
-
   }

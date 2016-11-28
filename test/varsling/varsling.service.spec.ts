@@ -1,5 +1,5 @@
 import { VarslingService } from './../../app/varsling/varsling.service';
-import { ValgteSkolerService } from './../../app/valgteSkoler.service';
+import { ValgteSkolerService } from './../../app/valgte-skoler.service';
 
 describe('VarslingService', () => {
     let varslingservice: VarslingService;

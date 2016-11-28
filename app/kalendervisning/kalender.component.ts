@@ -1,7 +1,7 @@
-import {SkoleDataService} from '../velgSkole/skoleData.service';
+import {SkoleDataService} from '../velgSkole/skole-data.service';
 import {Component} from '@angular/core';
-import { ValgteSkolerService } from '../valgteSkoler.service';
-import {SkoleRuteData} from '../velgSkole/skoleRuteData';
+import { ValgteSkolerService } from '../valgte-skoler.service';
+import {SkoleRuteData} from '../velgSkole/skole-rute-data.type';
 import { DatoService } from './datoer.service';
 
 @Component({

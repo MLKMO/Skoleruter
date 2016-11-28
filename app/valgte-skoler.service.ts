@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject }    from 'rxjs/Subject';
-import { Skole } from './velgSkole/skole';
-import { SkoleRuteData } from './velgSkole/skoleRuteData';
+
+import { Skole } from './velgSkole/skole.type';
+import { SkoleRuteData } from './velgSkole/skole-rute-data.type';
+
 @Injectable()
 
 export class ValgteSkolerService
@@ -36,6 +38,47 @@ export class ValgteSkolerService
       this.skoleRute = null;
     }
 
+    public setLagreDataLokalt() {
+      localStorage.setItem("valgteSkoleRuter", JSON.stringify(this.valgteSkoleRuter));
+      localStorage.setItem("skoler", JSON.stringify(this.skoler));
+      localStorage.setItem("skoleRute", JSON.stringify(this.skoleRute));
+      localStorage.setItem("valgteSkoler", JSON.stringify(this.valgteSkoler));
+    }
+
+    public getLagretData() {
+      let hentvalgteSkoleRuter = localStorage.getItem("valgteSkoleRuter");
+      this.valgteSkoleRuter = JSON.parse(hentvalgteSkoleRuter);
+
+      let hentdatoer = localStorage.getItem("datoer");
+      this.datoer = JSON.parse(hentdatoer);
+
+      let hentskoler = localStorage.getItem("skoler");
+      this.skoler = JSON.parse(hentskoler);
+      
+
+      let hentskoleRute = localStorage.getItem("skoleRute");
+      this.skoleRute = JSON.parse(hentskoleRute);
+
+      let hentvalgteSkoler = localStorage.getItem("valgteSkoler");
+      this.valgteSkoler = JSON.parse(hentvalgteSkoler);
+      if(this.valgteSkoler === null){
+        this.valgteSkoler = [];
+      }
+    }
+    
+    public lagreDatoerLokalt(datoer: Array<any>){
+      this.datoer = datoer;
+       localStorage.setItem("datoer", JSON.stringify(this.datoer));
+    }
+  
+    public fjernLagretData() {
+      localStorage.removeItem("valgteSkoleRuter");
+      localStorage.removeItem("skoler");
+      localStorage.removeItem("skoleRute");
+      localStorage.removeItem("valgteSkoler");
+      localStorage.removeItem("topicsListe");
+    }
+    
     public setValgteSkoleRuter(valgteSkoleRuter: Array<any>) {
       this.valgteSkoleRuter = valgteSkoleRuter;
     }
@@ -71,48 +114,5 @@ export class ValgteSkolerService
 	  public setDatoer(value: Array<any> ) {
 		  this.datoer = value;
 	  }
-
-    public setLagreDataLokalt() {
-      //localStorage.setItem("datoer", JSON.stringify(this.datoer));
-      localStorage.setItem("valgteSkoleRuter", JSON.stringify(this.valgteSkoleRuter));
-      localStorage.setItem("skoler", JSON.stringify(this.skoler));
-      localStorage.setItem("skoleRute", JSON.stringify(this.skoleRute));
-      localStorage.setItem("valgteSkoler", JSON.stringify(this.valgteSkoler));
-    }
-
-    public getLagretData() {
-      let hentvalgteSkoleRuter = localStorage.getItem("valgteSkoleRuter");
-      this.valgteSkoleRuter = JSON.parse(hentvalgteSkoleRuter);
-
-      let hentdatoer = localStorage.getItem("datoer");
-      this.datoer = JSON.parse(hentdatoer);
-
-      let hentskoler = localStorage.getItem("skoler");
-      this.skoler = JSON.parse(hentskoler);
-      
-
-      let hentskoleRute = localStorage.getItem("skoleRute");
-      this.skoleRute = JSON.parse(hentskoleRute);
-
-      let hentvalgteSkoler = localStorage.getItem("valgteSkoler");
-      this.valgteSkoler = JSON.parse(hentvalgteSkoler);
-      if(this.valgteSkoler === null){ // Den kan ikke være null fordi da vil vi ikke kunne bruke push til å legge til skoler.
-        this.valgteSkoler = [];
-      }
-    }
-    
-    //Datoene må lastes inn før kalendervisningen blir trigget. 
-    public lagreDatoerLokalt(datoer: Array<any>){
-      this.datoer=datoer;
-       localStorage.setItem("datoer", JSON.stringify(this.datoer));
-    }
-  
-    public fjernLagretData() {
-      localStorage.removeItem("valgteSkoleRuter");
-      localStorage.removeItem("skoler");
-      localStorage.removeItem("skoleRute");
-      localStorage.removeItem("valgteSkoler");
-      localStorage.removeItem("topicsListe");
-    }
 
 }
