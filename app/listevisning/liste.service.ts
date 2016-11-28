@@ -34,7 +34,7 @@ export class ListeService{
             }
         }
         return skole1, skole2, skole3;
-    }/*del opp og lag en metode som lager hver skole array */
+    }
 
     skole1(valgteSkoleRuter:Array<any>,skolerute: Array<any>){
         var g = 0;
@@ -129,7 +129,7 @@ export class ListeService{
 
 
     private datoArray: Array<any> = [];
-    datoer(valgteSkoleRuter:Array<any>){ // lager datolista
+    datoer(valgteSkoleRuter:Array<any>){
 
 
         
@@ -140,9 +140,9 @@ export class ListeService{
         this.datoArray = this.datoArray.sort();
         
         for (var i = 1; i < this.datoArray.length; i++) {  
-            if (this.datoArray[i] === this.datoArray[i-1]) { // må sjekke samme index en gang til dersom man har fjernet et element.
+            if (this.datoArray[i] === this.datoArray[i-1]) { 
                 this.datoArray.splice(i, 1);
-                if (this.datoArray[i] === this.datoArray[i-1]) { //må sjekke samme index opp til 4 ganger pga at vi kan legge til opp til 5 skoler, dermed mulig å ha 5 like datoer.
+                if (this.datoArray[i] === this.datoArray[i-1]) {  
                 this.datoArray.splice(i, 1);
                     if (this.datoArray[i] === this.datoArray[i-1]) {
                     this.datoArray.splice(i, 1);
