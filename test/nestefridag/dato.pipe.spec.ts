@@ -1,4 +1,4 @@
-import { DatoPipe } from './../../app/dato.pipe';
+import { DatoPipe } from './../../app/nestefridag/dato.pipe';
 
 describe('DatoPipe', () => 
 {
