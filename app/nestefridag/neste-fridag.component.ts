@@ -5,14 +5,16 @@ import { ValgteSkolerService } from './../valgteSkoler.service';
 
 @Component
 ({
-    moduleId: module.id,
     selector: 'neste-fridag',
-    templateUrl:'html/neste-fridag.html'
+    templateUrl:'app/nestefridag/html/neste-fridag.html'
 })
-export class NesteFridagComponent implements OnInit {
+export class NesteFridagComponent implements OnInit 
+{
 
     private dagensDato : Date;
     private nesteFridager: Array<any> = [];
+    public skolerValgt: boolean = true;
+    public feilmelding: string = 'Du har ikke valgt skoler, trykk på "Velg skole(r)"'
 
     constructor(private nesteFridagService: NesteFridagService,
                 private valgteSkolerService: ValgteSkolerService){}
@@ -24,12 +26,16 @@ export class NesteFridagComponent implements OnInit {
 
     ngOnInit()
     {
-        //this.nesteFridagService.setDagensDato(); //this.dato();
         this.valgteSkolerService.getLagretData();
         this.nesteFridagService.setDagensDato();
         this.dato();
         this.nesteFridager = this.valgteSkolerService.getValgteSkoleRuter();
         this.nesteFridager = this.nesteFridagService.finnNesteFridag(this.nesteFridager);
+        
+        if(this.nesteFridager.length == 0)
+        {
+            this.skolerValgt = false;
+        }
         this.nesteFridagService.tomNesteFridagListe();
     }
 }

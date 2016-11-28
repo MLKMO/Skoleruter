@@ -1,12 +1,15 @@
-<h1> 
-    Legg til i privat kalender 
-</h1>
+<div class="col-xs-12 col-sm-12">
+    <h1> 
+        Legg til i privat kalender 
+    </h1>
 
-<p>
-    Ved å trykke på "Last ned kalender" vil en .ics fil lastes ned til din enhet.
-    Dette er en kalenderfil som kan importeres inn i de aller fleste digitale kalendere, som feks. Google og Applekalender. 
-    Denne filen inneholder skoleruter for alle skolene du har valgt, hvis du ikke har valgt skoler vil det ikke være mulig
-    å trykke på knappen. 
-</p>
+    <p>
+        Ved å trykke på "Last ned kalender" vil en .ics fil lastes ned til din enhet.
+        Dette er en kalenderfil som kan importeres inn i de aller fleste digitale kalendere, som feks. Google og Applekalender. 
+        Denne filen inneholder skoleruter for alle skolene du har valgt, hvis du ikke har valgt skoler vil det ikke være mulig
+        å trykke på knappen. 
+    </p>
 
-<button class="btn btn-primary" [disabled]="!skolerValgt" (click)="lagKalenderFil()" > Last ned kalender</button>
+    <button class="btn btn-primary" [disabled]="!skolerValgt" (click)="lagKalenderFil()" > 
+        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Last ned kalender</button>
+</div>

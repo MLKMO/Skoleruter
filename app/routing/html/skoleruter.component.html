@@ -1,8 +1,21 @@
-<neste-fridag> </neste-fridag>
 
+<div class="col-sm-6 col-xs-12"><neste-fridag> </neste-fridag></div>
+<div class="col-sm-6 col-xs-12"><varsling-komponent> </varsling-komponent></div>
+
+
+
+
+<div class="col-sm-12"></div>
 <ul class="nav nav-tabs">
   <li [routerLinkActive]="['active']"><a routerLink="/skoleruter/kalender" data-toggle="tab">Kalender</a></li>
-  <li [routerLinkActive]="['active']"><a routerLink="/skoleruter/liste" data-toggle="tab">Liste</a></li>
-  </ul>
+  <li *ngIf="bredde > 950" [routerLinkActive]="['active']"><a routerLink="/skoleruter/liste" data-toggle="tab">Liste</a></li>
+  <li *ngIf="skolenavn1" [routerLinkActive]="['active']"><a routerLink="/skoleruter/liste1" data-toggle="tab">{{ skolenavn1 }}</a></li>
+  <li *ngIf="skolenavn2" [routerLinkActive]="['active']"><a routerLink="/skoleruter/liste2" data-toggle="tab">{{ skolenavn2 }}</a></li>
+  <li *ngIf="skolenavn3" [routerLinkActive]="['active']"><a routerLink="/skoleruter/liste3" data-toggle="tab">{{ skolenavn3 }}</a></li>
+  <li *ngIf="skolenavn4" [routerLinkActive]="['active']"><a routerLink="/skoleruter/liste4" data-toggle="tab">{{ skolenavn4 }}</a></li>
+  <li *ngIf="skolenavn5" [routerLinkActive]="['active']"><a routerLink="/skoleruter/liste5" data-toggle="tab">{{ skolenavn5 }}</a></li>
+</ul>
+
+
 
 <router-outlet></router-outlet>

@@ -17,13 +17,22 @@ import { SkoleDataService } from './velgSkole/skoleData.service';
 import { ValgteSkolerService } from './valgteSkoler.service';
 import { NesteFridagComponent } from './nestefridag/neste-fridag.component';
 import { DatoPipe } from './dato.pipe';
+import { KortDatoPipe } from './kortDato.pipe';
 import { ListeComponent } from './listevisning/liste.component';
+import { Liste1Component } from './listevisning/liste1.component';
+import { Liste2Component } from './listevisning/liste2.component';
+import { Liste3Component } from './listevisning/liste3.component';
+import { Liste4Component } from './listevisning/liste4.component';
+import { Liste5Component } from './listevisning/liste5.component';
 import { SkoleruteModule } from './routing/skoleruter.module';
 import { NesteFridagModule } from './nestefridag/neste-fridag.module';
 import { ListeModule } from './listevisning/liste.module';
 import { LeggIKalenderComponent } from './leggikalender/legg-i-kalender.component';
 import { LeggIKalenderService } from './leggikalender/legg-i-kalender.service';
 import { InfoModule } from './info/info.module';
+import { VarslingKomponent } from './varsling/varsling.component';
+import { VarslingModule } from './varsling/varsling.module';
+import { VarslingService } from './varsling/varsling.service';
 
 @NgModule({
   imports: 
@@ -36,7 +45,8 @@ import { InfoModule } from './info/info.module';
   JsonpModule, 
   NesteFridagModule, 
   ListeModule,
-  InfoModule
+  InfoModule,
+  VarslingModule
   ],
   declarations: 
   [ 
@@ -48,9 +58,17 @@ import { InfoModule } from './info/info.module';
     SkoleListeFilterPipe,
     NesteFridagComponent,
     DatoPipe,
-    LeggIKalenderComponent
+    KortDatoPipe,
+    LeggIKalenderComponent,
+    ListeComponent, 
+    Liste1Component, 
+    Liste2Component, 
+    Liste3Component, 
+    Liste4Component, 
+    Liste5Component,
+    VarslingKomponent
   ],
-    providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService, LeggIKalenderService ],
+    providers: [ appRoutingProviders, SkoleDataService, ValgteSkolerService, LeggIKalenderService, VarslingService ],
     bootstrap: [ AppComponent ], 
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 

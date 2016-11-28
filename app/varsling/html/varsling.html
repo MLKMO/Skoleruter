@@ -1,0 +1,27 @@
+<div id="varslinger">
+ <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Få varsling i nettleseren om planleggingsdager og ferier. </h3>
+  </div>
+  <div class="panel-body">
+    <div class="midten">
+      <div *ngIf="!erNettleserLikSafari">
+        <p *ngIf="abonnerer === ''">Du kan få varsling 7 dager før planleggingsdag/ferie.</p>
+        <hr *ngIf="abonnerer === ''">
+      <button *ngIf="abonnerer === ''" class="btn btn-danger btn-sm" data-toggle="tab" (click)="set_abonnerer()"onclick="sporrOmTillatelseTilVarsling()" >
+        <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> Abonner på varslinger</button>
+        <p *ngIf="abonnerer === 'true'">Du vil få varsling 7 dager før planleggingsdag/ferie.</p>
+         <hr *ngIf="abonnerer === 'true'">
+       <button *ngIf="abonnerer === 'true'" class="btn btn-danger btn-sm" data-toggle="tab" onclick="stoppVarsling()" (click)="stopp_abonnement()">
+         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Stopp Varslinger</button>
+      </div>
+      <div *ngIf="erNettleserLikSafari">
+        <p>Varslinger er ikke tilgjengelig på Safari. Gå til varslingsinfo for å se hvilke nettlesere som kan få varslinger.</p> 
+        <button class="btn btn-primary btn-sm hvit_knapp" data-toggle="tab" (click)="ga_til_infoside()">
+          <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Gå til varslingsinfo</button>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+

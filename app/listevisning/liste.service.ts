@@ -1,6 +1,7 @@
 import { Injectable, Attribute, OnInit, OnDestroy } from '@angular/core';
 import { ListeComponent } from './liste.component';
 import { ValgteSkolerService } from './../valgteSkoler.service';
+import { NesteFridagService } from './../nestefridag/neste-fridag.service';
 
 @Injectable()
 
@@ -124,42 +125,46 @@ export class ListeService{
         }
         return skolerute;
     }
-private datoArray: Array<any> = [];
-    datoer(valgteSkoleRuter:Array<any>, datoArray: Array<any>){
+
+
+
+    private datoArray: Array<any> = [];
+    datoer(valgteSkoleRuter:Array<any>){ // lager datolista
+
+
+        
         for (var i = 0; i < valgteSkoleRuter.length; i++){
             this.datoArray[i] = valgteSkoleRuter[i].dato;
         }
-
+ 
         this.datoArray = this.datoArray.sort();
         
         for (var i = 1; i < this.datoArray.length; i++) {  
-            if (this.datoArray[i] === this.datoArray[i-1]) {
+            if (this.datoArray[i] === this.datoArray[i-1]) { // må sjekke samme index en gang til dersom man har fjernet et element.
                 this.datoArray.splice(i, 1);
+                if (this.datoArray[i] === this.datoArray[i-1]) { //må sjekke samme index opp til 4 ganger pga at vi kan legge til opp til 5 skoler, dermed mulig å ha 5 like datoer.
+                this.datoArray.splice(i, 1);
+                    if (this.datoArray[i] === this.datoArray[i-1]) {
+                    this.datoArray.splice(i, 1);
+                        if (this.datoArray[i] === this.datoArray[i-1]) {
+                        this.datoArray.splice(i, 1);
+                        }
+                    }
+                }
             }
 
-        }
-         for (var i = 1; i < this.datoArray.length; i++) {  
-            if (this.datoArray[i] === this.datoArray[i-1]) {
-                this.datoArray.splice(i, 1);
-            }
-
-        }
-         for (var i = 1; i < this.datoArray.length; i++) {  
-            if (this.datoArray[i] === this.datoArray[i-1]) {
-                this.datoArray.splice(i, 1);
-            }
-
-        }
-        for (var i = 1; i < this.datoArray.length; i++) { 
-            if (this.datoArray[i] === this.datoArray[i-1]) {
-                this.datoArray.splice(i, 1);
-            }
-
-        }
+        }        
         return this.datoArray;
     }
 
 
+    removePastDates(datoArray: any) {
+          var today = new Date();
+          this.datoArray = this.datoArray.filter(function(dateString) {
+            return new Date(dateString) >= today;
+          });
+          return this.datoArray;
+    }
      
     sjekkOmSkoleHarDato(skole: Array<any>){
         var skolesortert: Array<any> = [];
@@ -174,10 +179,18 @@ private datoArray: Array<any> = [];
         }
         return skolesortert;
     }
+    
+    forkortNavnet(skolenavn: any){
+        var arr: Array<any> = [];
+        arr = skolenavn.split(" ",2);
+        return arr[0];
+    }
 
-    constructor(private valgteSkolerService: ValgteSkolerService) { }
+    constructor(private valgteSkolerService: ValgteSkolerService, private nesteFridagService: NesteFridagService) { }
 
 
 }
+
+
 
 

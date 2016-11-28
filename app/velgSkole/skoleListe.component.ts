@@ -16,20 +16,22 @@ import { SkoleRuteData } from './skoleRuteData';
 })
 
 export class SkoleListeComponent implements OnInit, OnDestroy {
-  private errorMessage: string;                    // Feilmelding som kan oppstå ved henting av data fra file eller server.
-  private skoler: Array<Skole>;                    // Skole objekter som brukeren kan velge i mellom.
-  private skolenavn: string = '';                  // String som blir hentet fra søkefelt.
-  private mineSkoler: Array<string>;               // Valgte skoler. Brukes ogå som boolean for visning av liste etc.
-  private skoleRute: Array<SkoleRuteData>;         // Brukes til å hente ut skoleruter for valgte skoler.
-  private valgteSkoleRuter: Array<any> = [];       // Data som skal brukes i kalender og liste.
-  private skoleruteKnapp = false;                  // Boolsk variabel som styrer visning av knapper (Vis skolerute og Fjern Skoler).
+  private errorMessage: string;                               // Feilmelding som kan oppstå ved henting av data fra file eller server.
+  private skoler: Array<Skole>;                               // Skole objekter som brukeren kan velge i mellom.
+  private skolenavn: string = '';                             // String som blir hentet fra søkefelt.
+  private mineSkoler: Array<string>;                          // Valgte skoler. Brukes også som boolean for visning av liste etc.
+  private skoleRuterFraJsonFil: Array<SkoleRuteData>;         // Brukes til å hente ut skoleruter for valgte skoler.
+  private valgteSkoleRuter: Array<any> = [];                  // Data som skal brukes i kalender og liste.
+  private visKnapper = false;                                 // Boolsk variabel som styrer visning av knapper (Vis skolerute og Fjern Skoler).
   private brukerPosisjonLatutude: number;
   private brukerPosisjonLongitude: number;
   private sorterKnappTrykketPa = false;
-  private datoer: Array<any>;                      //Blir brukt til å lage en kalender basert på datoer.
-  private lasterBrukerlokasjon: boolean = false;   //Brukes til å vise loading animasjon når bruker posisjon innhentes.
+  private datoer: Array<any>;                      //Array som blir hentet inn og brukt i kalendervisningen til å skille datorutene fra hverandre.
+  private sorterAnimasjon: boolean = false;        //Brukes til å vise loading animasjon når bruker posisjon innhentes.
   private visKm: boolean = false;
-  
+  private posisjonIkkeTilgjengelig :boolean = false; //Viser informasjon dersom lokasjon ikke er tilgjengelig
+  private visSorterKnapp:boolean = true;
+
   constructor (private skoledataService: SkoleDataService,
       private valgteSkolerService: ValgteSkolerService,
       private router: Router,
@@ -45,24 +47,23 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.skoler = this.valgteSkolerService.getSkoler();
       this.mineSkoler = this.valgteSkolerService.getValgteSkoler();
       this.visEllerSkjulKnapper();
-      this.skoleRute = this.valgteSkolerService.getSkoleRute();
+      this.skoleRuterFraJsonFil = this.valgteSkolerService.getSkoleRute();
       this.datoer = this.valgteSkolerService.getDatoer();
     }
   }
 
   ngOnDestroy() {
+    this.lagSkoleruteForValgteSkoler();
     this.valgteSkolerService.setDatoer(this.datoer);
     this.valgteSkolerService.setValgteSkoleRuter(this.valgteSkoleRuter);
     this.valgteSkolerService.setSkoler(this.skoler);
-    this.valgteSkolerService.setSkoleRute(this.skoleRute);
+    this.valgteSkolerService.setSkoleRute(this.skoleRuterFraJsonFil);
     this.valgteSkolerService.setLagreDataLokalt();
   }
 
-    public sokefeltTilToppen() {
+    public skrollSokefeltTilToppen() {
       if(window.innerWidth < 769) {
-        let sokefelt = document.getElementById("sokeFeltDiv");
-        let skrollTilToppen = sokefelt.offsetTop;
-        window.scrollTo(0, skrollTilToppen);
+        window.scrollTo(0, 140);
       }
     }
 
@@ -70,7 +71,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       return this.skoler;
     }
     public getSkoleRute() {
-      return this.skoleRute;
+      return this.skoleRuterFraJsonFil;
     }
 
     private setdatoene() {
@@ -96,13 +97,14 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     private getSkoleRuteData() {
         this.skoledataService.getSkoleRuteData()
                          .subscribe(
-                           skoleRute => this.skoleRute = skoleRute,
+                           skoleRuterFraJsonFil => this.skoleRuterFraJsonFil = skoleRuterFraJsonFil,
                            error =>  this.errorMessage = <any>error);
     }
 
     private getBrukerPosisjon() {
         this.sorterKnappTrykketPa = true;
-        this.lasterBrukerlokasjon = true;
+        this.sorterAnimasjon = true;
+        setInterval(() => { this.stoppSorteringsAnimasjon(); }, 5000 );
         if (navigator.geolocation) {
             this.brukerPosisjonService.getBrukerPosisjon().forEach(
                 (position: Position) => {
@@ -110,14 +112,18 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
                         this.brukerPosisjonLongitude =  position.coords.longitude;
                         this.skoler = this.brukerPosisjonService.sorterSkolerEtterAvstand(this.brukerPosisjonLatutude,
                           this.brukerPosisjonLongitude, this.skoler);
-                          this.lasterBrukerlokasjon = false;
                           this.visKm = true;
+                          this.sorterAnimasjon = this.brukerPosisjonService.sorterAnimasjon;
             })
         } else {
             alert("Du må bruke en støttet nettleser for å sortere etter lokasjon");
         }
     }
-
+    
+    private stoppSorteringsAnimasjon(){
+      this.sorterAnimasjon = false;
+    }
+    
     private leggTilSkole(skole: Skole) {
       if(!skole.TrykketPa){
         skole.TrykketPa = true;
@@ -129,6 +135,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.valgteSkoler();
       this.visEllerSkjulKnapper();
       this.skolenavn = "";
+      this.visSorterKnapp=false;
     }
 
     private fjernValgteSkoler() {
@@ -136,6 +143,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.valgteSkolerService.fjernLagretData();
       this.nullstillVariabler();
       this.visEllerSkjulKnapper();
+      this.visSorterKnapp = true;
     }
 
     private valgteSkoler() {
@@ -151,13 +159,14 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
 
     private gaVidereTilSkoleruter() {
-      this.visSkolerute();
+      
       this.router.navigate(['/skoleruter']);
-      window.scrollTo(0,0); //Scroller window til toppen av siden
+      window.scrollTo(0,0); 
     }
 
-    private visSkolerute () {
-      for (let skole of this.skoleRute){
+
+    private lagSkoleruteForValgteSkoler () {
+      for (let skole of this.skoleRuterFraJsonFil){
         for (let valgtSkole of this.mineSkoler){
           if(valgtSkole === skole.skole){
             this.valgteSkoleRuter.push(skole);
@@ -165,13 +174,14 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
           }
         }
     }
+    
 
     private visSkoleruteKnapp() {
-      this.skoleruteKnapp = true;
+      this.visKnapper = true;
     }
 
     private skjulSkoleruteKnapp() {
-      this.skoleruteKnapp = false;
+      this.visKnapper = false;
     }
 
     private nullstillVariabler() {
@@ -183,7 +193,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
       this.skolenavn = '';
       this.mineSkoler = [];
       this.valgteSkoleRuter = [];
-      this.skoleruteKnapp = false;
+      this.visKnapper = false;
     }
 
   }

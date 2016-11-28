@@ -15,21 +15,21 @@ export class LeggIKalenderComponent implements OnInit, OnDestroy
     private kalenderFil:string; 
     private skolerValgt: boolean = true;
 
-    leggTilIKalender(kalenderFil:string)
+    lastNedKalender(kalenderFil:string)
     {
-        this.leggIKalenderService.skrivTilFil(kalenderFil);
+        this.leggIKalenderService.lastNedKalender(kalenderFil);
     }
 
     lagKalenderFil()
     {
-        for(var fridag of this.valgteSkoler)
+        for(var datoer of this.valgteSkoler)
         {
-            this.kalenderFil = this.leggIKalenderService.LagICalKropp(fridag.dato, fridag.skole, fridag.kommentar)
+            this.kalenderFil = this.leggIKalenderService.lagICalKropp(datoer.dato, datoer.skole, datoer.kommentar)
         }
 
         this.kalenderFil = this.leggIKalenderService.LagICalFil(this.kalenderFil);
         
-        this.leggTilIKalender(this.kalenderFil);
+        this.lastNedKalender(this.kalenderFil);
     }
 
     endreDatoFormat(valgteSkoler:Array<any>)

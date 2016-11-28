@@ -5,13 +5,12 @@ import { Skole } from './skole';
 
 
 @Injectable() export class BrukerPosisjonService {
-  
+     public sorterAnimasjon: boolean;
+     
   public sorterSkolerEtterAvstand(brukerLat: number, brukerLon: number, skoler: Array<Skole>): Array<Skole> {
-      //Lagrer avstand fra brukerposisjon på skolene i skolerMedLokasjon
       for(let skole of skoler){
         skole.avstand = this.distanseMellomToPunkter(brukerLat, brukerLon, skole.Latitude, skole.Longitude);
       }
-      //Sorterer skolene etter avstand ved hjelp av en mergesort algoritme.
       skoler = this.mergesort(skoler);
       return skoler;
   }
@@ -61,14 +60,14 @@ import { Skole } from './skole';
   //Henter brukerposisjon basert på HTML5 geolocation API
   public getBrukerPosisjon(): Observable<Position> {
         return new Observable((observer: Observer<Position>) => {
-            // Kaller getCurrentPosition method fra Geolocation API.
             navigator.geolocation.getCurrentPosition(
                 (position: Position) => {
                     observer.next(position);
                     observer.complete();
                 },
                 (error: PositionError) => {
-                    console.log('Geolocation service: ' + error.message);
+                    this.sorterAnimasjon = false;
+                    alert("Fikk ikke hentet ut din posisjon fra nettleseren, men du kan fortsatt søke etter eller velge skoler fra listen");
                     observer.error(error);
                 }
             );
