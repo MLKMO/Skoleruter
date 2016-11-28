@@ -1,6 +1,6 @@
 import { Injectable, Attribute, OnInit, OnDestroy } from '@angular/core';
 import { ListeComponent } from './liste.component';
-import { ValgteSkolerService } from './../valgteSkoler.service';
+import { ValgteSkolerService } from './../valgte-skoler.service';
 import { NesteFridagService } from './../nestefridag/neste-fridag.service';
 
 @Injectable()

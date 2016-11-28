@@ -104,10 +104,9 @@
       messaging.deleteToken(currentToken)
       .then(function() {
         let abonnerer ="";
-      localStorage.setItem("abonnerer", abonnerer);
+        localStorage.setItem("abonnerer", abonnerer);
       })
       .catch(function(err) {
-        console.log('Fikk ikke slettet token. ', err);
       });
     })
     .catch(function(err) {

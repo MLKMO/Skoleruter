@@ -1,5 +1,5 @@
 import { NesteFridagService } from './../../app/nestefridag/neste-fridag.service';
-import { ValgteSkolerService } from './../../app/valgteSkoler.service';
+import { ValgteSkolerService } from './../../app/valgte-skoler.service';
 
 describe('NesteFridagService', () => {
     let nesteFridagService: NesteFridagService;
