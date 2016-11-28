@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<div (touchstart)="touchStart($event);" (touchend)="touchEnd($event);" (touchmove)="touchMove($event);" (touchcancel)="touchCancel($event);">
+<div (touchstart)="touchStart($event);" (touchend)="touchEnd($event);" (touchmove)="touchMove($event);" 
+(touchcancel)="touchCancel($event);" (keydown)="sjekkPiltast($event);" tabindex="-1">
 
 <div class="mnd"> 
   <ul>
@@ -33,9 +34,10 @@
         <tr>
             <td *ngFor="let cell of ukeEn()">
                 {{cell.text}}
-                <div class="outer" *ngIf="datoerContains(cell) != null">
-                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
-                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                <div class="outer" *ngIf="datoerContains(cell).skoler != null">
+                  <div class="circle"  *ngFor="let circle of datoerContains(cell).skoler" 
+                  [ngStyle]="{'background-color': datoerContains(cell).farge}"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell).skoler"> 
                     {{circle.skole}} <br>
                     {{circle.kommentar}} <br>
                     SFO: {{circle.sfodag}}
@@ -48,9 +50,9 @@
             <td 
                 *ngFor="let cell of ukeneEtter()">
                 {{cell.text}}
-                <div class="outer" *ngIf="datoerContains(cell) != null">
-                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
-                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                <div class="outer" *ngIf="datoerContains(cell).skoler != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell).skoler"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell).skoler"> 
                     {{circle.skole}} <br>
                     {{circle.kommentar}} <br>
                     SFO: {{circle.sfodag}}
@@ -63,9 +65,9 @@
             <td 
                 *ngFor="let cell of ukeneEtter()">
                 {{cell.text}}
-                <div class="outer" *ngIf="datoerContains(cell) != null">
-                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
-                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                <div class="outer" *ngIf="datoerContains(cell).skoler != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell).skoler"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell).skoler"> 
                     {{circle.skole}} <br>
                     {{circle.kommentar}} <br>
                     SFO: {{circle.sfodag}}
@@ -78,9 +80,9 @@
             <td 
                 *ngFor="let cell of ukeneEtter()">
                 {{cell.text}}
-                <div class="outer" *ngIf="datoerContains(cell) != null">
-                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
-                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                <div class="outer" *ngIf="datoerContains(cell).skoler != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell).skoler"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell).skoler"> 
                     {{circle.skole}} <br>
                     {{circle.kommentar}} <br>
                     SFO: {{circle.sfodag}}
@@ -93,9 +95,9 @@
             <td 
                 *ngFor="let cell of ukeneEtter()">
                 {{cell.text}}
-                <div class="outer" *ngIf="datoerContains(cell) != null">
-                  <div class="circle" *ngFor="let circle of datoerContains(cell)"></div>
-                  <div class="details" *ngFor="let circle of datoerContains(cell)"> 
+                <div class="outer" *ngIf="datoerContains(cell).skoler != null">
+                  <div class="circle" *ngFor="let circle of datoerContains(cell).skoler"></div>
+                  <div class="details" *ngFor="let circle of datoerContains(cell).skoler"> 
                     {{circle.skole}} <br>
                     {{circle.kommentar}} <br>
                     SFO: {{circle.sfodag}}

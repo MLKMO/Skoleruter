@@ -13,7 +13,9 @@ export class KalenderComponent {
     private valgteSkoleRuter: Array<any> = []; 
     public datoer: Array<Cell> = [];
     private errorMessage: string;
-    private maaned: number = 8;
+    private dato: Date = new Date();
+    private maaned: number = this.dato.getMonth() + 1;
+    private maanedStr: string = this.dato.getFullYear() + '-' + this.dato.getMonth() + '-' + this.dato.getDate();
     private aaret:number = 2016;
     private maanedNavn: Array <string> = [
         'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni',
@@ -28,7 +30,7 @@ export class KalenderComponent {
         this.valgteSkoleRuter = this.valgteSkolerService.getValgteSkoleRuter();
     }
 
-    // Algoritme for å finne antall dager pr mnd, samt sjekke skuddår
+    // Algoritme for å finne antall dager pr mnd, inkl. sjekke skuddår
     antallDager(mnd :number, aar :number) :number {
         var dager :number;
         if ((mnd == 4) || (mnd == 6) || (mnd == 9) || (mnd == 11)) {
@@ -197,8 +199,8 @@ export class KalenderComponent {
         } else {
             this.maaned++;
         }
- 
     }
+
     minusMnd(){
         if (this.maaned === 1) {
             this.maaned = 12;
@@ -210,18 +212,38 @@ export class KalenderComponent {
         }
     }
 
-    datoerContains(cell:any):any[] {
+    datoerContains(cell:any):any {
         let skoler:any[] = [];
+        let farge:string = '';
         for (let i = 0; i < this.valgteSkoleRuter.length; i++) {
             if (this.valgteSkoleRuter[i].dato == cell.id) {
                 skoler.push(this.valgteSkoleRuter[i]);
             }
         }
-        return skoler;
+        //return skoler;
+        return {
+            skoler: skoler,
+            farge: 'blue'
+        }
     }
 
 
-	fingerCount = 0;
+    sjekkPiltast(event: any) {
+        event = event || window.event;
+        switch (event.which || event.keyCode) {
+            case 37:
+                this.minusMnd();
+                break;
+            case 39:
+                this.plussMnd();
+                break;
+        }
+    }
+
+
+	// The 4 Touch Event Handlers
+
+    fingerCount = 0;
 	startX = 0;
 	startY = 0;
 	curX = 0;
@@ -234,10 +256,6 @@ export class KalenderComponent {
 	swipeLength = 0;
 	swipeAngle: any = null;
 	swipeDirection: any = null;
-	
-
-
-	// The 4 Touch Event Handlers
 	
 	touchStart(event: any) {
 		// get the total number of fingers touching the screen
