@@ -16,7 +16,7 @@ import { SkoleListeFilterPipe} from'./velgSkole/skoleListeFilter.pipe';
 import { SkoleDataService } from './velgSkole/skoleData.service';
 import { ValgteSkolerService } from './valgteSkoler.service';
 import { NesteFridagComponent } from './nestefridag/neste-fridag.component';
-import { DatoPipe } from './dato.pipe';
+import { DatoPipe } from './nestefridag//dato.pipe';
 import { KortDatoPipe } from './kortDato.pipe';
 import { ListeComponent } from './listevisning/liste.component';
 import { Liste1Component } from './listevisning/liste1.component';
