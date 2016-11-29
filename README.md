@@ -30,7 +30,6 @@ npm test
 ```
 
 
-# Henting av data fra Stavanger og Gjesdal
-
-Ett script i Python ble laget for å hente csv-filene fra de to kommunene. 
+# Hente csv-filer fra Stavanger og Gjesdal-kommune
+Flere script i Python ble laget for å hente csv-filene fra de to kommunene. 
 Kildekoden til disse scriptene finnes [her](https://github.com/MLKMO/Parse_skoledata)

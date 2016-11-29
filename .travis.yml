@@ -18,4 +18,4 @@ script:
   - npm run test-once 
 
 notifications:
-  email: false
+  email: true
