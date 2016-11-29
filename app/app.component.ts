@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {SkoleListeComponent} from './velgSkole/skoleListe.component';
+import {SkoleListeComponent} from './velgSkole/velg-skole.component';
 import './velgSkole/rxjs-operators';
 
 @Component({

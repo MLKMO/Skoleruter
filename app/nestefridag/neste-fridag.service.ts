@@ -1,6 +1,6 @@
 import { Injectable, Attribute, OnInit, OnDestroy } from '@angular/core';
 
-import { ValgteSkolerService } from './../valgteSkoler.service';
+import { ValgteSkolerService } from './../valgte-skoler.service';
 
 @Injectable()
 export class NesteFridagService implements OnInit

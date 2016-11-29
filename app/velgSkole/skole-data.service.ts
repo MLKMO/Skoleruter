@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Skole } from './skole';
 import { Observable } from 'rxjs/Observable';
-import { SkoleRuteData} from './skoleRuteData';
+
+import { Skole } from './skole.type';
+import { SkoleRuteData} from './skole-rute-data.type';
 
 @Injectable()
 export class SkoleDataService {

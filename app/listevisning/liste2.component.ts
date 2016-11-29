@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ListeService } from './liste.service';
-import { ValgteSkolerService } from '../valgteSkoler.service';
+import { ValgteSkolerService } from '../valgte-skoler.service';
 
 @Component({
     selector: 'liste2',

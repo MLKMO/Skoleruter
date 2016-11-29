@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observer } from 'rxjs/Observer';
 import { Observable } from 'rxjs/Observable';
-import { Skole } from './skole';
 
+import { Skole } from './skole.type';
 
 @Injectable() export class BrukerPosisjonService {
-     public sorterAnimasjon: boolean;
+  public sorterAnimasjon: boolean;
      
   public sorterSkolerEtterAvstand(brukerLat: number, brukerLon: number, skoler: Array<Skole>): Array<Skole> {
       for(let skole of skoler){
@@ -40,24 +40,22 @@ import { Skole } from './skole';
     return resultat;
   }
 
-  //Bruker haversine formel til å beregne avstand mellom to punkter
   private distanseMellomToPunkter(lat1: number, lon1: number, lat2: number, lon2: number): number {
-      let R = 6373; // Jordens radius i km
-      let lat1Radian = lat1* Math.PI / 180;
-      let lat2Radian = lat2* Math.PI / 180;
-      let lon1Radian = lon1* Math.PI / 180;
-      let lon2Radian = lon2* Math.PI / 180;
-      let deltaLat = lat2Radian-lat1Radian;
-      let deltaLon = lon2Radian-lon1Radian;
-      let a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
-        Math.cos(lat1Radian) * Math.cos(lat2Radian) *
-        Math.sin(deltaLon/2) * Math.sin(deltaLon/2);
+      let jordens_radius = 6373;
+      let lat1_radian = lat1* Math.PI / 180;
+      let lat2_radian = lat2* Math.PI / 180;
+      let lon1_radian = lon1* Math.PI / 180;
+      let lon2_radian = lon2* Math.PI / 180;
+      let delta_lat = lat2_radian-lat1_radian;
+      let delta_lon = lon2_radian-lon1_radian;
+      let a = Math.sin(delta_lat/2) * Math.sin(delta_lat/2) +
+        Math.cos(lat1_radian) * Math.cos(lat2_radian) *
+        Math.sin(delta_lon/2) * Math.sin(delta_lon/2);
       let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-      let d = R * c;
+      let d = jordens_radius * c;
       return Math.round(d * 10) / 10;
   }
   
-  //Henter brukerposisjon basert på HTML5 geolocation API
   public getBrukerPosisjon(): Observable<Position> {
         return new Observable((observer: Observer<Position>) => {
             navigator.geolocation.getCurrentPosition(

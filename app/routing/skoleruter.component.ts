@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ListeService } from '../listevisning/liste.service';
-import { ValgteSkolerService } from '../valgteSkoler.service';
+import { ValgteSkolerService } from '../valgte-skoler.service';
 
 
 @Component({
