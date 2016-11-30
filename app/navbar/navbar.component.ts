@@ -6,7 +6,8 @@ import { Router, NavigationStart, NavigationEnd, Event as NavigationEvent } from
     selector: 'navbar',
     templateUrl: 'app/navbar/html/navbar.component.html'
 })
-export class NavbarComponent{
+export class NavbarComponent
+{
     private skolerValgt: boolean = false;
     private viserInfo: boolean = false;
     private viserLastNedKalender: boolean = false;

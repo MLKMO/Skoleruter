@@ -7,17 +7,15 @@ import { HttpModule, JsonpModule }  from '@angular/http';
 
 //Egenproduserte components
 import { AppComponent }  from './app.component';
-
-import { SkoleListeComponent} from './velgSkole/skoleListe.component';
+import { SkoleListeComponent} from './velgSkole/velg-skole.component';
 import { SkoleruterComponent } from './routing/skoleruter.component';
 import { PageNotFoundComponent} from './page-not-found.component';
 import { NavbarComponent } from './navbar/navbar.component'
-import { SkoleListeFilterPipe} from'./velgSkole/skoleListeFilter.pipe';
-import { SkoleDataService } from './velgSkole/skoleData.service';
-import { ValgteSkolerService } from './valgteSkoler.service';
+import { SkoleListeFilterPipe} from'./velgSkole/skole-liste-filter.pipe';
+import { SkoleDataService } from './velgSkole/skole-data.service';
+import { ValgteSkolerService } from './valgte-skoler.service';
 import { NesteFridagComponent } from './nestefridag/neste-fridag.component';
-import { DatoPipe } from './dato.pipe';
-import { KortDatoPipe } from './kortDato.pipe';
+import { KortDatoPipe } from './kort-Dato.pipe';
 import { ListeComponent } from './listevisning/liste.component';
 import { Liste1Component } from './listevisning/liste1.component';
 import { Liste2Component } from './listevisning/liste2.component';
@@ -57,7 +55,6 @@ import { VarslingService } from './varsling/varsling.service';
     NavbarComponent, 
     SkoleListeFilterPipe,
     NesteFridagComponent,
-    DatoPipe,
     KortDatoPipe,
     LeggIKalenderComponent,
     ListeComponent, 

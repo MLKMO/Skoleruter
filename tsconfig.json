@@ -9,6 +9,7 @@
     "removeComments": false,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "app/built/"
+    "outDir": "app/built/", 
+    "types" : []
   }
 }

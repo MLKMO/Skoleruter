@@ -1,17 +1,17 @@
-import { DatoPipe } from './../../app/dato.pipe';
+import { KortDatoPipe } from './../../app/kort-Dato.pipe';
 
 describe('DatoPipe', () => 
 {
 
-    let datoPipe: DatoPipe;
+    let datoPipe: KortDatoPipe;
     beforeEach(() => 
     {
-        datoPipe = new DatoPipe();
+        datoPipe = new KortDatoPipe();
     });
 
     it('Skal gi ut dato på følgende format: dd.Måndednavn.yyyy', () =>
     {
         let dato: any = "2016-08-15";
-        expect(datoPipe.transform(dato,)).toEqual('15. august  2016: ');
+        expect(datoPipe.transform(dato,)).toEqual('15. aug  2016: ');
     });
 });

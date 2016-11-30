@@ -6,7 +6,7 @@
     <div *ngIf="skolerValgt">
       <ul class="list-unstyled">
         <li *ngFor="let fridager of nesteFridager">
-            {{ fridager.dato | dato}}
+            {{ fridager.dato | kortDato}}
             {{ fridager.skole }},
             {{ fridager.kommentar }}
         </li>
