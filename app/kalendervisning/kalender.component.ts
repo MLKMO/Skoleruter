@@ -15,12 +15,13 @@ export class KalenderComponent {
     private errorMessage: string;
     private dato: Date = new Date();
     private maaned: number = this.dato.getMonth() + 1;
-    private maanedStr: string = this.dato.getFullYear() + '-' + this.dato.getMonth() + '-' + this.dato.getDate();
+    private maanedStr: string = this.dato.getFullYear() + '-' 
+        + this.dato.getMonth() + '-' + this.dato.getDate();
     private aaret:number = 2016;
     private maanedNavn: Array <string> = [
         'Januar', 'Februar', 'Mars', 'April', 'Mai', 'Juni',
         'Juli', 'August', 'September','Oktober', 'November', 'Desember'
-    ];
+        ];
     antallRuter: number = 0;
     j: number = 0;
 
@@ -57,18 +58,8 @@ export class KalenderComponent {
         return dager;
             }
 
-    ukeEn() :Array<Cell> {
-        var cells: Array<Cell> = [];
-        this.antallRuter = 0;
-        for (let i = 0; i < this.forsteImnd()[this.maaned]; i++) {
-            var cell = new Cell;
-            cells.push(cell);
-            this.antallRuter++;
-        }
-        for (this.j = 0; this.j < this.antallDager(this.maaned, this.aaret); this.j++) {
-            let cell = new Cell();
-
-            switch (true) {
+    settDatoId(cell:Cell) {
+        switch (true) {
                 case this.maaned == 8 :
                     cell.id = this.datoer[this.j].dato;
                     break;
@@ -106,7 +97,20 @@ export class KalenderComponent {
                     cell.id = this.datoer[this.j + 31 + 30 + 31 + 30 + 31 + 31 + 28 + 31 + 30 + 31 + 30].dato;
                     break;
             }
-            
+            return cell.id;
+    }
+
+    ukeEn() :Array<Cell> {
+        var cells: Array<Cell> = [];
+        this.antallRuter = 0;
+        for (let i = 0; i < this.forsteImnd()[this.maaned]; i++) {
+            var cell = new Cell;
+            cells.push(cell);
+            this.antallRuter++;
+        }
+        for (this.j = 0; this.j < this.antallDager(this.maaned, this.aaret); this.j++) {
+            let cell = new Cell();
+            cell.id = this.settDatoId(cell);
             cell.text = this.j + 1;       
             cells.push(cell);
             this.antallRuter++;
@@ -122,46 +126,7 @@ export class KalenderComponent {
         var cells: Array<Cell> = [];
         for (this.j += 1 ; this.j < this.antallDager(this.maaned, this.aaret); this.j++) {
             var cell = new Cell;
-
-            switch (true) {
-                case this.maaned == 8 :
-                    cell.id = this.datoer[this.j].dato;
-                    break;
-                case this.maaned == 9 :
-                    cell.id = this.datoer[this.j + 31].dato;
-                    break;
-                case this.maaned == 10 :
-                    cell.id = this.datoer[this.j + 31 + 30].dato;
-                    break;
-                case this.maaned == 11 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31].dato;
-                    break;
-                case this.maaned == 12 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31 + 30].dato;
-                    break;
-                case this.maaned == 1 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31 + 30 + 31].dato;
-                    break;
-                case this.maaned == 2 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31 + 30 + 31 + 31].dato;
-                    break;
-                case this.maaned == 3 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31 + 30 + 31 + 31 + 28].dato;
-                    break;
-                case this.maaned == 4 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31 + 30 + 31 + 31 + 28 + 31].dato;
-                    break;
-                case this.maaned == 5 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31 + 30 + 31 + 31 + 28 + 31 + 30].dato;
-                    break;
-                case this.maaned == 6 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31 + 30 + 31 + 31 + 28 + 31 + 30 + 31].dato;
-                    break;
-                case this.maaned == 7 :
-                    cell.id = this.datoer[this.j + 31 + 30 + 31 + 30 + 31 + 31 + 28 + 31 + 30 + 31 + 30].dato;
-                    break;
-            }
-            
+            cell.id = this.settDatoId(cell);
             cell.text = this.j + 1;       
             cells.push(cell);
             this.antallRuter++;
@@ -194,7 +159,7 @@ export class KalenderComponent {
         if (this.maaned === 12) {
             this.maaned = 1;
             this.aaret++;
-        } else if (this.maaned ===7) {
+        } else if (this.maaned === 7) {
             this.maaned = 7;
         } else {
             this.maaned++;
@@ -213,18 +178,30 @@ export class KalenderComponent {
     }
 
     datoerContains(cell:any):any {
-        let skoler:any[] = [];
-        let farge:string = '';
+        let fulltSkolenavn:any[] = [];
+        let kortSkolenavn:any[] = [];
+        let sfoFri:any = false;
         for (let i = 0; i < this.valgteSkoleRuter.length; i++) {
             if (this.valgteSkoleRuter[i].dato == cell.id) {
-                skoler.push(this.valgteSkoleRuter[i]);
+                fulltSkolenavn.push(this.valgteSkoleRuter[i]);
+                let kort:any[] = this.valgteSkoleRuter[i].skole.substring(0, 3).toUpperCase();
+                kortSkolenavn.push(kort);
+                sfoFri = 'red';
+                if (this.valgteSkoleRuter[i].sfodag == 'Nei') {
+                    sfoFri = true;
+                }
             }
         }
-        //return skoler;
         return {
-            skoler: skoler,
-            farge: 'blue'
+            fulltSkolenavn: fulltSkolenavn,
+            kortSkolenavn:  kortSkolenavn,
+            sfoFri:         sfoFri,
         }
+    }
+
+    forLoop() {
+        let i:any[] = [1, 2, 3, 4, 5];
+        return i;
     }
 
 
@@ -241,8 +218,7 @@ export class KalenderComponent {
     }
 
 
-	// The 4 Touch Event Handlers
-
+	// Touch events
     fingerCount = 0;
 	startX = 0;
 	startY = 0;
@@ -338,14 +314,12 @@ export class KalenderComponent {
 	processingRoutine() {
 		if ( this.swipeDirection == 'left' ) {
             this.plussMnd();
-            console.log("hei");
 		} else if ( this.swipeDirection == 'right' ) {
             this.minusMnd();
 		} 
 	}
 
 }
-
 
 
 export class Cell {

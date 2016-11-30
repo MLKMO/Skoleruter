@@ -1,19 +1,23 @@
-/* for å virke med innerHtml, bruker du :host /deep/ foran tag */
-
 ul {list-style-type: none;}
 
 body {
     font-family: Verdana, sans-serif;
     height: 100%;
+        cursor: default;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
 }
 
-.kalender {height: 50vh;}
+.kalender {height: 60vh;}
 
 table, td, th {
     text-align: left;
     border: 1px solid black;
     vertical-align: text-top;
     padding: 5px;
+    font-size: 13px;
 }
 
 table {
@@ -22,43 +26,84 @@ table {
 }
 
 th {
-    height: 1px;
-    background-color: gray;
+    height: 6%;
+    background-color: #e7e7e7;
 }
 
 td {
     width: 14.28%;
-    height: 16.6%;
+    height: 15.6%;
+    position: relative;
 }
 
-.outer {position: absolute}
+.rightdet{
+  right: 0px;
+  left: auto;
+}
+.botdet{bottom: 0px; top: auto;}
+
+.outer {
+    position: absolute;
+    font-size: 10px;
+    }
+
+.forklaring {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    text-align: center;
+    padding: 5px 0 5px 15px;
+    min-width: 150px;
+}
+
+.forklaringTekst {
+    padding: 5px 15px 5px 5px;
+}
+
+.kortNavn {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    text-align: center;
+}
 
 .details {
     display: none;
-    background-color: gray;
+    background-color: #e7e7e7;
     overflow: visible;
-    border: 2px solid black;
-    float: left;
     position: relative;
     z-index: 10;
     padding: 5px;
-    font-size: 12px;
+    font-size: 13px;
+    float: left;
 } 
 
 div:hover > .details {display: block;}
 
-.circle {
+.skoleFri {
     border-radius: 50%;
-	width: 10px;
-	height: 10px; 
+	width: 8px;
+	height: 8px; 
     background-color:red;
-    float: left;
+    display: inline-block;
+}
+
+.sfoFri {
+    border-radius: 50%;
+	width: 8px;
+	height: 8px; 
+    background-color:blue;
+    display: inline-block;
 }
 
 .mnd {
-    padding: 15px 15px;
+    padding: 10px 15px;
     width: 100%;
-    background: #1abc9c;
+    height: 15.6%;
+    background: #008cba;
+    border: 1px solid #0079a1;
     text-align: center;
 }
 
@@ -69,9 +114,9 @@ div:hover > .details {display: block;}
 
 .mnd ul li {
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     text-transform: uppercase;
-    letter-spacing: 15px;
+    letter-spacing: 13px;
 }
 
 .mnd .forrige {
