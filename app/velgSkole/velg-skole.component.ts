@@ -124,6 +124,16 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
     }
     
     private leggTilSkole(skole: Skole) {
+      this.leggTilEllerFjernSkole(skole);
+      this.valgteSkolerService.setLagreDataLokalt();
+    }
+
+    private fjernSkoleFraListe(skole: Skole){
+      this.leggTilEllerFjernSkole(skole);
+      this.visSorterKnapp = true;
+    }
+
+    private leggTilEllerFjernSkole(skole : Skole){
       if(!skole.TrykketPa){
         skole.TrykketPa = true;
       }else{
@@ -165,6 +175,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
 
 
     private lagSkoleruteForValgteSkoler () {
+      if(this.brukerensValgteSkoler!== undefined){
       for (let skole of this.skoleRuterFraJsonFil){
         for (let valgtSkole of this.brukerensValgteSkoler){
           if(valgtSkole === skole.skole){
@@ -172,6 +183,7 @@ export class SkoleListeComponent implements OnInit, OnDestroy {
             }
           }
         }
+      }
     }
     
     private visSkoleruteKnapp() {

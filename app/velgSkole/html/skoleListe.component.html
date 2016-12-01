@@ -18,7 +18,7 @@
   <div *ngIf="visKnapper">
     <button class="btn btn-danger knapp col-xs-12" (click)="fjernValgteSkoler()">Fjern Valg</button>
     <div *ngFor="let skole of skoler">
-      <div  class="btn btn-default col-xs-12 " *ngIf="skole.TrykketPa" (click) ="leggTilSkole(skole)" onclick="stoppVarsling()">
+      <div  class="btn btn-default col-xs-12 " *ngIf="skole.TrykketPa" (click) ="fjernSkoleFraListe(skole)" onclick="stoppVarsling()">
         <p class="valgteSkoler" >{{skole.skole}}</p>
         <span class="glyphicon glyphicon-trash soppelkasse" ></span>
       </div>

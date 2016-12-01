@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { VarslingService } from './varsling.service';
+import { ValgteSkolerService} from '../valgte-skoler.service';
 
 @Component
 ({
@@ -10,7 +11,7 @@ import { VarslingService } from './varsling.service';
 })
 export class VarslingKomponent implements OnInit {
     
-    constructor( private varslingService: VarslingService, private router: Router){}
+    constructor( private varslingService: VarslingService, private router: Router,){}
     private abonnerer = "";
     private erNettleserLikSafari = false;
     
@@ -20,7 +21,7 @@ export class VarslingKomponent implements OnInit {
         this.varslingService.getTopics();
     }
     
-    // Skjuler varsling for safari nettlesere fordi firebase cloud messaging ikke er støttet i safari
+   // Skjuler varsling for safari nettlesere fordi firebase cloud messaging ikke er støttet i safari
    private skjul_for_safari(){
         this.erNettleserLikSafari = navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
                    navigator.userAgent && !navigator.userAgent.match('CriOS');
@@ -28,7 +29,7 @@ export class VarslingKomponent implements OnInit {
 
    private ga_til_infoside() {
       this.router.navigate(['/info/varsling']);
-      window.scrollTo(0,0); //Scroller window til toppen av siden
+      window.scrollTo(0,0); 
     }
    
    private set_abonnerer(){
