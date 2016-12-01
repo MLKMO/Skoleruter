@@ -7,7 +7,7 @@ export class LeggIKalenderService
     public icalFil:string;
     public data = new Blob([], {type: 'text/ics'});
     
-    private dagensDato: Date;
+    private dagensDato: string;
     private icalStart: string = "BEGIN:VCALENDAR\n";
     private icalSlutt: string = "END:VCALENDAR\n";
     private icalElementStart: string = "BEGIN:VEVENT\n"
@@ -18,23 +18,37 @@ export class LeggIKalenderService
     private organiserer: string = "ORGANIZER:CN=Skoleruter\n";
     private calscale: string = "CALSCALE:GREGORIAN\n";
     private beskrivelse: string = "DESCRIPTION:";
+    private metode: string = "METHOD:PUBLISH\n";
+    private tidssone: string = "X-WR-TIMEZONE:UTC\n";
+    private status: string = "STATUS:CONFIRMED\n";
+    private klasse: string = "CLASS:PUBLIC\n";
+    private opprettet: string = "CREATED:";
+    private sistModifisert: string = "LAST-MODIFIED:20161130T130006Z\n"
+    private sekvens: string = "SEQUENCE:0\n";
 
     public lagICalKropp(dato:string, skole:string, kommentar:string)
     {
         let skoleUtenMellomrom = this.fjernMellomrom(skole);
         let kommentarUtenMellomrom = this.fjernMellomrom(kommentar);
-        this.dagensDato = new Date();
+        this.dagensDato = new Date().toISOString();
+        this.dagensDato = this.endreDatoformat(this.dagensDato);
 
         let icalEvent = 
         this.icalKropp + "" + 
         this.icalElementStart + "" + 
+        "DTSTART;VALUE=DATE:" + dato + "\n" + 
+        "DTEND;VALUE=DATE:"+ dato + "\n" + 
+        "DTSTAMP:" + this.dagensDato + "\n" + 
+        "UID:" + dato + "" + skoleUtenMellomrom + "" 
+        + kommentarUtenMellomrom + "@skoleruter.top"+ "\n" + 
+        this.klasse + 
+        this.opprettet + this.dagensDato + "\n" + 
         this.beskrivelse + skole + ": " + kommentar + "\n" +
-        "DTSTAMP:" + "" + String(this.dagensDato)+ "\n" + 
+        this.sistModifisert + 
+        this.sekvens + 
+        this.status + 
         this.organiserer + "" + 
-        "DTSTART:" + dato + "T060000Z\n" + 
-        "DTEND:"+ dato + "T150000Z\n" + 
-        "SUMMARY:" + skole + " " + kommentar + "\n" +
-        "UID:" + dato + "" + skoleUtenMellomrom + "" + kommentarUtenMellomrom + "@skoleruter.top\n" +  
+        "SUMMARY:" + skole + " " + kommentar + "\n" + 
         this.icalElementStopp;
         
         this.icalKropp = icalEvent;
@@ -44,9 +58,11 @@ export class LeggIKalenderService
     public LagICalFil(icalKropp:string)
     {
         this.icalFil = 
-        this.icalStart + "" + 
-        this.proid + "" + 
-        this.versjon + "" + 
+        this.icalStart + "" +
+        this.proid + "" +  
+        this.versjon + "" +
+        this.metode + "" + 
+        this.tidssone + "" +  
         this.icalKropp + "" + 
         this.icalSlutt;
         
@@ -65,6 +81,15 @@ export class LeggIKalenderService
     {
         setning = setning.replace(/\s+/g, '');
         return setning
+    }
+
+    private endreDatoformat(dato:string)
+    {
+        let tempDato = dato.slice(0,19);
+        tempDato = tempDato.replace(/\-/g,'');
+        tempDato = tempDato.replace(/\:/g, '');
+        tempDato = tempDato+='Z';
+        return tempDato;
     }
 
     public tomAlleVariabler()
