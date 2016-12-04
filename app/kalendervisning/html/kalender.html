@@ -5,90 +5,94 @@
       <title></title>
       <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body (keydown)="sjekkPiltast($event);">
 
 <div (touchstart)="touchStart($event);" (touchend)="touchEnd($event);" (touchmove)="touchMove($event);" 
 (touchcancel)="touchCancel($event);" (keydown)="sjekkPiltast($event);" tabindex="-1">
 
-<div class="mnd"> 
-    <ul>
-        <a (click)="minusMnd()"> <li class="forrige"> &#10094; </li> </a>
-        <a (click)="plussMnd()"> <li class="neste">  &#10095; </li> </a>
+    <div class="mnd"> 
+        <ul>
+            <a (click)="forrigeMnd()"> <li class="forrige"> &#10094; </li> </a>
+            <a (click)="nesteMnd()"> <li class="neste">  &#10095; </li> </a>
 
-        <li>{{maanedNavn[maaned-1]}}<br>
-            <span style="font-size:18px">{{aaret}}</span>
-        </li>
+            <li>{{maanedNavn[maaned-1]}}<br>
+                <span style="font-size:18px">{{aaret}}</span>
+            </li>
 
-    </ul>
-</div>
+        </ul>
+    </div>
 
-<div class="forklaring">
-<div class="skoleFri" style="margin: auto 0"></div>
-<div class="forklaringTekst">Fridag skole</div>
-<div class="sfoFri" style="margin: auto 0"></div>
-<div class="forklaringTekst">Stengt SFO</div>
-</div>
+    <div class="forklaring">
+    <div class="skoleFri" style="margin: auto 0"></div>
+    <div class="forklaringTekst">Fridag skole</div>
+    <div class="sfoFri" style="margin: auto 0"></div>
+    <div class="forklaringTekst">Stengt SFO</div>
+    </div>
 
-<div class="kalender">
-      <table *ngIf="datoer">
-          <tr>
-              <th>Man</th>
-              <th>Tir</th>
-              <th>Ons</th>
-              <th>Tor</th>
-              <th>Fre</th>
-              <th>Lør</th>
-              <th>Søn</th>
-          </tr>
-          <tr>
-                <td *ngFor="let cell of ukeEn()">
+    <div class="kalender">
+        <table *ngIf="datoer">
+            <tr>
+                <th>Man</th>
+                <th>Tir</th>
+                <th>Ons</th>
+                <th>Tor</th>
+                <th>Fre</th>
+                <th>Lør</th>
+                <th>Søn</th>
+            </tr>
+            <tr>
+                    <td *ngFor="let cell of ukeEn()">
+                        {{cell.text}}
+                        <div class="outer" *ngIf="datoerInnhold(cell).fulltSkolenavn != null">
+
+                            <div class="kortNavn" *ngFor="let kort of datoerInnhold(cell).kortSkolenavn">
+                                {{kort}}
+
+                                <div class="skoleFri"></div>
+                                <div class="sfoFri" *ngIf="datoerInnhold(cell).sfoFri == true" ></div>
+
+                            </div>
+
+                            <div class="outerDetails">
+
+                            <div class="details" *ngFor="let skole of datoerInnhold(cell).fulltSkolenavn"> 
+                                {{skole.skole}} <br>
+                                {{skole.kommentar}} <br>
+                                SFO: {{skole.sfodag}}
+                            </div>
+
+                            </div>
+
+                        </div>
+                    </td>            
+            </tr>
+
+            <tr *ngFor="let i of forLoop()">
+                <td 
+                    *ngFor="let cell of ukeneEtter()">
                     {{cell.text}}
-                    <div class="outer" *ngIf="datoerContains(cell).fulltSkolenavn != null">
+                    <div class="outer" *ngIf="datoerInnhold(cell).fulltSkolenavn != null">
 
-                        <div class="kortNavn" *ngFor="let kort of datoerContains(cell).kortSkolenavn">
-                            {{kort}}
+                            <div class="kortNavn" *ngFor="let kort of datoerInnhold(cell).kortSkolenavn">
+                                {{kort}}
 
-                            <div class="skoleFri"></div>
-                            <div class="sfoFri" *ngIf="datoerContains(cell).sfoFri == true" ></div>
+                                <div class="skoleFri"></div>
+                                <div class="sfoFri" *ngIf="datoerInnhold(cell).sfoFri == true" ></div>
 
-                        </div>
+                            </div>
 
-                        <div class="botdet rightdet details" *ngFor="let skole of datoerContains(cell).fulltSkolenavn"> 
-                            {{skole.skole}} <br>
-                            {{skole.kommentar}} <br>
-                            SFO: {{skole.sfodag}}
-                        </div>
-
-                    </div>
-                </td>            
-          </tr>
-
-          <tr *ngFor="let i of forLoop()">
-              <td 
-                  *ngFor="let cell of ukeneEtter()">
-                  {{cell.text}}
-                  <div class="outer" *ngIf="datoerContains(cell).fulltSkolenavn != null">
-
-                        <div class="kortNavn" *ngFor="let kort of datoerContains(cell).kortSkolenavn">
-                            {{kort}}
-
-                            <div class="skoleFri"></div>
-                            <div class="sfoFri" *ngIf="datoerContains(cell).sfoFri == true" ></div>
+                            <div class="details" *ngFor="let skole of datoerInnhold(cell).fulltSkolenavn"> 
+                                {{skole.skole}} <br>
+                                {{skole.kommentar}} <br>
+                                SFO: {{skole.sfodag}}
+                            </div>
 
                         </div>
+                    </td>            
+            </tr>
+        </table>
 
-                        <div class="botdet rightdet details" *ngFor="let skole of datoerContains(cell).fulltSkolenavn"> 
-                            {{skole.skole}} <br>
-                            {{skole.kommentar}} <br>
-                            SFO: {{skole.sfodag}}
-                        </div>
-
-                    </div>
-                </td>            
-          </tr>
-      </table>
-
-  </div>
+    </div>
 
 </div>
   
