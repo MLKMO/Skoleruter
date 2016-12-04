@@ -59,6 +59,10 @@ p{
   padding-left: 1em;
   margin-bottom: 1em;
   height:2.2em;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+
 }
 .glyphicon-search{
   color: rgba(0,0,0,0.75);
@@ -72,7 +76,8 @@ p{
 }
 #infotekst{
   padding:1em;
-  font: 400 20px/1.5 Helvetica, Verdana, sans-serif;
+  font: 0 20px/1.5 Helvetica, Verdana, sans-serif;
+  letter-spacing: 1px;
 }
 
 /* VALGTESKOLER*/

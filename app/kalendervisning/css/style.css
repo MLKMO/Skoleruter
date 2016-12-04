@@ -1,37 +1,26 @@
-/* for å virke med innerHtml, bruker du :host /deep/ foran tag */
-
-ul {list-style-type: none;}
-
 body {
     font-family: Verdana, sans-serif;
     height: 100%;
-    }
-
-.kalender {height: 50vh;}
-
-table, td, th {
-    text-align: left;
-    border: 1px solid black;
-    vertical-align: text-top;
-    padding: 5px;
-    }
-
-table {
-    height: 100%;
-    width: 100%;
+    cursor: default;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+    font-size: 13px;
 }
 
-td {width: 14.28%;}
+*:focus {
+    outline: none;
+}
 
-/* mnd header */
 .mnd {
-    padding: 15px 15px;
+    padding: 10px 15px;
     width: 100%;
-    background: #1abc9c;
+    background: #008cba;
+    border: 1px solid #0079a1;
     text-align: center;
 }
 
-/* mnd list */
 .mnd ul {
     margin: 0;
     padding: 0;
@@ -39,22 +28,114 @@ td {width: 14.28%;}
 
 .mnd ul li {
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     text-transform: uppercase;
-    letter-spacing: 20px;
+    letter-spacing: 13px;
 }
 
-/* forrigeious button inside mnd header */
 .mnd .forrige {
     float: left;
     padding-top: 10px;
 }
 
-/* Next button */
 .mnd .neste {
     float: right;
     padding-top: 10px;
 }
+
+ul {list-style-type: none;}
+
+.forklaring {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    text-align: center;
+    padding: 2px 15px;
+    min-width: 150px;
+    width: 100%;
+}
+
+.forklaringTekst {
+    padding: 0 15px 0 5px;
+}
+
+.skoleFri {
+    border-radius: 50%;
+	width: 8px;
+	height: 8px; 
+    background-color:orangered;
+    display: inline-block;
+    margin: auto 0; 
+    position: relative;
+    left:2px;
+}
+
+.sfoFri {
+    border-radius: 50%;
+	width: 8px;
+	height: 8px; 
+    background-color:darkblue;
+    display: inline-block;
+    margin: auto 0; 
+    position: relative;
+    left:3px;
+}
+
+.kalender {height: 70vh;}
+
+table, td, th {
+    text-align: left;
+    border: 1px solid black;
+    vertical-align: text-top;
+    padding: 5px;
+    font-size: 13px;
+}
+
+table {
+    height: 100%;
+    width: 100%;
+    table-layout: fixed;
+}
+
+th {
+    height: 6%;
+    background-color: #e7e7e7;
+}
+
+td {
+    width: 14.28%;
+    height: 15.6%;
+    position: relative;
+}
+
+.outer {
+    position: absolute;
+    font-size: 10px;
+    width: 100%;
+}
+
+.kortNavn {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    text-align: center;
+}
+
+.details {
+    display: none;
+    background-color: #e7e7e7;
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+    padding: 5px;
+    font-size: 13px;
+    word-break: break-all;
+} 
+
+td:hover .details {display: block;}
+
 
 /* Highlight the "current" day 
 .days li .active {

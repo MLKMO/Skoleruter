@@ -10,26 +10,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand col-xs-9"><b>Skoleruter for Stavanger og Gjesdal</b></a>
+      <a class="navbar-brand col-xs-9">Skoleruter for Stavanger og Gjesdal</a>
     </div>
     
     <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="viserInfo || skolerValgt || viserLastNedKalender" 
+        <li 
           data-toggle="collapse" 
           data-target=".navbar-collapse">
-          <a routerLink="/skoleliste"><b>Velg skoler</b></a></li>
-        <li *ngIf="viserInfo || viserLastNedKalender" 
-          data-toggle="collapse" 
-          data-target=".navbar-collapse">
-          <a routerLink="/skoleruter/kalender"><b>Vis skoleruter</b></a></li>
+          <a routerLink="/skoleliste">Velg skoler</a></li>
         <li *ngIf="skolerValgt" 
           data-toggle="collapse" 
           data-target=".navbar-collapse">
-          <a routerLink="/last-ned-kalender"><b>Last ned kalender</b></a></li>
+          <a routerLink="/skoleruter/kalender">Vis skoleruter</a></li>
+        <li *ngIf="skolerValgt" 
+          data-toggle="collapse" 
+          data-target=".navbar-collapse">
+          <a routerLink="/last-ned-kalender">Last ned kalender</a></li>
         <li data-toggle="collapse" 
           data-target=".navbar-collapse">
-          <a routerLink="/info"><b>Info</b> 
+          <a routerLink="/info" (click)="sjekk_om_skoler_er_valgt()">Info 
           <span class="sr-only">(current)</span> </a></li>
       </ul>
     </div>
