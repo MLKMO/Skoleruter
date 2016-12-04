@@ -33,3 +33,7 @@ npm test
 # Henting av data fra Stavanger og Gjesdal
 Datagrunlaget for denne applikasjonen er csv-filer hentet fra nettside til [Stavanger kommune](https://open.stavanger.kommune.no/dataset).   
 Videre er Python brukt for å konvertere disse csv-filene om til json-filer. Kildekoden til disse scriptene finnes [her](https://github.com/MLKMO/Parse_skoledata)
+
+# Firebase Cloud Messaging 
+Et node.js script blir brukt til å sende notifikasjoner til abonnenter i skolerute appen. Dette scripet ligger på en egen github repository pga. den ikke er en del av selve angular 2 appen. 
+Scriptet ligger [her](https://github.com/MLKMO/FCM-sender)

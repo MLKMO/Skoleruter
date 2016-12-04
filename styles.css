@@ -1,12 +1,15 @@
+
 .midten {
   text-align: center;
  }
-
- .panel_color{
-   background_color: lightgrey!important;
-
- }
-
+.nav-tabs>li>a{
+  background-color: #F5F5F5;
+  border-color: #DDDDDD;
+}
+.btn-default{
+  background-color: #F5F5F5;
+  border-color: #DDDDDD;
+}
 
 #page-wrap {
   text-align: left;
@@ -18,9 +21,6 @@
   margin-bottom: 0;
   border-radius: 0;
 }
-.overskrift{
-  vertical-align: middle;
-}
 
 .firkant {
   border-radius: 0;
@@ -28,6 +28,8 @@
 
 .navbar-brand{
   height:70px!important;
+  letter-spacing: 1px;
+
 }
 
 .loader {
@@ -56,6 +58,37 @@
 #scrollForbiBunnen{
   height:30em;
 }
+
+body{
+  font-family: "Myriad Set Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.navbar-toggle {
+  padding-top: 20px;
+}
+
+
+@media (min-width: 768px){
+.navbar-nav>li>a {
+    padding-top: 25px;
+    padding-bottom: 12px;
+    font-weight: 200;
+    font-size: 15px;
+    letter-spacing: 1px;
+    
+}
+.navbar-nav>li>a:hover {
+  padding-top:5px;
+  margin-top: 20px;
+    background: #333333!important;
+    color: #B7B7B7!important;
+}
+}
+
+
+
+
+
 
 
 
